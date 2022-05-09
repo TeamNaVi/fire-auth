@@ -38,5 +38,12 @@ mergeAccounts.addEventListener("click", () => {
 
 //Go to Dashboard page
 goToDashboard.addEventListener("click", () => {
-  window.location.assign("../dashboard");
+  const user = auth.currentUser;
+  console.log(user.uid);
+  console.log(user.email);
+  if (user.uid == "3RS7jsw7asP6Owe5pZomy5KGwkf1") {
+    window.location.assign("../dashboard_admin");
+  } else {
+    window.location.assign("../dashboard");
+  }
 });
