@@ -9,7 +9,57 @@
     <link rel="stylesheet" href="./style/dashboard.css" />
   </head>
   <body>
-    <main></main>
+    <main>
+      <!-- side menu -->
+      <div class="side_menu">
+        <div class="burger_box">
+          <div class="menu-icon-container">
+            <a href="#" class="menu-icon js-menu_toggle closed">
+              <span class="menu-icon_box">
+                <span class="menu-icon_line menu-icon_line--1"></span>
+                <span class="menu-icon_line menu-icon_line--2"></span>
+                <span class="menu-icon_line menu-icon_line--3"></span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="container">
+          <h2 class="menu_title" id="menu_title">User: Dashboard</h2>
+          <ul class="list_load">
+            <li class="list_item"><a href="">Dashboard</a></li>
+            <li class="list_item">
+              <a href="./upload_admin.html">Upload</a>
+            </li>
+            <li class="list_item">
+              <a href="download_admin/download_admin.html">Download</a>
+            </li>
+            <li class="list_item">
+              <a href="./streaming.html">Deep Learning</a>
+            </li>
+            <li class="list_item">
+              <a href="./streaming.html">Image Labeling</a>
+            </li>
+            <li class="list_item"><a href="#">List Item 06</a></li>
+            <li class="list_item"><a href="#">List Item 07</a></li>
+            <li class="list_item"><a href="#">List Item 08</a></li>
+          </ul>
+          <div class="spacer_box"><p>추가 공간</p></div>
+        </div>
+      </div>
+
+      <!-- body -->
+      <div class="page_title" id="page_title">User님의 Dashboard</div>
+      <div class="what_to_do">(좌측 메뉴 클릭)</div>
+      <!-- body -->
+    </main>
+
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/6.2.4/firebase-app.js"></script>
     <script src="/__/firebase/6.2.4/firebase-auth.js"></script>

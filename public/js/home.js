@@ -118,8 +118,6 @@ const signInWithGoogle = () => {
 signInWithGoogleButton.addEventListener("click", signInWithGoogle);
 
 // Sign in function
-// 이메일값을 profile.js에서 사용하도록 export할 것 -> 관리자용 로그인 시도
-
 const signInWithEmailFunction = () => {
   const password = passwordField.value;
   const email = mailField.value;
@@ -135,8 +133,6 @@ const signInWithEmailFunction = () => {
       console.error(error);
     });
 };
-// 메일 값 외부에서 필요
-// export { email };
 
 //Adds the click event to the signInWithMail button
 //so it calls the signInWithEmail function whenever a user clicks on it

@@ -2,10 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Admin: 가중치파일 업로드 / 이미지 다운로드</title>
-    <link rel="stylesheet" href="./upload_admin.css" />
+    <title>User: 이미지 업로드</title>
+    <link rel="stylesheet" href="./storage.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -31,20 +29,18 @@
       <div class="container">
         <h2 class="menu_title">Title: Upload</h2>
         <ul class="list_load">
+          <li class="list_item"><a href="../dashboard.html">Dashboard</a></li>
           <li class="list_item">
-            <a href="../dashboard_admin.html">Dashboard</a>
+            <a href="">Upload Imgs</a>
           </li>
           <li class="list_item">
-            <a href="">Upload</a>
+            <a href="../download/download.html">Download Weights</a>
           </li>
           <li class="list_item">
-            <a href="../download_admin/download_admin.html">Download</a>
+            <a href="../../streaming/streaming.html">Image Capture</a>
           </li>
           <li class="list_item">
-            <a href="../streaming/streaming.html">Deep Learning</a>
-          </li>
-          <li class="list_item">
-            <a href="../streaming/streaming.html">Image Labeling</a>
+            <a href="../../streaming/streaming.html">Deep Learning</a>
           </li>
           <li class="list_item"><a href="#">List Item 06</a></li>
           <li class="list_item"><a href="#">List Item 07</a></li>
@@ -55,17 +51,17 @@
     </div>
 
     <!-- body -->
-    <div class="page_title">Upload/Download</div>
+    <div class="page_title">Upload Imgs</div>
     <div class="what_to_do">(좌측 메뉴 클릭)</div>
 
-    <h2>관리자용 가중치파일 업로드 / 이미지 다운로드</h2>
+    <h2>일반 사용자용 이미지 업로드 / 가중치파일 다운로드</h2>
     <button class="addBtn">파일 추가</button>
     <br />
     <div class="loader"></div>
 
     <div class="addForm">
       <label for="upload-file">업로드할 파일 선택...</label>
-      <input type="file" id="upload-file" />
+      <input type="file" id="upload-file" multiple="multiple" />
       <i class="fas fa-check-circle"></i>
       <i class="fas fa-times"></i>
     </div>
@@ -77,7 +73,6 @@
     <!-- Add additional services that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-storage.js"></script>
-    <script src="../firebaseConfig.js"></script>
 
     <!-- JQuery -->
     <script
@@ -85,6 +80,6 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
-    <script src="upload_admin.js"></script>
+    <script src="../../../../fire-auth/public/js/storage.js"></script>
   </body>
 </html>
