@@ -1,7 +1,20 @@
 const menu_title = document.getElementById("menu_title");
 const page_title = document.getElementById("page_title");
+const logOut = document.getElementById("logOut");
 
 const auth = firebase.auth();
+
+logOut.addEventListener("click", () => {
+  //signOut() is a built in firebase function responsible for signing a user out
+  auth
+    .signOut()
+    .then(() => {
+      window.location.assign("../");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
 
 // Just to print your current user information so you can the changes once done
 auth.onAuthStateChanged((user) => {

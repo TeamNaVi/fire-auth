@@ -1,10 +1,27 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+.fa-2x {
+  font-size: 2em;
+}
+.fa {
+  position: relative;
+  display: table-cell;
+  width: 60px;
+  height: 36px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+}
+
 body {
-  background: #048;
+  background: #fff;
+  /* background: #048;
   background: -webkit-linear-gradient(left top, #027, #48a);
   background: -moz-linear-gradient(bottom right, #027, #48a);
-  background: linear-gradient(to bottom right, #027, #48a);
-  color: #fff;
+  background: linear-gradient(to bottom right, #027, #48a); */
+  color: #000;
   font-family: "Raleway", Helvetica, Arial, sans-serif;
   font-size: 18px;
   font-weight: 300;
@@ -13,6 +30,9 @@ body {
   min-height: 100vh;
   padding: 0;
   width: 100%;
+}
+.menu_title {
+  color: #fff;
 }
 .page_title,
 .what_to_do {
@@ -43,7 +63,7 @@ a,
   left: -250px;
   position: absolute;
   top: 0;
-  width: 250px;
+  width: 300px;
 }
 .side_menu .container {
   padding: 0 1em;
@@ -79,7 +99,7 @@ a,
   width: 25px;
 }
 .burger_box .menu-icon_line {
-  background: #fff;
+  background: rgba(121, 136, 165, 0.9);
   border-radius: 2px;
   display: inline-block;
   height: 3px;
