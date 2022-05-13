@@ -171,19 +171,22 @@ showListUser = function (no,listEmail, listUid) {
         <td>%no%</td>
         <td>%listEmail%</td>
         <td>
-            <input type='radio' name='selectedUser' value=listUid' >선택</input>
+            <input type='radio' name='selectedUser' value=%listUid% >선택</input>
+            
         </td>
     </tr>
     `
   newHtml = html.replace('%id%', listEmail)
   newHtml = newHtml.replace('%no%', no)
-  newHtml = newHtml.replace('%url%', listUid)
+  newHtml = newHtml.replace('%listUid%', listUid)
   newHtml = newHtml.replace('%listEmail%', listEmail)
 
   fileTable1.insertAdjacentHTML('beforeend', newHtml)
   //radio 버튼 클릭 이벤트
   $("input:radio[name=selectedUser]").click(function(){
-    userUid = $('.selectedUser:checked').val();
+    userUid = $('input[name="selectedUser"]:checked').val();
+    fileTable3.innerHTML = ''
+    fileTable2.innerHTML = ''
     getAllFiles()
     inputInit()
 
@@ -243,6 +246,8 @@ showListImage = function (no, fileName, fileLoc) {
 //  userEmail = user.email
 //  getAllFiles() //유저 정보가 들어왔을 때 리스팅(안 그러면 아무것도 안 뜸)
 //}); 일반 사용자용
+
+getAllFiles()
 getAllUsers()
 
 // handle add file btn
@@ -298,7 +303,7 @@ checkBtn.addEventListener('click', () => {
                 loader.style.display = 'none'
                 closeAddFormBtn.style.display = 'block'
                 checkBtn.style.visibility = 'visible'
-                fileTable.innerHTML = ''
+                fileTable2.innerHTML = ''
                 getAllFiles()
                 inputInit()
               } else {
@@ -328,7 +333,7 @@ fileTable.addEventListener('click', (e) => {
               element.ref.delete().then(() => {
                 let storageRef = storage.ref('weightsfile/' + userUid +'/' + idFile) //스토리지
                 storageRef.delete().then(() => {
-                  fileTable.innerHTML = ''
+                  fileTable2.innerHTML = ''
                   getAllFiles()
                   inputInit()
                 })
@@ -344,7 +349,7 @@ fileTable.addEventListener('click', (e) => {
               element.ref.delete().then(() => {
                 let storageRef = storage.ref('images/' + userUid +'/' + idFile) //스토리지
                 storageRef.delete().then(() => {
-                  fileTable.innerHTML = ''
+                  fileTable3.innerHTML = ''
                   getAllFiles()
                   inputInit()
                 })
