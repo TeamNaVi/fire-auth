@@ -151,7 +151,7 @@ showListData = function (no, fileName, fileLoc) {
 auth.onAuthStateChanged((user) => {
   userUid = user.uid
   userEmail = user.email
-  getAllFiles()
+  getAllFiles() //유저 정보가 들어왔을 때 리스팅(안 그러면 아무것도 안 뜸)
 });
 
 
@@ -230,13 +230,29 @@ fileTable.addEventListener('click', (e) => {
     if (sureDel) {
       let idFile = targetId.substring(3, targetId.length)
       firestore //데이터베이스
-          .collection('weightsfile')
+          .collection('weightsfile'+userUid)
           .where('fileName', '==', idFile)
           .get()
           .then((data) => {
             data.forEach((element) => {
               element.ref.delete().then(() => {
-                let storageRef = storage.ref('weightsfile/' + idFile) //스토리지
+                let storageRef = storage.ref('weightsfile/' + userUid +'/' + idFile) //스토리지
+                storageRef.delete().then(() => {
+                  fileTable.innerHTML = ''
+                  getAllFiles()
+                  inputInit()
+                })
+              })
+            })
+          })
+      firestore //데이터베이스
+          .collection('images'+userUid)
+          .where('fileName', '==', idFile)
+          .get()
+          .then((data) => {
+            data.forEach((element) => {
+              element.ref.delete().then(() => {
+                let storageRef = storage.ref('images/' + userUid +'/' + idFile) //스토리지
                 storageRef.delete().then(() => {
                   fileTable.innerHTML = ''
                   getAllFiles()

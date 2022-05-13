@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Admin: 가중치파일 업로드 / 이미지 다운로드</title>
-    <link rel="stylesheet" href="./storage.html/storage_admin.css" />
+    <link rel="stylesheet" href="./style/storage_admin.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -65,7 +65,7 @@
 
     <div class="addForm">
       <label for="upload-file">업로드할 파일 선택...</label>
-      <input type="file" id="upload-file" />
+      <input type="file" id="upload-file" multiple="multiple" />
       <i class="fas fa-check-circle"></i>
       <i class="fas fa-times"></i>
     </div>
@@ -90,5 +90,6 @@
     <script src="/__/firebase/init.js"></script>
 
     <script src="./js/storage_admin.js"></script>
+
   </body>
 </html>
