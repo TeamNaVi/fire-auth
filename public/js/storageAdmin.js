@@ -182,12 +182,15 @@ showListUser = function (no,listEmail, listUid) {
   newHtml = newHtml.replace('%listEmail%', listEmail)
 
   fileTable1.insertAdjacentHTML('beforeend', newHtml)
+
+
   //radio 버튼 클릭 이벤트
   $("input:radio[name=selectedUser]").click(function(){
     userUid = $('input[name="selectedUser"]:checked').val();
     fileTable3.innerHTML = ''
     fileTable2.innerHTML = ''
     getAllFiles()
+    debug.log(userUid)
     inputInit()
 
   });
@@ -318,7 +321,7 @@ checkBtn.addEventListener('click', () => {
 })
 
 // handle delete
-fileTable.addEventListener('click', (e) => {
+fileTable2.addEventListener('click', (e) => {
   let targetId = e.target.parentNode.parentNode.id
   if (targetId.match('id-')) {
     let sureDel = confirm('정말로 이 파일을 삭제하실겁니까?')
@@ -340,6 +343,18 @@ fileTable.addEventListener('click', (e) => {
               })
             })
           })
+    }
+  }
+})
+
+// handle delete
+fileTable3.addEventListener('click', (e) => {
+  let targetId = e.target.parentNode.parentNode.id
+  if (targetId.match('id-')) {
+    let sureDel = confirm('정말로 이 파일을 삭제하실겁니까?')
+    if (sureDel) {
+      let idFile = targetId.substring(3, targetId.length)
+
       firestore //데이터베이스
           .collection('images'+userUid)
           .where('fileName', '==', idFile)
