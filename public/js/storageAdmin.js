@@ -307,6 +307,7 @@ checkBtn.addEventListener('click', () => {
                 closeAddFormBtn.style.display = 'block'
                 checkBtn.style.visibility = 'visible'
                 fileTable2.innerHTML = ''
+                fileTable3.innerHTML = ''
                 getAllFiles()
                 inputInit()
               } else {
@@ -337,6 +338,7 @@ fileTable2.addEventListener('click', (e) => {
                 let storageRef = storage.ref('weightsfile/' + userUid +'/' + idFile) //스토리지
                 storageRef.delete().then(() => {
                   fileTable2.innerHTML = ''
+                  fileTable3.innerHTML = ''
                   getAllFiles()
                   inputInit()
                 })
@@ -364,6 +366,7 @@ fileTable3.addEventListener('click', (e) => {
               element.ref.delete().then(() => {
                 let storageRef = storage.ref('images/' + userUid +'/' + idFile) //스토리지
                 storageRef.delete().then(() => {
+                  fileTable2.innerHTML = ''
                   fileTable3.innerHTML = ''
                   getAllFiles()
                   inputInit()
