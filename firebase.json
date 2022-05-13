@@ -34,8 +34,18 @@
         "type": 301
       },
       {
-        "source": "/dashboard_admin",
-        "destination": "./dashboard_admin.html",
+        "source": "/upload",
+        "destination": "./upload.html",
+        "type": 301
+      },
+      {
+        "source": "/storage",
+        "destination": "./storage.html",
+        "type": 301
+      },
+      {
+        "source": "/storage_admin",
+        "destination": "./storage_admin.html",
         "type": 301
       }
     ]

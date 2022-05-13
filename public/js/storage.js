@@ -1,24 +1,5 @@
-// update the version number as needed
-src = 'https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js'
-
-// include only the Firebase features as you need
-src = 'https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js'
-src = 'https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js'
-src = 'https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js'
-// Initialize Firebase
-// 정성욱 fb
-var config = {
-  apiKey: 'AIzaSyCh834-1uNnd-9l9Y2nm7n0ErPnljiQAKI',
-  authDomain: 'test-storage-ae139.firebaseapp.com',
-  databaseURL: 'https://test-storage-ae139.firebaseio.com',
-  projectId: 'test-storage-ae139',
-  storageBucket: 'test-storage-ae139.appspot.com',
-  messagingSenderId: '280317155951',
-}
-var defaultApp = firebase.initializeApp(config)
-var firestore = defaultApp.firestore()
-var storage = defaultApp.storage()
-var auth = defaultApp.auth
+var firestore = firebase.firestore()
+var storage = firebase.storage()
 
 // DOM element
 const addFileBtn = document.querySelector('.addBtn')
@@ -30,10 +11,12 @@ const checkBtn = document.querySelector('.fa-check-circle')
 const fileTable = document.querySelector('#fileTable')
 const loader = document.querySelector('.loader')
 
+const auth = firebase.auth();
 // var global
 let fileBrowse = null
 let urlDownload = null
-
+let userUid = null
+let userEmail = null
 // sidebar
 // Requires jQuery
 $(document).on('click', '.js-menu_toggle.closed', function (e) {
@@ -74,21 +57,39 @@ $(document).on('click', '.js-menu_toggle.opened', function (e) {
 
 // upload.js
 getAllFiles = function () {
-  showHeaderTable()
+  showHeaderTableW()
   firestore //데이터베이스
-    .collection('weightsfile') //데이터베이스 저장소
-    .get()
-    .then((data) => {
-      let counter = 0
-      data.forEach((element) => {
-        counter += 1
-        showListData(
-          counter,
-          element.data().fileName,
-          element.data().fileLocation
-        )
+      .collection('weightsfile'+userUid) //데이터베이스 저장소
+      .get()
+      .then((data) => {
+        let counter = 0
+        data.forEach((element) => {
+          counter += 1
+          showListData(
+              counter,
+              element.data().fileName,
+              element.data().fileLocation
+          )
+        })
       })
-    })
+  showHeaderTableI()
+  firestore //데이터베이스
+      .collection('images'+userUid) //데이터베이스 저장소
+      .get()
+      .then((data) => {
+        let counter = 0
+        data.forEach((element) => {
+          //if(element.data().uploader !== userEmail){
+          //  return; //continue랑 비슷한 역할을 foreach문에서 수행
+          //}  해당 유저의 파일 필터링하는 기능이지만 컬렉션을 나눔으로서 불필요해짐
+          counter += 1
+          showListData(
+              counter,
+              element.data().fileName,
+              element.data().fileLocation
+          )
+        })
+      })
 }
 
 // function init input condition
@@ -99,7 +100,8 @@ inputInit = function () {
 }
 
 // function add header table static
-showHeaderTable = function () {
+showHeaderTableW = function () {
+
   html = `
     <tr>
         <th>No</th>
@@ -108,6 +110,19 @@ showHeaderTable = function () {
     </tr>
     `
   fileTable.insertAdjacentHTML('beforeend', html)
+
+}
+
+showHeaderTableI = function () {
+  html = `
+    <tr>
+        <th>No</th>
+        <th>이미지파일 이름</th>
+        <th>다운로드 / 삭제</th>
+    </tr>
+    `
+  fileTable.insertAdjacentHTML('beforeend', html)
+
 }
 
 // function show list of files
@@ -133,7 +148,12 @@ showListData = function (no, fileName, fileLoc) {
 }
 
 // init system
-getAllFiles()
+auth.onAuthStateChanged((user) => {
+  userUid = user.uid
+  userEmail = user.email
+  getAllFiles()
+});
+
 
 // handle add file btn
 addFileBtn.addEventListener('click', () => {
@@ -165,36 +185,37 @@ checkBtn.addEventListener('click', () => {
     loader.style.display = 'block'
     closeAddFormBtn.style.display = 'none'
     checkBtn.style.visibility = 'hidden'
-    let storageRef = storage.ref('images/' + fileBrowse.name) //스토리지
+    let storageRef = storage.ref('images/' + userUid +'/' + fileBrowse.name) //스토리지 firebase.auth().currentUser.uid
     storageRef.put(fileBrowse).then(() => {
-      let fileLink = storage.ref(`images/${fileBrowse.name}`)
+      let fileLink = storage.ref(`images/${userUid}/${fileBrowse.name}`)
       urlDownload = fileLink
-        .getDownloadURL()
-        .then((url) => {
-          urlDownload = url.toString()
-        })
-        .then(() => {
-          let docRef = firestore.collection('images') //데이터베이스 저장소
-          let query = docRef.where('fileName', '==', fileBrowse.name)
-
-          //쿼리
-          query.get().then((data) => {
-            if (data.size == 0) {
-              docRef.add({
-                fileName: fileBrowse.name, //파일 이름
-                fileLocation: urlDownload, //파이어베이스 다운로드 URL
-              })
-              loader.style.display = 'none'
-              closeAddFormBtn.style.display = 'block'
-              checkBtn.style.visibility = 'visible'
-              fileTable.innerHTML = ''
-              getAllFiles()
-              inputInit()
-            } else {
-              alert('파일 이름이 중복됩니다.')
-            }
+          .getDownloadURL()
+          .then((url) => {
+            urlDownload = url.toString()
           })
-        })
+          .then(() => {
+            let docRef = firestore.collection('images'+userUid) //데이터베이스 저장소
+            let query = docRef.where('fileName', '==', fileBrowse.name)
+
+            //쿼리
+            query.get().then((data) => {
+              if (data.size == 0) {
+                docRef.add({
+                  fileName: fileBrowse.name, //파일 이름
+                  fileLocation: urlDownload, //파이어베이스 다운로드 URL
+                  uploader: userEmail,   //파일 올린 사람
+                })
+                loader.style.display = 'none'
+                closeAddFormBtn.style.display = 'block'
+                checkBtn.style.visibility = 'visible'
+                fileTable.innerHTML = ''
+                getAllFiles()
+                inputInit()
+              } else {
+                alert('파일 이름이 중복됩니다.')
+              }
+            })
+          })
     })
   } else {
     alert('파일을 선택해주세요')
@@ -209,21 +230,21 @@ fileTable.addEventListener('click', (e) => {
     if (sureDel) {
       let idFile = targetId.substring(3, targetId.length)
       firestore //데이터베이스
-        .collection('weightsfile')
-        .where('fileName', '==', idFile)
-        .get()
-        .then((data) => {
-          data.forEach((element) => {
-            element.ref.delete().then(() => {
-              let storageRef = storage.ref('weightsfile/' + idFile) //스토리지
-              storageRef.delete().then(() => {
-                fileTable.innerHTML = ''
-                getAllFiles()
-                inputInit()
+          .collection('weightsfile')
+          .where('fileName', '==', idFile)
+          .get()
+          .then((data) => {
+            data.forEach((element) => {
+              element.ref.delete().then(() => {
+                let storageRef = storage.ref('weightsfile/' + idFile) //스토리지
+                storageRef.delete().then(() => {
+                  fileTable.innerHTML = ''
+                  getAllFiles()
+                  inputInit()
+                })
               })
             })
           })
-        })
     }
   }
 })
