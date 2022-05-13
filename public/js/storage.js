@@ -8,7 +8,8 @@ const closeAddFormBtn = document.querySelector('.fa-times')
 const browseBtn = document.querySelector('#upload-file')
 const labelBrowse = document.querySelector('label')
 const checkBtn = document.querySelector('.fa-check-circle')
-const fileTable = document.querySelector('#fileTable')
+const fileTable1 = document.querySelector('#fileTable1')
+const fileTable2 = document.querySelector('#fileTable2')
 const loader = document.querySelector('.loader')
 
 const auth = firebase.auth();
@@ -83,7 +84,7 @@ getAllFiles = function () {
           //  return; //continue랑 비슷한 역할을 foreach문에서 수행
           //}  해당 유저의 파일 필터링하는 기능이지만 컬렉션을 나눔으로서 불필요해짐
           counter += 1
-          showListData(
+          showListImage(
               counter,
               element.data().fileName,
               element.data().fileLocation
@@ -109,7 +110,7 @@ showHeaderTableW = function () {
         <th>다운로드 / 삭제</th>
     </tr>
     `
-  fileTable.insertAdjacentHTML('beforeend', html)
+  fileTable2.insertAdjacentHTML('beforeend', html)
 
 }
 
@@ -121,7 +122,7 @@ showHeaderTableI = function () {
         <th>다운로드 / 삭제</th>
     </tr>
     `
-  fileTable.insertAdjacentHTML('beforeend', html)
+  fileTable1.insertAdjacentHTML('beforeend', html)
 
 }
 
@@ -132,7 +133,7 @@ showListData = function (no, fileName, fileLoc) {
         <td>%no%</td>
         <td>%fileName%</td>
         <td>
-            <a href="%url%" target="blank">
+            <a href="%url%" target="blank" download>
                 <i class="fas fa-file-download"></i>
             </a>
             <i class="fas fa-trash-alt"></i>
@@ -144,9 +145,29 @@ showListData = function (no, fileName, fileLoc) {
   newHtml = newHtml.replace('%url%', fileLoc)
   newHtml = newHtml.replace('%fileName%', fileName)
 
-  fileTable.insertAdjacentHTML('beforeend', newHtml)
+  fileTable2.insertAdjacentHTML('beforeend', newHtml)
 }
 
+showListImage = function (no, fileName, fileLoc) {
+  html = `
+    <tr id="id-%id%">
+        <td>%no%</td>
+        <td>%fileName%</td>
+        <td>
+            <a href="%url%" target="blank" download>
+                <i class="fas fa-file-download"></i>
+            </a>
+            <i class="fas fa-trash-alt"></i>
+        </td>
+    </tr>
+    `
+  newHtml = html.replace('%id%', fileName)
+  newHtml = newHtml.replace('%no%', no)
+  newHtml = newHtml.replace('%url%', fileLoc)
+  newHtml = newHtml.replace('%fileName%', fileName)
+
+  fileTable1.insertAdjacentHTML('beforeend', newHtml)
+}
 // init system
 auth.onAuthStateChanged((user) => {
   userUid = user.uid
@@ -208,7 +229,7 @@ checkBtn.addEventListener('click', () => {
                 loader.style.display = 'none'
                 closeAddFormBtn.style.display = 'block'
                 checkBtn.style.visibility = 'visible'
-                fileTable.innerHTML = ''
+                fileTable1.innerHTML = ''
                 getAllFiles()
                 inputInit()
               } else {
@@ -238,7 +259,7 @@ fileTable.addEventListener('click', (e) => {
               element.ref.delete().then(() => {
                 let storageRef = storage.ref('weightsfile/' + userUid +'/' + idFile) //스토리지
                 storageRef.delete().then(() => {
-                  fileTable.innerHTML = ''
+                  fileTable2.innerHTML = ''
                   getAllFiles()
                   inputInit()
                 })
@@ -254,7 +275,7 @@ fileTable.addEventListener('click', (e) => {
               element.ref.delete().then(() => {
                 let storageRef = storage.ref('images/' + userUid +'/' + idFile) //스토리지
                 storageRef.delete().then(() => {
-                  fileTable.innerHTML = ''
+                  fileTable1.innerHTML = ''
                   getAllFiles()
                   inputInit()
                 })

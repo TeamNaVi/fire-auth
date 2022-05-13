@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>User: 이미지 업로드</title>
-    <link rel="stylesheet" href="./style/storage.css" />
+    <link rel="stylesheet" href="./style/storage.css?after" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -65,7 +65,28 @@
       <i class="fas fa-check-circle"></i>
       <i class="fas fa-times"></i>
     </div>
-    <table id="fileTable"></table>
+    <style>
+      div.left {
+        width: 50%;
+        float: left;
+        box-sizing: border-box;
+
+      }
+      div.right {
+        width: 50%;
+        float: right;
+        box-sizing: border-box;
+
+      }
+    </style>
+
+
+    <div class="right"><table id="fileTable1"></table></div>
+
+    <div class="left"><table id="fileTable2"></table></div>
+
+
+
     <!-- body -->
 
     <!-- Firebase App is always required and must be first -->
