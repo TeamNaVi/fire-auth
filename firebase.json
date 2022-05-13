@@ -34,8 +34,8 @@
         "type": 301
       },
       {
-        "source": "/dashboard_admin",
-        "destination": "./dashboard_admin.html",
+        "source": "/dashboardAdmin",
+        "destination": "./dashboardAdmin.html",
         "type": 301
       },
       {
@@ -49,8 +49,8 @@
         "type": 301
       },
       {
-        "source": "/storage_admin",
-        "destination": "./storage_admin.html",
+        "source": "/storageAdmin",
+        "destination": "./storageAdmin.html",
         "type": 301
       }
     ]

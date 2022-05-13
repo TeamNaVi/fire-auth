@@ -36,9 +36,10 @@ let Dashboard = (() => {
     $(global.menuClass + " .is-active").removeClass("is-active");
     $(el).addClass("is-active");
 
-    // if (hasSubmenu) {
-    // 	$(el).find("ul").slideDown();
-    // }
+    // 하위메뉴 있으면
+    if (hasSubmenu) {
+      $(el).find("ul").slideDown();
+    }
   };
 
   let sidebarChangeWidth = () => {
