@@ -13,8 +13,11 @@
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
     />
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
   </head>
+
   <body class="sidebar-is-reduced">
+    <!-- header태그 : 상단바 -->
     <header class="l-header">
       <div class="l-header__inner clearfix">
         <div class="c-header-icon js-hamburger">
@@ -25,7 +28,7 @@
         </div>
         <div class="c-header-icon has-dropdown">
           <span class="c-badge c-badge--red c-badge--header-icon animated swing"
-            >13</span
+            >7</span
           ><i class="fa fa-bell"></i>
           <div class="c-dropdown c-dropdown--notifications">
             <div class="c-dropdown__header"></div>
@@ -43,18 +46,20 @@
           <div class="c-header-icon basket">
             <span
               class="c-badge c-badge--blue c-badge--header-icon animated swing"
-              >4</span
+              >3</span
             ><i class="fa fa-shopping-basket"></i>
           </div>
-          <div class="c-header-icon logout">
+          <div class="c-header-icon logout" data-toggle="tooltipB" id="logOut">
             <i class="fa fa-power-off"></i>
           </div>
         </div>
       </div>
     </header>
+
+    <!-- sidebar -->
     <div class="l-sidebar">
       <div class="logo">
-        <div class="logo__txt">D</div>
+        <div class="logo__txt">Hi</div>
       </div>
       <div class="l-sidebar__content">
         <nav class="c-menu js-menu">
@@ -62,14 +67,17 @@
             <li
               class="c-menu__item is-active"
               data-toggle="tooltip"
-              title="Flights"
+              title="Dashboard"
+              id="li_Dashboard"
             >
               <div class="c-menu__item__inner">
-                <i class="fa fa-plane"></i>
-                <div class="c-menu-item__title"><span>Flights</span></div>
+                <i class="far fa-chart-bar"></i>
+                <div class="c-menu-item__title"><span>Dashboard</span></div>
               </div>
             </li>
-            <li
+
+            <!-- 하위메뉴 테스트 -->
+            <!-- <li
               class="c-menu__item has-submenu"
               data-toggle="tooltip"
               title="Modules"
@@ -86,35 +94,41 @@
                 <li>Maps</li>
                 <li>Notifications</li>
               </ul>
-            </li>
+            </li> -->
+
             <li
               class="c-menu__item has-submenu"
               data-toggle="tooltip"
-              title="Statistics"
+              title="Storage"
+              id="li_Storage"
             >
               <div class="c-menu__item__inner">
-                <i class="far fa-chart-bar"></i>
-                <div class="c-menu-item__title"><span>Statistics</span></div>
+                <i class="far fa-hdd"></i>
+                <div class="c-menu-item__title"><span>Storage</span></div>
               </div>
             </li>
+
             <li
               class="c-menu__item has-submenu"
               data-toggle="tooltip"
-              title="Gifts"
+              title="Streaming"
+              id="li_Streaming"
             >
               <div class="c-menu__item__inner">
-                <i class="fa fa-gift"></i>
-                <div class="c-menu-item__title"><span>Gifts</span></div>
+                <i class="fas fa-camera"></i>
+                <div class="c-menu-item__title"><span>Streaming</span></div>
               </div>
             </li>
+
             <li
               class="c-menu__item has-submenu"
               data-toggle="tooltip"
-              title="Settings"
+              title="DeepLearning"
+              id="li_DeepLearning"
             >
               <div class="c-menu__item__inner">
-                <i class="fa fa-cogs"></i>
-                <div class="c-menu-item__title"><span>Settings</span></div>
+                <i class="fas fa-cogs"></i>
+                <div class="c-menu-item__title"><span>Deep Learning</span></div>
               </div>
             </li>
           </ul>
@@ -137,17 +151,21 @@
     ></script>
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
-    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js"></script>
     <script src="./js/testUI.js"></script>
   </body>
+
+  <!-- 메인 컨텐츠 -->
   <main class="l-main">
     <div class="content-wrapper content-wrapper--with-bg">
       <h1 class="page-title">Dashboard</h1>
       <div class="page-content">Content goes here</div>
+      <div class="page-content">Content goes here</div>
+      <div class="page-content">Content goes here</div>
     </div>
   </main>
+  <script src="./js/testUI.js"></script>
 </html>

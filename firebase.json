@@ -39,11 +39,6 @@
         "type": 301
       },
       {
-        "source": "/upload",
-        "destination": "./upload.html",
-        "type": 301
-      },
-      {
         "source": "/storage",
         "destination": "./storage.html",
         "type": 301
@@ -51,6 +46,16 @@
       {
         "source": "/storageAdmin",
         "destination": "./storageAdmin.html",
+        "type": 301
+      },
+      {
+        "source": "/streaming",
+        "destination": "./streaming.html",
+        "type": 301
+      },
+      {
+        "source": "/deepLearning",
+        "destination": "./deepLearning.html",
         "type": 301
       }
     ]

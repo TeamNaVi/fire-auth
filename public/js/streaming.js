@@ -1,4 +1,3 @@
-const page_title = document.getElementById("page-title");
 const li_Dashboard = document.getElementById("li_Dashboard");
 const li_Storage = document.getElementById("li_Storage");
 const li_Streaming = document.getElementById("li_Streaming");
@@ -23,8 +22,8 @@ logOut.addEventListener("click", () => {
 // Just to print your current user information so you can the changes once done
 auth.onAuthStateChanged((user) => {
   console.log(user);
-  // menu_title.innerText = user.displayName + "님";
-  page_title.innerText = user.displayName + "님의 Dashboard";
+  // menu_title.innerHTML = user.displayName + "님";
+  // page_title.innerHTML = user.displayName + "님의 Dashboard";
 });
 
 //Go to Dashboard page

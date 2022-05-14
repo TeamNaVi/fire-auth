@@ -7,63 +7,134 @@
     <title>Dashboard</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="./style/dashboard.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+    />
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
   </head>
-  <body>
-    <main>
-      <!-- side menu -->
-      <div class="side_menu">
-        <div class="burger_box">
-          <div class="menu-icon-container">
-            <a href="#" class="menu-icon js-menu_toggle closed">
-              <span class="menu-icon_box">
-                <span class="menu-icon_line menu-icon_line--1"></span>
-                <span class="menu-icon_line menu-icon_line--2"></span>
-                <span class="menu-icon_line menu-icon_line--3"></span>
-              </span>
-            </a>
+
+  <body class="sidebar-is-reduced">
+    <!-- header태그 : 상단바 -->
+    <header class="l-header">
+      <div class="l-header__inner clearfix">
+        <div class="c-header-icon js-hamburger">
+          <div class="hamburger-toggle">
+            <span class="bar-top"></span><span class="bar-mid"></span
+            ><span class="bar-bot"></span>
           </div>
         </div>
-        <div class="container">
-          <h2 class="menu_title" id="menu_title">User: Dashboard</h2>
-          <ul class="list_load">
-            <li class="list_item"><a href="">Dashboard</a></li>
-            <li class="list_item">
-              <a href="./storage.html">Storage</a>
-            </li>
-            <li class="list_item">
-              <a href="./streaming.html">Streaming</a>
-            </li>
-            <li class="list_item">
-              <a href="./streaming.html">Deep Learning</a>
-            </li>
-            <li class="list_item"><a href="#">List Item 05</a></li>
-            <li class="list_item"><a href="#">List Item 06</a></li>
-            <li class="list_item"><a href="#">List Item 07</a></li>
-            <li class="list_item"><a href="#">List Item 08</a></li>
-            <li class="list_item">
-              <a id="logOut">
-                <i class="fa fa-power-off fa-2x"></i>
-                <span>Log Out</span>
-              </a>
-            </li>
-          </ul>
-
-          <!-- <div class="spacer_box"><p>추가 공간</p></div> -->
+        <div class="c-header-icon has-dropdown">
+          <span class="c-badge c-badge--red c-badge--header-icon animated swing"
+            >7</span
+          ><i class="fa fa-bell"></i>
+          <div class="c-dropdown c-dropdown--notifications">
+            <div class="c-dropdown__header"></div>
+            <div class="c-dropdown__content"></div>
+          </div>
+        </div>
+        <div class="c-search">
+          <input
+            class="c-search__input u-input"
+            placeholder="Search..."
+            type="text"
+          />
+        </div>
+        <div class="header-icons-group">
+          <div class="c-header-icon basket">
+            <span
+              class="c-badge c-badge--blue c-badge--header-icon animated swing"
+              >3</span
+            ><i class="fa fa-shopping-basket"></i>
+          </div>
+          <div class="c-header-icon logout" data-toggle="tooltipB" id="logOut">
+            <i class="fa fa-power-off"></i>
+          </div>
         </div>
       </div>
+    </header>
 
-      <!-- body -->
-      <div class="page_title" id="page_title">User님의 Dashboard</div>
-      <div class="what_to_do">(좌측 메뉴 클릭)</div>
-      <!-- body -->
-    </main>
+    <!-- sidebar -->
+    <div class="l-sidebar">
+      <div class="logo">
+        <div class="logo__txt">Hi</div>
+      </div>
+      <div class="l-sidebar__content">
+        <nav class="c-menu js-menu">
+          <ul class="u-list">
+            <li
+              class="c-menu__item is-active"
+              data-toggle="tooltip"
+              title="Dashboard"
+              id="li_Dashboard"
+            >
+              <div class="c-menu__item__inner">
+                <i class="far fa-chart-bar"></i>
+                <div class="c-menu-item__title"><span>Dashboard</span></div>
+              </div>
+            </li>
 
-    <!-- JQuery -->
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
+            <!-- 하위메뉴 테스트 -->
+            <!-- <li
+              class="c-menu__item has-submenu"
+              data-toggle="tooltip"
+              title="Modules"
+            >
+              <div class="c-menu__item__inner">
+                <i class="fa fa-puzzle-piece"></i>
+                <div class="c-menu-item__title"><span>Modules</span></div>
+                <div class="c-menu-item__expand js-expand-submenu">
+                  <i class="fa fa-angle-down"></i>
+                </div>
+              </div>
+              <ul class="c-menu__submenu u-list">
+                <li>Payments</li>
+                <li>Maps</li>
+                <li>Notifications</li>
+              </ul>
+            </li> -->
+
+            <li
+              class="c-menu__item has-submenu"
+              data-toggle="tooltip"
+              title="Storage"
+              id="li_Storage"
+            >
+              <div class="c-menu__item__inner">
+                <i class="far fa-hdd"></i>
+                <div class="c-menu-item__title"><span>Storage</span></div>
+              </div>
+            </li>
+
+            <li
+              class="c-menu__item has-submenu"
+              data-toggle="tooltip"
+              title="Streaming"
+              id="li_Streaming"
+            >
+              <div class="c-menu__item__inner">
+                <i class="fas fa-camera"></i>
+                <div class="c-menu-item__title"><span>Streaming</span></div>
+              </div>
+            </li>
+
+            <li
+              class="c-menu__item has-submenu"
+              data-toggle="tooltip"
+              title="DeepLearning"
+              id="li_DeepLearning"
+            >
+              <div class="c-menu__item__inner">
+                <i class="fas fa-cogs"></i>
+                <div class="c-menu-item__title"><span>Deep Learning</span></div>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/6.2.4/firebase-app.js"></script>
@@ -72,8 +143,28 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
         https://firebase.google.com/docs/web/setup#reserved-urls -->
 
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js"></script>
-    <script src="./js/dashboard.js"></script>
   </body>
+
+  <!-- 메인 컨텐츠 -->
+  <main class="l-main">
+    <div class="content-wrapper content-wrapper--with-bg">
+      <h1 class="page-title" id="page-title">User: Dashboard</h1>
+      <div class="page-content">Content goes here</div>
+      <div class="page-content">Content goes here</div>
+      <div class="page-content">Content goes here</div>
+    </div>
+  </main>
+  <script src="./js/dashboard.js"></script>
 </html>
