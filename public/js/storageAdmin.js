@@ -132,7 +132,7 @@ showHeaderTableU = function () {
     <tr>
         <th>No</th>
         <th>사용자 이메일</th>
-        <th>선택</th>
+        <th>사용자 선택</th>
     </tr>
     `
   fileTable1.insertAdjacentHTML('beforeend', html)
@@ -167,13 +167,12 @@ showHeaderTableI = function () {
 // function show list of files
 showListUser = function (no,listEmail, listUid) {
   html = `
-    
+    <link rel="stylesheet" href="../style/storageAdmin.css?after" />
     <tr id="id-%id%">
         <td>%no%</td>
         <td>%listEmail%</td>
         <td>
-            <input type='radio' name='selectedUser' value=%listUid% style="width:30px;height:30px;border:1px;" >
-            
+            <label class="box-radio-input"><input type='radio' name='selectedUser' value=%listUid%><span>사용자 선택</span></label>
         </td>
     </tr>
     `
