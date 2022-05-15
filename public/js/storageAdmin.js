@@ -172,7 +172,7 @@ showListUser = function (no,listEmail, listUid) {
         <td>%no%</td>
         <td>%listEmail%</td>
         <td>
-            <input type='radio' name='selectedUser' value=%listUid% >선택</input>
+            <input type='radio' name='selectedUser' value=%listUid% style="width:30px;height:30px;border:1px;" >
             
         </td>
     </tr>
