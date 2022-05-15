@@ -167,6 +167,7 @@ showHeaderTableI = function () {
 // function show list of files
 showListUser = function (no,listEmail, listUid) {
   html = `
+    
     <tr id="id-%id%">
         <td>%no%</td>
         <td>%listEmail%</td>
@@ -244,14 +245,13 @@ showListImage = function (no, fileName, fileLoc) {
 
 
 // init system
-//auth.onAuthStateChanged((user) => {
-//  userUid = user.uid
-//  userEmail = user.email
-//  getAllFiles() //유저 정보가 들어왔을 때 리스팅(안 그러면 아무것도 안 뜸)
-//}); 일반 사용자용
 
-getAllFiles()
-getAllUsers()
+auth.onAuthStateChanged((user) => {
+  if(user.email=='admin@admin.admin'){ //관리자 계정으로 로그인 했을 때만 정보 표시
+    getAllFiles()
+    getAllUsers()
+  }
+});
 
 // handle add file btn
 addFileBtn.addEventListener('click', () => {

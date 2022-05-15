@@ -8,8 +8,8 @@ const closeAddFormBtn = document.querySelector('.fa-times')
 const browseBtn = document.querySelector('#upload-file')
 const labelBrowse = document.querySelector('label')
 const checkBtn = document.querySelector('.fa-check-circle')
-const fileTable1 = document.querySelector('#fileTable1')
-const fileTable2 = document.querySelector('#fileTable2')
+const fileTable1 = document.querySelector('#fileTable1')  //이미지
+const fileTable2 = document.querySelector('#fileTable2')  //가중치
 const loader = document.querySelector('.loader')
 
 const auth = firebase.auth();
@@ -245,7 +245,33 @@ checkBtn.addEventListener('click', () => {
 })
 
 // handle delete
-fileTable.addEventListener('click', (e) => {
+fileTable1.addEventListener('click', (e) => {
+  let targetId = e.target.parentNode.parentNode.id
+  if (targetId.match('id-')) {
+    let sureDel = confirm('정말로 이 파일을 삭제하실겁니까?')
+    if (sureDel) {
+      let idFile = targetId.substring(3, targetId.length)
+      firestore //데이터베이스
+          .collection('images'+userUid)
+          .where('fileName', '==', idFile)
+          .get()
+          .then((data) => {
+            data.forEach((element) => {
+              element.ref.delete().then(() => {
+                let storageRef = storage.ref('images/' + userUid +'/' + idFile) //스토리지
+                storageRef.delete().then(() => {
+                  fileTable1.innerHTML = ''
+                  fileTable2.innerHTML = ''
+                  getAllFiles()
+                  inputInit()
+                })
+              })
+            })
+          })
+    }
+  }
+})
+fileTable2.addEventListener('click', (e) => {
   let targetId = e.target.parentNode.parentNode.id
   if (targetId.match('id-')) {
     let sureDel = confirm('정말로 이 파일을 삭제하실겁니까?')
@@ -259,23 +285,6 @@ fileTable.addEventListener('click', (e) => {
             data.forEach((element) => {
               element.ref.delete().then(() => {
                 let storageRef = storage.ref('weightsfile/' + userUid +'/' + idFile) //스토리지
-                storageRef.delete().then(() => {
-                  fileTable1.innerHTML = ''
-                  fileTable2.innerHTML = ''
-                  getAllFiles()
-                  inputInit()
-                })
-              })
-            })
-          })
-      firestore //데이터베이스
-          .collection('images'+userUid)
-          .where('fileName', '==', idFile)
-          .get()
-          .then((data) => {
-            data.forEach((element) => {
-              element.ref.delete().then(() => {
-                let storageRef = storage.ref('images/' + userUid +'/' + idFile) //스토리지
                 storageRef.delete().then(() => {
                   fileTable1.innerHTML = ''
                   fileTable2.innerHTML = ''

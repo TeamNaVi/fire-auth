@@ -149,7 +149,7 @@ label {
 #fileTable1 {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 70%;
+    width: 90%;
     margin: auto;
     margin-top: 20px;
 }
@@ -172,7 +172,7 @@ label {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: red;
+    background-color: darkred;
     color: white;
 }
 
@@ -183,7 +183,7 @@ label {
 #fileTable2 {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 70%;
+    width: 95%;
     margin: auto;
     margin-top: 20px;
 }
@@ -217,7 +217,7 @@ label {
 #fileTable3 {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 70%;
+    width: 95%;
     margin: auto;
     margin-top: 20px;
 }
