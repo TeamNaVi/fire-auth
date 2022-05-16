@@ -21,7 +21,7 @@ logOut.addEventListener("click", () => {
 
 // Just to print your current user information so you can the changes once done
 auth.onAuthStateChanged((user) => {
-  console.log(user);
+  // console.log(user);
   // menu_title.innerHTML = user.displayName + "님";
   // page_title.innerHTML = user.displayName + "님의 Dashboard";
 });
