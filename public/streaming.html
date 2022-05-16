@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Streaming</title>
+    <title>Streaming IP Cam</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./style/streaming.css" />
+    <link rel="stylesheet" href="./style/streaming.css?ver=20220516" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
     />
@@ -162,8 +162,24 @@
     <div class="content-wrapper content-wrapper--with-bg">
       <h1 class="page-title">Streaming</h1>
       <div class="page-content">Content goes here</div>
-      <div class="page-content">Content goes here</div>
-      <div class="page-content">Content goes here</div>
+      <!-- Camera Streaming -->
+      <div>
+        <canvas id="chanel1" width="auto" height="auto"></canvas>
+        <script type="text/javascript" src="jsmpeg.min.js"></script>
+        <script type="text/javascript">
+          var canvas = document.getElementById("chanel1");
+          //var websocket = new WebSocket("ws://127.0.0.1:9999");
+          var websocket = new WebSocket("ws://192.168.0.33:8080");
+          var player = new jsmpeg(websocket, {
+            canvas: canvas,
+            autoplay: true,
+            loop: true,
+          });
+        </script>
+      </div>
+      <div>
+        <button id="capture" value="capture">click</button>
+      </div>
     </div>
   </main>
   <script src="./js/streaming.js?version=20220516"></script>
