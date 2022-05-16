@@ -2,96 +2,149 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Admin: 가중치파일 업로드 / 이미지 다운로드</title>
-    <link rel="stylesheet" href="./style/storageAdmin.css?after" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Admin: Storage</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./style/storageAdmin.css?ver=202205162359" />
     <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-      crossorigin="anonymous"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
     />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+    />
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
   </head>
 
-  <body>
-    <!-- side menu -->
-    <div class="side_menu">
-      <div class="burger_box">
-        <div class="menu-icon-container">
-          <a href="#" class="menu-icon js-menu_toggle closed">
-            <span class="menu-icon_box">
-              <span class="menu-icon_line menu-icon_line--1"></span>
-              <span class="menu-icon_line menu-icon_line--2"></span>
-              <span class="menu-icon_line menu-icon_line--3"></span>
-            </span>
-          </a>
+  <body class="sidebar-is-reduced">
+    <!-- header태그 : 상단바 -->
+    <header class="l-header">
+      <div class="l-header__inner clearfix">
+        <div class="c-header-icon js-hamburger">
+          <div class="hamburger-toggle">
+            <span class="bar-top"></span><span class="bar-mid"></span
+            ><span class="bar-bot"></span>
+          </div>
+        </div>
+        <div class="c-header-icon has-dropdown">
+          <span class="c-badge c-badge--red c-badge--header-icon animated swing"
+            >7</span
+          ><i class="fa fa-bell"></i>
+          <div class="c-dropdown c-dropdown--notifications">
+            <div class="c-dropdown__header"></div>
+            <div class="c-dropdown__content"></div>
+          </div>
+        </div>
+        <div class="c-search">
+          <input
+            class="c-search__input u-input"
+            placeholder="Search..."
+            type="text"
+          />
+        </div>
+        <div class="header-icons-group">
+          <div class="c-header-icon basket">
+            <span
+              class="c-badge c-badge--blue c-badge--header-icon animated swing"
+              >3</span
+            ><i class="fa fa-shopping-basket"></i>
+          </div>
+          <div class="c-header-icon logout" data-toggle="tooltipB" id="logOut">
+            <i class="fa fa-power-off"></i>
+          </div>
         </div>
       </div>
-      <div class="container">
-        <h2 class="menu_title">Title: Upload</h2>
-        <ul class="list_load">
-          <li class="list_item">
-            <a href="../dashboardAdmin.html">Dashboard</a>
-          </li>
-          <li class="list_item">
-            <a href="">Upload</a>
-          </li>
-          <li class="list_item">
-            <a href="../downloadAdmin/downloadAdmin.html">Download</a>
-          </li>
-          <li class="list_item">
-            <a href="../streaming/streaming.html">Deep Learning</a>
-          </li>
-          <li class="list_item">
-            <a href="../streaming/streaming.html">Image Labeling</a>
-          </li>
-          <li class="list_item"><a href="#">List Item 06</a></li>
-          <li class="list_item"><a href="#">List Item 07</a></li>
-          <li class="list_item"><a href="#">List Item 08</a></li>
-        </ul>
-        <div class="spacer_box"><p>추가 공간</p></div>
+    </header>
+
+    <!-- sidebar -->
+    <div class="l-sidebar">
+      <div class="logo">
+        <div class="logo__txt">Hi</div>
+      </div>
+      <div class="l-sidebar__content">
+        <nav class="c-menu js-menu">
+          <ul class="u-list">
+            <li
+              class="c-menu__item has-submenu"
+              data-toggle="tooltip"
+              title="Dashboard"
+              id="li_Dashboard"
+            >
+              <div class="c-menu__item__inner">
+                <i class="far fa-chart-bar"></i>
+                <div class="c-menu-item__title"><span>Dashboard</span></div>
+              </div>
+            </li>
+
+            <!-- 하위메뉴 테스트 -->
+            <!-- <li
+              class="c-menu__item has-submenu"
+              data-toggle="tooltip"
+              title="Modules"
+            >
+              <div class="c-menu__item__inner">
+                <i class="fa fa-puzzle-piece"></i>
+                <div class="c-menu-item__title"><span>Modules</span></div>
+                <div class="c-menu-item__expand js-expand-submenu">
+                  <i class="fa fa-angle-down"></i>
+                </div>
+              </div>
+              <ul class="c-menu__submenu u-list">
+                <li>Payments</li>
+                <li>Maps</li>
+                <li>Notifications</li>
+              </ul>
+            </li> -->
+
+            <li
+              class="c-menu__item is-active"
+              data-toggle="tooltip"
+              title="Storage"
+              id="li_Storage"
+            >
+              <div class="c-menu__item__inner">
+                <i class="far fa-hdd"></i>
+                <div class="c-menu-item__title"><span>Storage</span></div>
+              </div>
+            </li>
+
+            <li
+              class="c-menu__item has-submenu"
+              data-toggle="tooltip"
+              title="Streaming"
+              id="li_Streaming"
+            >
+              <div class="c-menu__item__inner">
+                <i class="fas fa-camera"></i>
+                <div class="c-menu-item__title"><span>Streaming</span></div>
+              </div>
+            </li>
+
+            <li
+              class="c-menu__item has-submenu"
+              data-toggle="tooltip"
+              title="DeepLearning"
+              id="li_DeepLearning"
+            >
+              <div class="c-menu__item__inner">
+                <i class="fas fa-cogs"></i>
+                <div class="c-menu-item__title"><span>Deep Learning</span></div>
+              </div>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
 
-    <!-- body -->
-    <div class="page_title">Upload/Download</div>
-    <div class="what_to_do">(좌측 메뉴 클릭)</div>
-
-    <h2>관리자용 가중치파일 업로드 / 이미지 다운로드</h2>
-    <button class="addBtn">파일 추가</button>
-    <br />
-    <div class="loader"></div>
-
-    <div class="addForm">
-      <label for="upload-file">업로드할 파일 선택...</label>
-      <input type="file" id="upload-file" multiple="multiple" />
-      <i class="fas fa-check-circle"></i>
-      <i class="fas fa-times"></i>
-    </div>
-    <style>
-      div.left {
-        width: 50%;
-        float: left;
-      }
-      div.right {
-        width: 50%;
-        float: right;
-      }
-    </style>
-
-    <table id="fileTable1"></table>
-    <div class="right"><table id="fileTable3"></table></div>
-
-    <div class="left"><table id="fileTable2"></table></div>
-    <!-- body -->
-
     <!-- Firebase App is always required and must be first -->
-
     <script src="/__/firebase/6.2.4/firebase-app.js"></script>
     <script src="/__/firebase/6.2.4/firebase-auth.js"></script>
     <script src="/__/firebase/6.2.4/firebase-firestore.js"></script>
     <script src="/__/firebase/6.2.4/firebase-storage.js"></script>
+
     <!-- TODO: Add SDKs for Firebase products that you want to use
        https://firebase.google.com/docs/web/setup#reserved-urls -->
+
     <!-- JQuery -->
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -99,9 +152,45 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="/__/firebase/init.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script src="js/storageAdmin.js"></script>
-    <!-- 왠지 모르겠는데 자스파일명에 언더바 있으면 못불러옴 -->
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
   </body>
+
+  <!-- 메인 컨텐츠 -->
+  <main class="l-main">
+    <div class="content-wrapper content-wrapper--with-bg">
+      <h1 class="page-title" id="page-title">User: Storage (관리자)</h1>
+      <div class="page-content">Content goes here</div>
+      <h2>관리자용 가중치파일 업로드 / 이미지 다운로드</h2>
+      <button class="addBtn">파일 추가</button>
+      <br />
+      <div class="loader"></div>
+
+      <div class="addForm">
+        <label for="upload-file">업로드할 파일 선택...</label>
+        <input type="file" id="upload-file" multiple="multiple" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-times"></i>
+      </div>
+      <style>
+        div.left {
+          width: 50%;
+          float: left;
+        }
+        div.right {
+          width: 50%;
+          float: right;
+        }
+      </style>
+
+      <table id="fileTable1"></table>
+      <div class="right"><table id="fileTable3"></table></div>
+
+      <div class="left"><table id="fileTable2"></table></div>
+    </div>
+  </main>
+  <script src="js/storageAdmin.js?version=20220516"></script>
 </html>
