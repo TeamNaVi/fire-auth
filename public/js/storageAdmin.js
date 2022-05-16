@@ -86,6 +86,60 @@ li_DeepLearning.addEventListener("click", () => {
   }
 });
 
+// UI
+let Dashboard = (() => {
+  let global = {
+    tooltipOptions: {
+      placement: "right",
+    },
+    tooltipOptionsBottom: {
+      placement: "bottom",
+    },
+    menuClass: ".c-menu",
+  };
+
+  // 리스트 item 활성화
+  // let menuChangeActive = (el) => {
+  //   let hasSubmenu = $(el).hasClass("has-submenu");
+  //   $(global.menuClass + " .is-active").removeClass("is-active");
+  //   $(el).addClass("is-active");
+
+  //   // 하위메뉴 있으면
+  //   // if (hasSubmenu) {
+  //   //   $(el).find("ul").slideDown();
+  //   // }
+  // };
+
+  let sidebarChangeWidth = () => {
+    let $menuItemsTitle = $("li .menu-item__title");
+
+    $("body").toggleClass("sidebar-is-reduced sidebar-is-expanded");
+    $(".hamburger-toggle").toggleClass("is-opened");
+
+    if ($("body").hasClass("sidebar-is-expanded")) {
+      $('[data-toggle="tooltip"]').tooltip("destroy");
+    } else {
+      $('[data-toggle="tooltip"]').tooltip(global.tooltipOptions);
+    }
+  };
+
+  return {
+    init: () => {
+      $(".js-hamburger").on("click", sidebarChangeWidth);
+
+      // item selected
+      // $(".js-menu li").on("click", (e) => {
+      //   menuChangeActive(e.currentTarget);
+      // });
+
+      $('[data-toggle="tooltip"]').tooltip(global.tooltipOptions);
+      $('[data-toggle="tooltipB"]').tooltip(global.tooltipOptionsBottom);
+    },
+  };
+})();
+
+Dashboard.init();
+
 // upload.js
 getAllUsers = function () {
   showHeaderTableU();
@@ -335,7 +389,7 @@ checkBtn.addEventListener("click", () => {
 fileTable2.addEventListener("click", (e) => {
   let targetId = e.target.parentNode.parentNode.id;
   if (targetId.match("id-")) {
-    let sureDel = confirm("정말로 이 파일을 삭제하실겁니까?");
+    let sureDel = confirm("정말로 이 파일을 삭제하시겠습니까?");
     if (sureDel) {
       let idFile = targetId.substring(3, targetId.length);
       firestore //데이터베이스
@@ -389,57 +443,3 @@ fileTable3.addEventListener("click", (e) => {
     }
   }
 });
-
-// UI
-let Dashboard = (() => {
-  let global = {
-    tooltipOptions: {
-      placement: "right",
-    },
-    tooltipOptionsBottom: {
-      placement: "bottom",
-    },
-    menuClass: ".c-menu",
-  };
-
-  // 리스트 item 활성화
-  // let menuChangeActive = (el) => {
-  //   let hasSubmenu = $(el).hasClass("has-submenu");
-  //   $(global.menuClass + " .is-active").removeClass("is-active");
-  //   $(el).addClass("is-active");
-
-  //   // 하위메뉴 있으면
-  //   // if (hasSubmenu) {
-  //   //   $(el).find("ul").slideDown();
-  //   // }
-  // };
-
-  let sidebarChangeWidth = () => {
-    let $menuItemsTitle = $("li .menu-item__title");
-
-    $("body").toggleClass("sidebar-is-reduced sidebar-is-expanded");
-    $(".hamburger-toggle").toggleClass("is-opened");
-
-    if ($("body").hasClass("sidebar-is-expanded")) {
-      $('[data-toggle="tooltip"]').tooltip("destroy");
-    } else {
-      $('[data-toggle="tooltip"]').tooltip(global.tooltipOptions);
-    }
-  };
-
-  return {
-    init: () => {
-      $(".js-hamburger").on("click", sidebarChangeWidth);
-
-      // item selected
-      // $(".js-menu li").on("click", (e) => {
-      //   menuChangeActive(e.currentTarget);
-      // });
-
-      $('[data-toggle="tooltip"]').tooltip(global.tooltipOptions);
-      $('[data-toggle="tooltipB"]').tooltip(global.tooltipOptionsBottom);
-    },
-  };
-})();
-
-Dashboard.init();

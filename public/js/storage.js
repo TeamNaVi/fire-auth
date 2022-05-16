@@ -276,7 +276,7 @@ checkBtn.addEventListener("click", () => {
 fileTable1.addEventListener("click", (e) => {
   let targetId = e.target.parentNode.parentNode.id;
   if (targetId.match("id-")) {
-    let sureDel = confirm("정말로 이 파일을 삭제하실겁니까?");
+    let sureDel = confirm("정말로 이 파일을 삭제하시겠습니까?");
     if (sureDel) {
       let idFile = targetId.substring(3, targetId.length);
       firestore //데이터베이스
