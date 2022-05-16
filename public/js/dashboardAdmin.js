@@ -29,14 +29,78 @@ logOut.addEventListener("click", () => {
 
 // Just to print your current user information so you can the changes once done
 auth.onAuthStateChanged((user) => {
-  console.log(user);
-  $("page_title").text(user.displayName + "님의 Dashboard (관리자)");
+  // console.log(user);
+
+  // $("#page_title").text(user.displayName + "님의 Dashboard (관리자tq)");
   page_title.innerText = user.displayName + "님의 Dashboard (관리자)";
-  // page_content.innerText = user.displayName + " Info.";
+
   // userName.innerText = user.displayName;
-  // userMail.innerText = user.email;
-  // userSignUpDate.innerText=user
-  // userLastLogin.innerText=
+  $("#userName").text(user.displayName); // jquery 사용해봤음
+  userMail.innerText = user.email;
+
+  // 시간표시 개 노가다네 이거
+  const creationTimeGMT = user.metadata.creationTime;
+  const lastSignInTimeGMT = user.metadata.lastSignInTime;
+
+  const creationTimeKOR = new Date(creationTimeGMT);
+  const lastSignInTimeKOR = new Date(lastSignInTimeGMT);
+
+  // format : Thu, 05 May 2022 11:17:34 GMT
+  // foramt : Thu May 05 2022 20:17:34 GMT+0900 (한국 표준시)
+  // creationTime
+  const yearCT = creationTimeKOR.getFullYear();
+  const monthCT = creationTimeKOR.getMonth();
+  const dayCT = creationTimeKOR.getDate();
+  const weekdayCT = creationTimeKOR.getDay();
+  const hourCT = creationTimeKOR.getHours();
+  const minuteCT = creationTimeKOR.getMinutes();
+  const secondCT = creationTimeKOR.getSeconds();
+
+  // lastSignInTime
+  const yearLSIT = lastSignInTimeKOR.getFullYear();
+  const monthLSIT = lastSignInTimeKOR.getMonth();
+  const dayLSIT = lastSignInTimeKOR.getDate();
+  const weekdayLSIT = lastSignInTimeKOR.getDay();
+  const hourLSIT = lastSignInTimeKOR.getHours();
+  const minuteLSIT = lastSignInTimeKOR.getMinutes();
+  const secondLSIT = lastSignInTimeKOR.getSeconds();
+
+  // weekTable
+  const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+
+  // 가입 시간 표시
+  userSignUpDate.innerText =
+    yearCT +
+    "년 " +
+    monthCT +
+    "월 " +
+    dayCT +
+    "일 " +
+    weekdays[weekdayCT] +
+    "요일 " +
+    hourCT +
+    ":" +
+    minuteCT +
+    ":" +
+    secondCT +
+    " GMT+0900";
+
+  // 최근 로그인 시간 표시
+  userLastLogin.innerText =
+    yearLSIT +
+    "년 " +
+    monthLSIT +
+    "월 " +
+    dayLSIT +
+    "일 " +
+    weekdays[weekdayLSIT] +
+    "요일 " +
+    hourLSIT +
+    ":" +
+    minuteLSIT +
+    ":" +
+    secondLSIT +
+    " GMT+0900";
 });
 
 //Go to Dashboard page
