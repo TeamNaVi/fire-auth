@@ -1,5 +1,4 @@
 const page_title = document.getElementById("page-title");
-const page_content = document.getElementById("page-content");
 
 const userName = document.getElementById("userName");
 const userMail = document.getElementById("userMail");
@@ -49,7 +48,7 @@ auth.onAuthStateChanged((user) => {
   // foramt : Thu May 05 2022 20:17:34 GMT+0900 (한국 표준시)
   // creationTime
   const yearCT = creationTimeKOR.getFullYear();
-  const monthCT = creationTimeKOR.getMonth();
+  const monthCT = creationTimeKOR.getMonth() + 1;
   const dayCT = creationTimeKOR.getDate();
   const weekdayCT = creationTimeKOR.getDay();
   const hourCT = creationTimeKOR.getHours();
@@ -58,7 +57,7 @@ auth.onAuthStateChanged((user) => {
 
   // lastSignInTime
   const yearLSIT = lastSignInTimeKOR.getFullYear();
-  const monthLSIT = lastSignInTimeKOR.getMonth();
+  const monthLSIT = lastSignInTimeKOR.getMonth() + 1;
   const dayLSIT = lastSignInTimeKOR.getDate();
   const weekdayLSIT = lastSignInTimeKOR.getDay();
   const hourLSIT = lastSignInTimeKOR.getHours();
