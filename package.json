@@ -2,7 +2,7 @@
   "name": "steaming-ip-camera-nodejs",
   "version": "1.0.0",
   "description": "Open source project of real time streaming IP/Network security camera on web application using NodeJS",
-  "main": "public/js/streaming.js",
+  "main": "public/js/ipcamera.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node public/js/ipcamera.js"
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/xpcrts/Steaming-IP-Camera-Nodejs#readme",
   "dependencies": {
     "node-onvif": "^0.1.7",
-    "node-rtsp-stream": "^0.0.4"
+    "node-rtsp-stream": "^0.0.9",
+    "xterm": "^4.18.0"
   }
 }
