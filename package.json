@@ -5,7 +5,7 @@
   "main": "public/js/streaming.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node public/js/streaming.js"
+    "start": "node public/js/ipcamera.js"
   },
   "repository": {
     "type": "git",

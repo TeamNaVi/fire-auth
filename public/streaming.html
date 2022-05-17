@@ -178,7 +178,21 @@
         </script>
       </div>
       <div>
-        <button id="capture" value="capture">click</button>
+        <button id="capture">Capture</button>
+        <script>
+          // Setup download button event listener
+          document.querySelector('#capture').addEventListener('click', ()=> {
+            var canvas = document.querySelector("#chanel1");
+            var image = canvas.toDataURL("image/jpg").replace("image/jpg", "image/octet-stream");
+            
+            var element = document.createElement('a');
+            var filename = 'test.jpg';
+            element.setAttribute('href', image);
+            element.setAttribute('download', filename);
+
+            element.click();
+          })
+        </script>
       </div>
     </div>
   </main>
