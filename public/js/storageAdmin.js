@@ -1,3 +1,5 @@
+// 관리자 전용
+
 var firestore = firebase.firestore();
 var storage = firebase.storage();
 
@@ -17,7 +19,7 @@ const loader = document.querySelector(".loader");
 const page_title = document.getElementById("page-title");
 const li_Dashboard = document.getElementById("li_Dashboard");
 const li_Storage = document.getElementById("li_Storage");
-const li_Streaming = document.getElementById("li_Streaming");
+// const li_Streaming = document.getElementById("li_Streaming");
 const li_DeepLearning = document.getElementById("li_DeepLearning");
 
 const logOut = document.getElementById("logOut");
@@ -65,15 +67,15 @@ li_Storage.addEventListener("click", () => {
 });
 
 //Go to Streaming page
-li_Streaming.addEventListener("click", () => {
-  const user = auth.currentUser;
-  // admin@admin.admin uid
-  if (user.uid == "3RS7jsw7asP6Owe5pZomy5KGwkf1") {
-    window.location.assign("../streaming");
-  } else {
-    window.location.assign("../streaming");
-  }
-});
+// li_Streaming.addEventListener("click", () => {
+//   const user = auth.currentUser;
+//   // admin@admin.admin uid
+//   if (user.uid == "3RS7jsw7asP6Owe5pZomy5KGwkf1") {
+//     window.location.assign("../streaming");
+//   } else {
+//     window.location.assign("../streaming");
+//   }
+// });
 
 //Go to Deep Learning page
 li_DeepLearning.addEventListener("click", () => {
@@ -151,7 +153,6 @@ getAllUsers = function () {
       data.forEach((element) => {
         counter += 1;
         showListUser(counter, element.data().co, element.data().uid);
-
       });
       //radio 버튼 클릭 이벤트
       $("input:radio[name=selectedUser]").click(function () {
@@ -160,7 +161,7 @@ getAllUsers = function () {
         fileTable2.innerHTML = "";
         getAllFiles();
         inputInit();
-        console.log("ㅇㅇ")
+        console.log("ㅇㅇ");
       });
     });
 };
@@ -259,9 +260,6 @@ showListUser = function (no, corporation, listUid) {
   newHtml = newHtml.replace("%listUid%", listUid);
   newHtml = newHtml.replace("%listCorporation%", corporation);
   fileTable1.insertAdjacentHTML("beforeend", newHtml);
-
-
-
 };
 
 showListData = function (no, fileName, fileLoc) {
@@ -310,12 +308,10 @@ showListImage = function (no, fileName, fileLoc) {
 auth.onAuthStateChanged((user) => {
   page_title.innerHTML = user.displayName + "님의 Storage";
 
-
   if (user.email == "admin@admin.admin") {
     //관리자 계정으로 로그인 했을 때만 정보 표시
     getAllFiles();
     getAllUsers();
-
   }
 });
 

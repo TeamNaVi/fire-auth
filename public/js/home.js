@@ -10,8 +10,8 @@ const phoneContainer = document.querySelector(".phone-container");
 const shownPhoneContainer = "container phone-container shown-container";
 const hiddenPhoneContainer = "container phone-container hidden-container";
 const authenticationMethod1 = document.getElementById("method1");
-const authenticationMethod2 = document.getElementById("method2");
-const authenticationMethod3 = document.getElementById("method3");
+// const authenticationMethod2 = document.getElementById("method2");
+// const authenticationMethod3 = document.getElementById("method3");
 const mailField = document.getElementById("mail");
 const passwordField = document.getElementById("password");
 const phoneNumberField = document.getElementById("phoneNumber");
@@ -119,14 +119,24 @@ signInWithGoogleButton.addEventListener("click", signInWithGoogle);
 
 // Sign in function
 const signInWithEmailFunction = () => {
+  const user = auth.currentUser;
   const password = passwordField.value;
   const email = mailField.value;
   //Built in firebase function responsible for authentication
   auth
     .signInWithEmailAndPassword(email, password)
     .then(() => {
-      //Signed in successfully
-      window.location.assign("./profile");
+      // Signed in successfully
+      // profile is disabled
+      // window.location.assign("./profile");
+
+      // admin@admin.admin uid
+      // if (user.uid == "3RS7jsw7asP6Owe5pZomy5KGwkf1") {
+      if (email == "admin@admin.admin") {
+        window.location.assign("../dashboardAdmin");
+      } else {
+        window.location.assign("../dashboard");
+      }
     })
     .catch((error) => {
       //Something went wrong
@@ -144,7 +154,7 @@ signUp.addEventListener("click", () => {
 });
 
 auth.onAuthStateChanged((user) => {
-  if (user) window.location.assign("./profile");
+  // if (user) window.location.assign("./profile");
 });
 
 //Animations
@@ -162,19 +172,19 @@ authenticationMethod1.addEventListener("change", () => {
   initializeInputAnimationState(passwordField, 1);
 });
 
-authenticationMethod2.addEventListener("change", () => {
-  mailContainer.className = hiddenMailContainer;
-  socialMediaContainer.className = shownSocialMediaContainer;
-  phoneContainer.className = hiddenSocialMediaContainer;
-});
+// authenticationMethod2.addEventListener("change", () => {
+//   mailContainer.className = hiddenMailContainer;
+//   socialMediaContainer.className = shownSocialMediaContainer;
+//   phoneContainer.className = hiddenSocialMediaContainer;
+// });
 
-authenticationMethod3.addEventListener("change", () => {
-  mailContainer.className = hiddenMailContainer;
-  socialMediaContainer.className = hiddenPhoneContainer;
-  phoneContainer.className = shownPhoneContainer;
-  initializeInputAnimationState(phoneNumberField, 2);
-  initializeInputAnimationState(codeField, 3);
-});
+// authenticationMethod3.addEventListener("change", () => {
+//   mailContainer.className = hiddenMailContainer;
+//   socialMediaContainer.className = hiddenPhoneContainer;
+//   phoneContainer.className = shownPhoneContainer;
+//   initializeInputAnimationState(phoneNumberField, 2);
+//   initializeInputAnimationState(codeField, 3);
+// });
 
 mailField.addEventListener("focus", () => {
   if (!mailField.value) labels.item(0).className = "focused-field";

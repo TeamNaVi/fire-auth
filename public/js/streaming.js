@@ -1,8 +1,10 @@
+// 일반 사용자 전용
+
 // UI
 const li_Dashboard = document.getElementById("li_Dashboard");
 const li_Storage = document.getElementById("li_Storage");
 const li_Streaming = document.getElementById("li_Streaming");
-const li_DeepLearning = document.getElementById("li_DeepLearning");
+// const li_DeepLearning = document.getElementById("li_DeepLearning");
 
 const logOut = document.getElementById("logOut");
 
@@ -60,16 +62,16 @@ li_Streaming.addEventListener("click", () => {
   }
 });
 
-//Go to Deep Learning page
-li_DeepLearning.addEventListener("click", () => {
-  const user = auth.currentUser;
-  // admin@admin.admin uid
-  if (user.uid == "3RS7jsw7asP6Owe5pZomy5KGwkf1") {
-    window.location.assign("../deepLearning");
-  } else {
-    window.location.assign("../deepLearning");
-  }
-});
+// //Go to Deep Learning page
+// li_DeepLearning.addEventListener("click", () => {
+//   const user = auth.currentUser;
+//   // admin@admin.admin uid
+//   if (user.uid == "3RS7jsw7asP6Owe5pZomy5KGwkf1") {
+//     window.location.assign("../deepLearning");
+//   } else {
+//     window.location.assign("../deepLearning");
+//   }
+// });
 
 // UI
 let Dashboard = (() => {
