@@ -150,7 +150,17 @@ getAllUsers = function () {
       let counter = 0;
       data.forEach((element) => {
         counter += 1;
-        showListUser(counter, element.data().email, element.data().uid);
+        showListUser(counter, element.data().co, element.data().uid);
+
+      });
+      //radio 버튼 클릭 이벤트
+      $("input:radio[name=selectedUser]").click(function () {
+        userUid = $('input[name="selectedUser"]:checked').val();
+        fileTable3.innerHTML = "";
+        fileTable2.innerHTML = "";
+        getAllFiles();
+        inputInit();
+        console.log("ㅇㅇ")
       });
     });
 };
@@ -203,8 +213,8 @@ showHeaderTableU = function () {
   html = `
     <tr>
         <th>No</th>
-        <th>사용자 이메일</th>
-        <th>사용자 선택</th>
+        <th>업체명</th>
+        <th>업체 선택</th>
     </tr>
     `;
   fileTable1.insertAdjacentHTML("beforeend", html);
@@ -233,33 +243,25 @@ showHeaderTableI = function () {
 };
 
 // function show list of files
-showListUser = function (no, listEmail, listUid) {
+showListUser = function (no, corporation, listUid) {
   html = `
     <link rel="stylesheet" href="../style/storageAdmin.css?after" />
     <tr id="id-%id%">
         <td>%no%</td>
-        <td>%listEmail%</td>
+        <td>%listCorporation%</td>
         <td>
             <label class="box-radio-input"><input type='radio' name='selectedUser' value=%listUid%><span>사용자 선택</span></label>
         </td>
     </tr>
     `;
-  newHtml = html.replace("%id%", listEmail);
+  newHtml = html.replace("%id%", corporation);
   newHtml = newHtml.replace("%no%", no);
   newHtml = newHtml.replace("%listUid%", listUid);
-  newHtml = newHtml.replace("%listEmail%", listEmail);
-
+  newHtml = newHtml.replace("%listCorporation%", corporation);
   fileTable1.insertAdjacentHTML("beforeend", newHtml);
 
-  //radio 버튼 클릭 이벤트
-  $("input:radio[name=selectedUser]").click(function () {
-    userUid = $('input[name="selectedUser"]:checked').val();
-    fileTable3.innerHTML = "";
-    fileTable2.innerHTML = "";
-    getAllFiles();
 
-    inputInit();
-  });
+
 };
 
 showListData = function (no, fileName, fileLoc) {
@@ -308,10 +310,12 @@ showListImage = function (no, fileName, fileLoc) {
 auth.onAuthStateChanged((user) => {
   page_title.innerHTML = user.displayName + "님의 Storage";
 
+
   if (user.email == "admin@admin.admin") {
     //관리자 계정으로 로그인 했을 때만 정보 표시
     getAllFiles();
     getAllUsers();
+
   }
 });
 
