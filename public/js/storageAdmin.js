@@ -251,7 +251,7 @@ showListUser = function (no, corporation, listUid) {
         <td>%no%</td>
         <td>%listCorporation%</td>
         <td>
-            <label class="box-radio-input"><input type='radio' name='selectedUser' value=%listUid%><span>사용자 선택</span></label>
+            <label class="box-radio-input"><input type='radio' name='selectedUser' value=%listUid%><span>업체 선택</span></label>
         </td>
     </tr>
     `;

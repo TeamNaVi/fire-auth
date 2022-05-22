@@ -57,6 +57,11 @@
         "source": "/deepLearning",
         "destination": "./deepLearning.html",
         "type": 301
+      },
+      {
+        "source": "/messenger",
+        "destination": "./messenger.html",
+        "type": 301
       }
     ]
   }
