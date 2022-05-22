@@ -1,3 +1,5 @@
+var firestore = firebase.firestore();
+
 const mailField = document.getElementById('mail');
 const passwordField = document.getElementById('password');
 const displayNameField = document.getElementById('displayName');
@@ -41,7 +43,13 @@ const editInformation = () => {
         const credential = createCredential(user);
         changeEmail(user, credential, newEmail);
     }
-    
+    firestore.collection("users").doc(user.uid).delete()
+    firestore.collection("users").doc(user.uid).set({
+        co: newNameAndPhoto.newDisplayName,
+        email : newEmail,
+        uid : user.uid
+    }, { merge: true });
+
 }
 
 const changeNameAndPhoto = (user, newNameAndPhoto) => {
