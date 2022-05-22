@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffff;
+    background-color: #bdd5f3;
     margin: 0;
     padding: 0;
 }
@@ -15,10 +15,10 @@ header {
 li {
     list-style-type: none;
     margin-bottom: 10px;
-    background-color: #000000;
+    background-color: #ffffff;
     padding: 5px;
     border-radius: 10px;
-    color: #ffffff;
+    color: #000000;
     width: 50%;
 }
 
@@ -39,7 +39,7 @@ li span {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #b7b5b9;
+    background-color: #ffffff;
 }
 
 input {
@@ -54,11 +54,11 @@ button {
 
 .sent {
     text-align: right;
-    background-color: #838383;
+    background-color: #ffdf2b;
     margin-left: 50%;
 }
 
 .sent span {
     margin-left: 5px;
-    color: #ffffff;
+    color: #000000;
 }
