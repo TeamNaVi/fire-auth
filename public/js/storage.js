@@ -13,6 +13,8 @@ const checkBtn = document.querySelector(".fa-check-circle");
 const fileTable1 = document.querySelector("#fileTable1"); //이미지
 const fileTable2 = document.querySelector("#fileTable2"); //가중치
 const loader = document.querySelector(".loader");
+const targetTable = document.querySelector("#targetTable"); //대상 물체
+
 
 // html element
 const page_title = document.getElementById("page-title");
@@ -43,6 +45,7 @@ let fileBrowse = null;
 let urlDownload = null;
 let userUid = null;
 let userEmail = null;
+let target = null;
 
 //Go to profile page
 profile.addEventListener("click", () => {
@@ -94,6 +97,17 @@ li_Streaming.addEventListener("click", () => {
 // });
 
 // upload.js
+getAllTargets = function () {
+  showHeaderTableT();
+  firestore //데이터베이스
+      .collection("targets") //데이터베이스 저장소
+      .get()
+      .then((data) => {
+        data.forEach((element) => {
+          showListTarget(element.data().name);
+        });
+      });
+};
 getAllFiles = function () {
   showHeaderTableW();
   firestore //데이터베이스
@@ -141,9 +155,9 @@ inputInit = function () {
 showHeaderTableW = function () {
   html = `
     <tr>
-        <th>No</th>
+        <th class="tableVerySmall">No</th>
         <th>가중치파일 이름</th>
-        <th>다운로드 / 삭제</th>
+        <th class="tableSmall">다운로드 / 삭제</th>
     </tr>
     `;
   fileTable2.insertAdjacentHTML("beforeend", html);
@@ -152,21 +166,29 @@ showHeaderTableW = function () {
 showHeaderTableI = function () {
   html = `
     <tr>
-        <th>No</th>
+        <th class="tableVerySmall">No</th>
         <th>이미지파일 이름</th>
-        <th>다운로드 / 삭제</th>
+        <th class="tableSmall">다운로드 / 삭제</th>
     </tr>
     `;
   fileTable1.insertAdjacentHTML("beforeend", html);
 };
 
+showHeaderTableT = function () {
+  html = `
+    <tr>
+        <th>학습 대상 물체</th>
+    </tr>
+    `;
+  targetTable.insertAdjacentHTML("beforeend", html);
+};
 // function show list of files
 showListData = function (no, fileName, fileLoc) {
   html = `
     <tr id="id-%id%">
-        <td>%no%</td>
+        <td class="tableVerySmall">%no%</td>
         <td>%fileName%</td>
-        <td>
+        <td class="tableSmall">
             <a href="%url%" target="blank" download>
                 <i class="fas fa-file-download"></i>
             </a>
@@ -181,13 +203,26 @@ showListData = function (no, fileName, fileLoc) {
 
   fileTable2.insertAdjacentHTML("beforeend", newHtml);
 };
+showListTarget = function (targetName) {
+  html = `
+    <tr id="id-%id%">
+        <td>%fileName%</td>
+    </tr>
+    `;
+  newHtml = html.replace("%id%", targetName);
+  newHtml = newHtml.replace("%fileName%", targetName);
+
+  targetTable.insertAdjacentHTML("beforeend", newHtml);
+};
+
+
 
 showListImage = function (no, fileName, fileLoc) {
   html = `
     <tr id="id-%id%">
-        <td>%no%</td>
+        <td class="tableVerySmall">%no%</td>
         <td>%fileName%</td>
-        <td>
+        <td class="tableSmall">
             <a href="%url%" target="blank" download>
                 <i class="fas fa-file-download"></i>
             </a>
@@ -210,6 +245,7 @@ auth.onAuthStateChanged((user) => {
   userUid = user.uid;
   userEmail = user.email;
   getAllFiles(); //유저 정보가 들어왔을 때 리스팅(안 그러면 아무것도 안 뜸)
+  getAllTargets();
 });
 
 // handle add file btn

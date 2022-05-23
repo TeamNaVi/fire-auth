@@ -179,7 +179,6 @@ getAllUsers = function () {
         fileTable2.innerHTML = "";
         getAllFiles();
         inputInit();
-        console.log("ㅇㅇ");
       });
     });
 };
@@ -231,9 +230,9 @@ inputInit = function () {
 showHeaderTableU = function () {
   html = `
     <tr>
-        <th>No</th>
+        <th class="tableVerySmall">No</th>
         <th>업체명</th>
-        <th>업체 선택</th>
+        <th class="tableSmall">업체 선택</th>
     </tr>
     `;
   fileTable1.insertAdjacentHTML("beforeend", html);
@@ -242,9 +241,9 @@ showHeaderTableU = function () {
 showHeaderTableW = function () {
   html = `
     <tr>
-        <th>No</th>
+        <th class="tableVerySmall">No</th>
         <th>가중치파일 이름</th>
-        <th>다운로드 / 삭제</th>
+        <th class="tableSmall">다운로드 / 삭제</th>
     </tr>
     `;
   fileTable2.insertAdjacentHTML("beforeend", html);
@@ -253,9 +252,9 @@ showHeaderTableW = function () {
 showHeaderTableI = function () {
   html = `
     <tr>
-        <th>No</th>
+        <th class="tableVerySmall">No</th>
         <th>이미지파일 이름</th>
-        <th>다운로드 / 삭제</th>
+        <th class="tableSmall">다운로드 / 삭제</th>
     </tr>
     `;
   fileTable3.insertAdjacentHTML("beforeend", html);
@@ -266,9 +265,9 @@ showListUser = function (no, corporation, listUid) {
   html = `
     <link rel="stylesheet" href="../style/storageAdmin.css?after" />
     <tr id="id-%id%">
-        <td>%no%</td>
+        <td class="tableVerySmall">%no%</td>
         <td>%listCorporation%</td>
-        <td>
+        <td class="tableSmall">
             <label class="box-radio-input"><input type='radio' name='selectedUser' value=%listUid%><span>업체 선택</span></label>
         </td>
     </tr>
@@ -283,9 +282,9 @@ showListUser = function (no, corporation, listUid) {
 showListData = function (no, fileName, fileLoc) {
   html = `
     <tr id="id-%id%">
-        <td>%no%</td>
+        <td class="tableVerySmall">%no%</td>
         <td>%fileName%</td>
-        <td>
+        <td class="tableSmall">
             <a href="%url%" target="blank" download>
                 <i class="fas fa-file-download"></i>
             </a>
@@ -304,9 +303,9 @@ showListData = function (no, fileName, fileLoc) {
 showListImage = function (no, fileName, fileLoc) {
   html = `
     <tr id="id-%id%">
-        <td>%no%</td>
+        <td class="tableVerySmall">%no%</td>
         <td>%fileName%</td>
-        <td>
+        <td class="tableSmall">
             <a href="%url%" target="blank" download>
                 <i class="fas fa-file-download"></i>
             </a>
