@@ -589,7 +589,7 @@ main.l-main .page-title {
 /* -------loader------- */
 
 button {
-  background-color: red;
+  background-color: cornflowerblue;
   border-radius: 10px;
   padding: 10px 20px;
   font-size: 23px;
@@ -608,17 +608,17 @@ button:hover {
 
 .addBtn:hover,
 .downloadBtn:hover {
-  background-color: #a20000;
+  background-color: cornflowerblue;
 }
 
 .fa-file-download {
   margin-right: 10px;
   font-size: 23px;
-  color: #932716;
+  color: cornflowerblue;
 }
 
 .fa-file-download:hover {
-  color: red;
+  color: cornflowerblue;
   cursor: pointer;
 }
 
@@ -663,18 +663,18 @@ button:hover {
 label {
   cursor: pointer;
   margin-right: 20px;
-  color: red;
+  color: cornflowerblue;
 }
 
 .fa-check-circle {
-  color: red;
+  color: cornflowerblue;
   font-size: 25px;
   vertical-align: middle;
 }
 
 .fa-check-circle:hover {
   cursor: pointer;
-  color: red;
+  color: cornflowerblue;
 }
 
 .fa-times {
@@ -730,7 +730,7 @@ label {
 
 #fileTable1 th {
   text-align: left;
-  background-color: #fa2700;
+  background-color: #5e99f9;
   color: white;
 }
 
@@ -776,7 +776,7 @@ label {
 
 #fileTable2 th {
   text-align: left;
-  background-color: #fa2700;
+  background-color: #5e99f9;
   color: white;
 }
 
@@ -822,7 +822,7 @@ label {
 
 #fileTable3 th {
   text-align: left;
-  background-color: #fa2700;
+  background-color: #5e99f9;
   color: white;
 }
 
@@ -847,7 +847,7 @@ label {
 }
 
 .box-radio-input input[type="radio"]:checked + span {
-  border: 1px solid #a20000;
-  background: #ff0000;
+  border: 1px solid #102c58;
+  background-color: #5e99f9;
   color: #fff;
 }
