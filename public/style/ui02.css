@@ -21,7 +21,7 @@ body {
   color: #999;
 }
 
-a {
+.cta {
   text-decoration: none;
   margin: 1rem 0;
   font-weight: 600;
@@ -30,7 +30,8 @@ a {
   letter-spacing: 1px;
 }
 
-p {
+.section-lead,
+.section-p {
   font-size: 0.9rem;
   margin: 1rem 0;
   line-height: 1.5;
@@ -41,9 +42,11 @@ section {
   margin: 0 auto;
   text-align: center;
   padding: 30px;
+  background: #fff;
+  color: #999;
 }
 
-h3 {
+.section h3 {
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   color: #333;

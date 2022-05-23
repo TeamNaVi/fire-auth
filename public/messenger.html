@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>대화</title>
-        <link rel="stylesheet" href="./style/messenger.css?version=20220522">
-    </head>
-    <body>
-        <header>
-            <h2>대화</h2>
-        </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>대화</title>
+    <link
+      rel="stylesheet"
+      href="./style/messenger.css?version=20220524034000"
+    />
+  </head>
+  <body>
+    <header>
+      <h2>대화</h2>
+    </header>
 
+    <div id="chat">
+      <!-- messages will display here -->
+      <ul id="messages"></ul>
 
-        <div id="chat">
-            <!-- messages will display here -->
-            <ul id="messages"></ul>
+      <!-- form to send message -->
+      <form id="message-form">
+        <input id="message-input" type="text" />
+        <button id="message-btn" type="submit">Send</button>
+      </form>
+    </div>
 
-            <!-- form to send message -->
-            <form id="message-form">
-                <input id="message-input" type="text" />
-                <button id="message-btn" type="submit">Send</button>
-            </form>
-        </div>
+    <script>
+      console.log(1);
+    </script>
+    <!-- scripts -->
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
 
-        <script>console.log(1)</script>
-        <!-- scripts -->
-        <!-- Firebase App is always required and must be first -->
-        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
 
-        <!-- Initialize Firebase -->
-        <script src="/__/firebase/init.js"></script>
-
-        <script src="./js/messenger.js?version=202205221"></script>
-    </body>
+    <script src="./js/messenger.js?version=20220524"></script>
+  </body>
 </html>

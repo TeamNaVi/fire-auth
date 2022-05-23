@@ -564,9 +564,12 @@ canvas {
   flex-direction: row;
 }
 .flex-container-v {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; */
+  display: grid;
+  align-items: stretch;
+  grid-gap: 10px;
 }
 
 #label_names {
