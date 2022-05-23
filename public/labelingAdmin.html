@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Admin: Labeling</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./style/labelingAdmin.css?ver=20220516" />
+    <link
+      rel="stylesheet"
+      href="./style/labelingAdmin.css?ver=20220524025400"
+    />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
     />
@@ -195,11 +198,21 @@
         <div class="flex-item">
           <div class="flex-container-v">
             <div class="flex-item center">
-              <!-- <div class="btn">
-                <span>Atom</span>
-                <div class="dot"></div>
-              </div> -->
-              <input
+              <!-- 이미지 좌우 이동 버튼 -->
+              <div class="btn-bundle">
+                <div class="btn btn-left" onclick="prevAnno()">
+                  <i class="fas fa-chevron-circle-left"></i>
+                  <span>이전</span>
+                  <div class="dot"></div>
+                </div>
+                <div class="btn btn-right" onclick="nextAnno()">
+                  <span>다음</span>
+                  <i class="fas fa-chevron-circle-right"></i>
+
+                  <div class="dot"></div>
+                </div>
+              </div>
+              <!-- <input
                 type="button"
                 value="<-"
                 onclick="prevAnno()"
@@ -210,7 +223,7 @@
                 value="->"
                 onclick="nextAnno()"
                 class="btn-control"
-              />
+              /> -->
             </div>
             <div class="flex-item">
               <p id="imagename" class="mt-25 center"></p>
