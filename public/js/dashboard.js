@@ -11,6 +11,7 @@ const li_Storage = document.getElementById("li_Storage");
 const li_Streaming = document.getElementById("li_Streaming");
 // const li_DeepLearning = document.getElementById("li_DeepLearning");
 
+const profile = document.getElementById("profile");
 const logOut = document.getElementById("logOut");
 
 const auth = firebase.auth();
@@ -100,6 +101,11 @@ auth.onAuthStateChanged((user) => {
     ":" +
     secondLSIT +
     " GMT+0900";
+});
+
+//Go to profile page
+profile.addEventListener("click", () => {
+  window.location.assign("../profile");
 });
 
 //Go to Dashboard page

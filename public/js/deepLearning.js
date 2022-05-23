@@ -5,6 +5,7 @@ const li_Storage = document.getElementById("li_Storage");
 // const li_Streaming = document.getElementById("li_Streaming");
 const li_DeepLearning = document.getElementById("li_DeepLearning");
 
+const profile = document.getElementById("profile");
 const logOut = document.getElementById("logOut");
 
 const auth = firebase.auth();
@@ -26,6 +27,11 @@ auth.onAuthStateChanged((user) => {
   // console.log(user);
   // menu_title.innerHTML = user.displayName + "님";
   // page_title.innerHTML = user.displayName + "님의 Dashboard";
+});
+
+//Go to profile page
+profile.addEventListener("click", () => {
+  window.location.assign("../profile");
 });
 
 //Go to Dashboard page
