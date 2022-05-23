@@ -662,3 +662,7 @@ canvas {
     transform: translateX(0) rotate(360deg);
   }
 }
+#content {
+  display: grid;
+  align-items: stretch;
+}

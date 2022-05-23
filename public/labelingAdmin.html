@@ -235,32 +235,34 @@
           </div>
         </div>
         <!-- div2: 파일 선택 부분 -->
-        <div class="flex-item">
-          <div class="flex-container-v">
-            <div class="flex-item">
-              <label for="inputfile">Classes</label>
-              <input type="file" id="inputfile" />
+        <div id="content">
+          <div class="flex-item">
+            <div class="flex-container-v">
+              <div class="flex-item">
+                <label for="inputfile">Classes</label>
+                <input type="file" id="inputfile" />
+              </div>
+              <div class="flex-item">
+                <label for="inputfolder">Images</label>
+                <input type="file" id="inputfolder" multiple />
+              </div>
+              <div class="flex-item">
+                <input
+                  type="button"
+                  value="Export"
+                  onclick="exportAnnotations()"
+                />
+              </div>
+              <div class="flex-item">
+                <label for="labelnametoggle">Label Names</label>
+                <input type="checkbox" id="labelnametoggle" checked />
+              </div>
             </div>
-            <div class="flex-item">
-              <label for="inputfolder">Images</label>
-              <input type="file" id="inputfolder" multiple />
-            </div>
-            <div class="flex-item">
-              <input
-                type="button"
-                value="Export"
-                onclick="exportAnnotations()"
-              />
-            </div>
-            <div class="flex-item">
-              <label for="labelnametoggle">Label Names</label>
-              <input type="checkbox" id="labelnametoggle" checked />
-            </div>
+          </div>      
+          <!-- div3: 라벨 이름 -->
+          <div class="flex-item">
+            <div id="label_names"></div>
           </div>
-        </div>
-        <!-- div3: 라벨 이름 -->
-        <div class="flex-item">
-          <div id="label_names"></div>
         </div>
       </div>
     </div>
