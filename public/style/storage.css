@@ -591,9 +591,10 @@ main.l-main .page-title {
 
 button {
   background-color: cornflowerblue;
-  border-radius: 30px;
+  border-radius: 10px;
   padding: 10px 20px;
-  border: none;
+  font-size: 23px;
+  border-color: #0c2142;
   color: white;
   outline: none;
 }
@@ -649,6 +650,7 @@ button:hover {
   position: relative;
   margin-top: 20px;
   display: none;
+  font-size: 23px;
 }
 
 #upload-file {
@@ -693,16 +695,27 @@ label {
 #fileTable1 {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 95%;
-  font-size: 20px;
-  margin: auto;
+  text-align: left;
+  width: 99%;
+  font-size: 16px;
+  margin: none;
   margin-top: 20px;
+
+  background-color: #ffffff;
 }
 
 #fileTable1 td,
 #fileTable1 th {
   border: 1px solid #ddd;
-  padding: 8px;
+  border-color: #102c58;
+}
+.tableSmall {
+  width: 120px;
+  text-align: center;
+}
+.tableVerySmall{
+  width: 12px;
+  text-align: center;
 }
 
 #fileTable1 tr:nth-child(even) {
@@ -714,10 +727,8 @@ label {
 }
 
 #fileTable1 th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: cornflowerblue;
+  text-align: left;
+  background-color: #5e99f9;
   color: white;
 }
 
@@ -728,16 +739,28 @@ label {
 #fileTable2 {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 95%;
-  font-size: 20px;
-  margin: auto;
+  text-align: left;
+  width: 99%;
+  font-size: 16px;
+  margin: none;
   margin-top: 20px;
+
+
+  background-color: #ffffff;
 }
 
 #fileTable2 td,
 #fileTable2 th {
   border: 1px solid #ddd;
-  padding: 8px;
+  border-color: #102c58;
+}
+.tableSmall {
+  width: 120px;
+  text-align: center;
+}
+.tableVerySmall{
+  width: 12px;
+  text-align: center;
 }
 
 #fileTable2 tr:nth-child(even) {
@@ -749,10 +772,8 @@ label {
 }
 
 #fileTable2 th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: cornflowerblue;
+  text-align: left;
+  background-color: #5e99f9;
   color: white;
 }
 

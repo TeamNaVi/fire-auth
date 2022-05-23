@@ -161,7 +161,6 @@ getAllUsers = function () {
         fileTable2.innerHTML = "";
         getAllFiles();
         inputInit();
-        console.log("ㅇㅇ");
       });
     });
 };
