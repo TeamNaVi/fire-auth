@@ -188,15 +188,17 @@
   <main class="l-main">
     <div class="content-wrapper content-wrapper--with-bg">
       <h1 class="page-title">라벨링</h1>
-      <div class="page-content">Content goes here</div>
+      <!-- <div class="page-content">Content goes here</div> -->
       <!-- labeling -->
       <div class="flex-container-h mt-25">
-        <div class="flex-item">
-          <div id="label_names"></div>
-        </div>
+        <!-- div1: 이미지 캔버스 -->
         <div class="flex-item">
           <div class="flex-container-v">
             <div class="flex-item center">
+              <!-- <div class="btn">
+                <span>Atom</span>
+                <div class="dot"></div>
+              </div> -->
               <input
                 type="button"
                 value="<-"
@@ -219,6 +221,7 @@
             </div>
           </div>
         </div>
+        <!-- div2: 파일 선택 부분 -->
         <div class="flex-item">
           <div class="flex-container-v">
             <div class="flex-item">
@@ -241,6 +244,10 @@
               <input type="checkbox" id="labelnametoggle" checked />
             </div>
           </div>
+        </div>
+        <!-- div3: 라벨 이름 -->
+        <div class="flex-item">
+          <div id="label_names"></div>
         </div>
       </div>
     </div>
