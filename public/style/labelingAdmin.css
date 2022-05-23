@@ -35,8 +35,6 @@ h1 {
 
 h2 {
   font-size: 20px;
-
-  color: red;
 }
 
 h3 {
@@ -512,8 +510,6 @@ main.l-main {
   padding: 70px 0 0 70px;
   -webkit-transition: padding 0.5s ease-in-out;
   transition: padding 0.5s ease-in-out;
-
-  text-align: center;
 }
 
 main.l-main .content-wrapper {
@@ -526,8 +522,6 @@ main.l-main .content-wrapper .page-content {
   border-top: 1px solid #d0d0d0;
   padding-top: 25px;
   color: #ababab;
-
-  text-align: left;
 }
 
 main.l-main .content-wrapper--with-bg .page-content {
@@ -535,320 +529,60 @@ main.l-main .content-wrapper--with-bg .page-content {
   border-radius: 3px;
   border: 1px solid #d0d0d0;
   padding: 25px;
-
-  text-align: left;
 }
 
 main.l-main .page-title {
   font-weight: 400;
   margin-top: 0;
   margin-bottom: 25px;
-
-  text-align: left;
 }
 
 .sidebar-is-expanded main.l-main {
   padding-left: 220px;
 }
 
-/* storage ui */
-/* -------loader------- */
-
-.loader {
-  margin: 20px auto 0;
-  display: none;
-  border: 10px solid white;
-  border-radius: 50%;
-  border-top: 10px solid red;
-  width: 15px;
-  height: 15px;
-  -webkit-animation: spin 2s linear infinite;
-  /* Safari */
-  animation: spin 2s linear infinite;
-}
-
-/* Safari */
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* -------loader------- */
-
-button {
-  background-color: cornflowerblue;
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-size: 23px;
-  border-color: #0c2142;
-  color: white;
-  outline: none;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-.addBtn {
-  padding: 10px 40px;
-}
-
-.addBtn:hover,
-.downloadBtn:hover {
-  background-color: cornflowerblue;
-}
-
-.fa-file-download {
-  margin-right: 10px;
-  font-size: 23px;
-  color: cornflowerblue;
-}
-
-.fa-file-download:hover {
-  color: cornflowerblue;
-  cursor: pointer;
-}
-
-.fa-trash-alt {
-  margin-left: 10px;
-  font-size: 23px;
-  color: lightcoral;
-}
-
-.fa-trash-alt:hover {
-  color: crimson;
-  cursor: pointer;
-}
-
-.deleteBtn {
-  background-color: lightcoral;
-}
-
-.deleteBtn:hover {
-  background-color: crimson;
-}
-
-.addForm {
-  background-color: #f2f2f2;
-  width: 70%;
-  margin: auto;
-  padding: 20px 0;
-  position: relative;
-  margin-top: 20px;
-  display: none;
-  font-size: 23px;
-}
-
-#upload-file {
-  /* opacity: 0;
-    position: absolute;
-    width: 3%; */
-  display: none;
-  /* visibility: hidden; */
-}
-
-label {
-  cursor: pointer;
-  margin-right: 20px;
-  color: cornflowerblue;
-}
-
-.fa-check-circle {
-  color: cornflowerblue;
-  font-size: 25px;
-  vertical-align: middle;
-}
-
-.fa-check-circle:hover {
-  cursor: pointer;
-  color: cornflowerblue;
-}
-
-.fa-times {
-  color: lightcoral;
-  font-size: 18px;
-  vertical-align: middle;
-  margin-left: 10px;
-  position: absolute;
-  right: 15px;
-  top: 23px;
-}
-
-.fa-times:hover {
-  cursor: pointer;
-  color: crimson;
-}
-
-
-#fileTable1 {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  text-align: left;
-  width: 99%;
-  font-size: 16px;
-  margin: none;
-  margin-top: 20px;
-
-
-  background-color: #ffffff;
-}
-
-#fileTable1 td,
-#fileTable1 th {
-  border: 1px solid #ddd;
-  border-color: #102c58;
-}
-.tableSmall {
-  width: 120px;
-  text-align: center;
-}
-.tableVerySmall{
-  width: 12px;
-  text-align: center;
-}
-
-#fileTable1 tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#fileTable1 tr:hover {
-  background-color: #f2f2f2;
-}
-
-#fileTable1 th {
-  text-align: left;
-  background-color: #5e99f9;
-  color: white;
-}
-
-#fileTable1 tr td a {
-  text-decoration: none;
-}
-
-
-#fileTable2 {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  text-align: left;
-  width: 99%;
-  font-size: 16px;
-  margin: none;
-  margin-top: 20px;
-
-
-  background-color: #ffffff;
-}
-
-#fileTable2 td,
-#fileTable2 th {
-  border: 1px solid #ddd;
-  border-color: #102c58;
-}
-.tableSmall {
-  width: 120px;
-  text-align: center;
-}
-.tableVerySmall{
-  width: 12px;
-  text-align: center;
-}
-
-#fileTable2 tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#fileTable2 tr:hover {
-  background-color: #f2f2f2;
-}
-
-#fileTable2 th {
-  text-align: left;
-  background-color: #5e99f9;
-  color: white;
-}
-
-#fileTable2 tr td a {
-  text-decoration: none;
-}
-
-
-#fileTable3 {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  text-align: left;
-  width: 99%;
-  font-size: 16px;
-  margin: none;
-  margin-top: 20px;
-
-
-  background-color: #ffffff;
-}
-
-#fileTable3 td,
-#fileTable3 th {
-  border: 1px solid #ddd;
-  border-color: #102c58;
-}
-.tableSmall {
-  width: 120px;
-  text-align: center;
-}
-.tableVerySmall{
-  width: 12px;
-  text-align: center;
-}
-
-#fileTable3 tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#fileTable3 tr:hover {
-  background-color: #f2f2f2;
-}
-
-#fileTable3 th {
-  text-align: left;
-  background-color: #5e99f9;
-  color: white;
-}
-
-#fileTable3 tr td a {
-  text-decoration: none;
-}
-
-.box-radio-input input[type="radio"] {
-  display: none;
-}
-
-.box-radio-input input[type="radio"] + span {
-  display: inline-block;
-  background: none;
-  border: 1px solid #dfdfdf;
-  padding: 0px 10px;
-  text-align: center;
-  height: 35px;
-  line-height: 33px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.box-radio-input input[type="radio"]:checked + span {
-  border: 1px solid #102c58;
-  background-color: #5e99f9;
+/* labeling.css */
+/* html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: black;
+} */
+canvas {
+  background-color: #1a1a1a;
+  margin: 0;
+  padding: 0;
   color: #fff;
+}
+.delete {
+  background-color: red;
+}
+.flex-container-h {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.flex-container-v {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#label_names {
+  width: 350px;
+}
+.center {
+  text-align: center;
+  margin: auto;
+}
+.mt-25 {
+  margin-top: 25px;
+}
+.mt-50 {
+  margin-top: 50px;
+}
+.btn-control {
+  padding: 20px 100px;
+  margin: 0;
 }

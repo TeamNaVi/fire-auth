@@ -4,15 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Streaming IP Cam</title>
+    <title>Admin: Labeling</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./style/streaming.css?ver=20220516" />
+    <link rel="stylesheet" href="./style/labelingAdmin.css?ver=20220516" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
     />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
     />
+    <!-- 정성욱 fontawesome: 업로드 작동 O / UI깨짐 -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    /> -->
+    <!-- 양찬솔 fontawesome: 업로드 작동 X / UI온전 -->
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
   </head>
 
@@ -73,7 +81,7 @@
         <nav class="c-menu js-menu">
           <ul class="u-list">
             <li
-              class="c-menu__item has-submenu"
+              class="c-menu__item is-active"
               data-toggle="tooltip"
               title="메인"
               id="li_Dashboard"
@@ -116,29 +124,40 @@
               </div>
             </li>
 
-            <li
-              class="c-menu__item is-active"
+            <!-- <li
+              class="c-menu__item has-submenu"
               data-toggle="tooltip"
-              title="스트리밍"
+              title="Streaming"
               id="li_Streaming"
             >
               <div class="c-menu__item__inner">
                 <i class="fas fa-camera"></i>
-                <div class="c-menu-item__title"><span>스트리밍</span></div>
+                <div class="c-menu-item__title"><span>Streaming</span></div>
               </div>
-            </li>
+            </li> -->
 
-            <!-- <li
+            <li
               class="c-menu__item has-submenu"
               data-toggle="tooltip"
-              title="DeepLearning"
+              title="라벨링"
+              id="li_Labeling"
+            >
+              <div class="c-menu__item__inner">
+                <i class="fas fa-tags"></i>
+                <div class="c-menu-item__title"><span>라벨링</span></div>
+              </div>
+            </li>
+            <li
+              class="c-menu__item has-submenu"
+              data-toggle="tooltip"
+              title="딥러닝"
               id="li_DeepLearning"
             >
               <div class="c-menu__item__inner">
                 <i class="fas fa-cogs"></i>
                 <div class="c-menu-item__title"><span>딥러닝</span></div>
               </div>
-            </li> -->
+            </li>
           </ul>
         </nav>
       </div>
@@ -158,7 +177,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+    <!-- Bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Initialize Firebase -->
@@ -168,43 +187,63 @@
   <!-- 메인 컨텐츠 -->
   <main class="l-main">
     <div class="content-wrapper content-wrapper--with-bg">
-      <h1 class="page-title">스트리밍</h1>
-      <!-- <div class="page-content">Content goes here</div> -->
-      <!-- Camera Streaming -->
-      <div>
-        <canvas id="chanel1" width="auto" height="auto"></canvas>
-        <script type="text/javascript" src="./js/jsmpeg.min.js"></script>
-        <script type="text/javascript">
-          var canvas = document.getElementById("chanel1");
-          //var websocket = new WebSocket("ws://127.0.0.1:9999");
-          var websocket = new WebSocket("ws://192.168.0.33:8080");
-          var player = new jsmpeg(websocket, {
-            canvas: canvas,
-            autoplay: true,
-            loop: true,
-          });
-        </script>
-      </div>
-      <div>
-        <button id="capture">Capture</button>
-        <script>
-          // Setup download button event listener
-          document.querySelector("#capture").addEventListener("click", () => {
-            var canvas = document.querySelector("#chanel1");
-            var image = canvas
-              .toDataURL("image/jpg")
-              .replace("image/jpg", "image/octet-stream");
-
-            var element = document.createElement("a");
-            var filename = "test.jpg";
-            element.setAttribute("href", image);
-            element.setAttribute("download", filename);
-
-            element.click();
-          });
-        </script>
+      <h1 class="page-title">라벨링</h1>
+      <div class="page-content">Content goes here</div>
+      <!-- labeling -->
+      <div class="flex-container-h mt-25">
+        <div class="flex-item">
+          <div id="label_names"></div>
+        </div>
+        <div class="flex-item">
+          <div class="flex-container-v">
+            <div class="flex-item center">
+              <input
+                type="button"
+                value="<-"
+                onclick="prevAnno()"
+                class="btn-control"
+              />
+              <input
+                type="button"
+                value="->"
+                onclick="nextAnno()"
+                class="btn-control"
+              />
+            </div>
+            <div class="flex-item">
+              <p id="imagename" class="mt-25 center"></p>
+            </div>
+            <div class="flex-item mt-25">
+              <p>canvas: ImageView</p>
+              <canvas id="mainCanvas" width="800" height="800"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="flex-item">
+          <div class="flex-container-v">
+            <div class="flex-item">
+              <label for="inputfile">Classes</label>
+              <input type="file" id="inputfile" />
+            </div>
+            <div class="flex-item">
+              <label for="inputfolder">Images</label>
+              <input type="file" id="inputfolder" multiple />
+            </div>
+            <div class="flex-item">
+              <input
+                type="button"
+                value="Export"
+                onclick="exportAnnotations()"
+              />
+            </div>
+            <div class="flex-item">
+              <label for="labelnametoggle">Label Names</label>
+              <input type="checkbox" id="labelnametoggle" checked />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
-  <script src="./js/streaming.js?version=20220524020000"></script>
+  <script src="./js/labelingAdmin.js?version=20220524020000"></script>
 </html>

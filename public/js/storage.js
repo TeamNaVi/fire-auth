@@ -23,6 +23,7 @@ const li_Storage = document.getElementById("li_Storage");
 const li_Streaming = document.getElementById("li_Streaming");
 // const li_DeepLearning = document.getElementById("li_DeepLearning");
 
+const profile = document.getElementById("profile");
 const logOut = document.getElementById("logOut");
 
 const auth = firebase.auth();
@@ -45,6 +46,11 @@ let urlDownload = null;
 let userUid = null;
 let userEmail = null;
 let target = null;
+
+//Go to profile page
+profile.addEventListener("click", () => {
+  window.location.assign("../profile");
+});
 
 //Go to Dashboard page
 li_Dashboard.addEventListener("click", () => {
