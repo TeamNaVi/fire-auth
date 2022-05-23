@@ -592,7 +592,8 @@ button {
   background-color: red;
   border-radius: 30px;
   padding: 10px 20px;
-  border: none;
+  font-size: 23px;
+  border-color: #0c2142;
   color: white;
   outline: none;
 }
@@ -607,13 +608,13 @@ button:hover {
 
 .addBtn:hover,
 .downloadBtn:hover {
-  background-color: cornflowerblue;
+  background-color: #a20000;
 }
 
 .fa-file-download {
   margin-right: 10px;
   font-size: 23px;
-  color: cornflowerblue;
+  color: #932716;
 }
 
 .fa-file-download:hover {
@@ -648,6 +649,7 @@ button:hover {
   position: relative;
   margin-top: 20px;
   display: none;
+  font-size: 23px;
 }
 
 #upload-file {
@@ -690,19 +692,32 @@ label {
   color: crimson;
 }
 
+
 #fileTable1 {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  font-size: 20px;
-  width: 90%;
-  margin: auto;
+  text-align: left;
+  width: 99%;
+  font-size: 16px;
+  margin: none;
   margin-top: 20px;
+
+
+  background-color: #ffffff;
 }
 
 #fileTable1 td,
 #fileTable1 th {
   border: 1px solid #ddd;
-  padding: 8px;
+  border-color: #102c58;
+}
+.tableSmall {
+  width: 120px;
+  text-align: center;
+}
+.tableVerySmall{
+  width: 12px;
+  text-align: center;
 }
 
 #fileTable1 tr:nth-child(even) {
@@ -714,9 +729,7 @@ label {
 }
 
 #fileTable1 th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
+  text-align: left;
   background-color: #fa2700;
   color: white;
 }
@@ -725,19 +738,32 @@ label {
   text-decoration: none;
 }
 
+
 #fileTable2 {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 95%;
-  font-size: 20px;
-  margin: auto;
+  text-align: left;
+  width: 99%;
+  font-size: 16px;
+  margin: none;
   margin-top: 20px;
+
+
+  background-color: #ffffff;
 }
 
 #fileTable2 td,
 #fileTable2 th {
   border: 1px solid #ddd;
-  padding: 8px;
+  border-color: #102c58;
+}
+.tableSmall {
+  width: 120px;
+  text-align: center;
+}
+.tableVerySmall{
+  width: 12px;
+  text-align: center;
 }
 
 #fileTable2 tr:nth-child(even) {
@@ -749,10 +775,8 @@ label {
 }
 
 #fileTable2 th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: red;
+  text-align: left;
+  background-color: #fa2700;
   color: white;
 }
 
@@ -760,19 +784,32 @@ label {
   text-decoration: none;
 }
 
+
 #fileTable3 {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 95%;
-  font-size: 20px;
-  margin: auto;
+  text-align: left;
+  width: 99%;
+  font-size: 16px;
+  margin: none;
   margin-top: 20px;
+
+
+  background-color: #ffffff;
 }
 
 #fileTable3 td,
 #fileTable3 th {
   border: 1px solid #ddd;
-  padding: 8px;
+  border-color: #102c58;
+}
+.tableSmall {
+  width: 120px;
+  text-align: center;
+}
+.tableVerySmall{
+  width: 12px;
+  text-align: center;
 }
 
 #fileTable3 tr:nth-child(even) {
@@ -784,10 +821,8 @@ label {
 }
 
 #fileTable3 th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: red;
+  text-align: left;
+  background-color: #fa2700;
   color: white;
 }
 
