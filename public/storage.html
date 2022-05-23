@@ -67,7 +67,12 @@
     <!-- sidebar -->
     <div class="l-sidebar">
       <div class="logo">
-        <div class="logo__txt">마크넣을것</div>
+        <img
+          src="./img/hana_icon.png"
+          id="img_hana_icon"
+          style="width: 60px; height: 60px"
+        />
+        <!-- <div class="logo__txt">마크넣을것</div> -->
       </div>
       <div class="l-sidebar__content">
         <nav class="c-menu js-menu">
@@ -75,7 +80,7 @@
             <li
               class="c-menu__item has-submenu"
               data-toggle="tooltip"
-              title="Dashboard"
+              title="메인"
               id="li_Dashboard"
             >
               <div class="c-menu__item__inner">
@@ -107,24 +112,24 @@
             <li
               class="c-menu__item is-active"
               data-toggle="tooltip"
-              title="Storage"
+              title="저장소"
               id="li_Storage"
             >
               <div class="c-menu__item__inner">
                 <i class="far fa-hdd"></i>
-                <div class="c-menu-item__title"><span>Storage</span></div>
+                <div class="c-menu-item__title"><span>저장소</span></div>
               </div>
             </li>
 
             <li
               class="c-menu__item has-submenu"
               data-toggle="tooltip"
-              title="Streaming"
+              title="스트리밍"
               id="li_Streaming"
             >
               <div class="c-menu__item__inner">
                 <i class="fas fa-camera"></i>
-                <div class="c-menu-item__title"><span>Streaming</span></div>
+                <div class="c-menu-item__title"><span>스트리밍</span></div>
               </div>
             </li>
 
@@ -170,7 +175,7 @@
   <!-- 메인 컨텐츠 -->
   <main class="l-main">
     <div class="content-wrapper content-wrapper--with-bg">
-      <h1 class="page-title" id="page-title">User: Storage</h1>
+      <h1 class="page-title" id="page-title">저장소</h1>
       <!-- <div class="page-content">Content goes here</div> -->
 
       <h2>일반 사용자용 이미지 업로드 / 가중치파일 다운로드</h2>
@@ -202,5 +207,5 @@
       <div class="left"><table id="fileTable2"></table></div>
     </div>
   </main>
-  <script src="./js/storage.js?version=20220521"></script>
+  <script src="./js/storage.js?version=20220523"></script>
 </html>

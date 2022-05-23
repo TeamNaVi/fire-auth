@@ -33,7 +33,7 @@ auth.onAuthStateChanged((user) => {
   // console.log(user);
 
   // $("#page_title").text(user.displayName + "님의 Dashboard (관리자tq)");
-  page_title.innerText = user.displayName + "님의 Dashboard (관리자)";
+  page_title.innerText = user.displayName + "님 (관리자)";
 
   // userName.innerText = user.displayName;
   $("#userName").text(user.displayName); // jquery 사용해봤음

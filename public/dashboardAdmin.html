@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Admin: Dashboard</title>
+    <title>Admin: Main</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="./style/dashboardAdmin.css?ver=20220516" />
     <link
@@ -59,7 +59,12 @@
     <!-- sidebar -->
     <div class="l-sidebar">
       <div class="logo">
-        <div class="logo__txt">마크넣을것</div>
+        <img
+          src="./img/hana_icon.png"
+          id="img_hana_icon"
+          style="width: 60px; height: 60px"
+        />
+        <!-- <div class="logo__txt">마크넣을것</div> -->
       </div>
       <div class="l-sidebar__content">
         <nav class="c-menu js-menu">
@@ -67,12 +72,12 @@
             <li
               class="c-menu__item is-active"
               data-toggle="tooltip"
-              title="Dashboard"
+              title="메인"
               id="li_Dashboard"
             >
               <div class="c-menu__item__inner">
                 <i class="far fa-chart-bar"></i>
-                <div class="c-menu-item__title"><span>Dashboard</span></div>
+                <div class="c-menu-item__title"><span>메인</span></div>
               </div>
             </li>
 
@@ -99,7 +104,7 @@
             <li
               class="c-menu__item has-submenu"
               data-toggle="tooltip"
-              title="Storage"
+              title="저장소"
               id="li_Storage"
             >
               <div class="c-menu__item__inner">
@@ -123,7 +128,7 @@
             <li
               class="c-menu__item has-submenu"
               data-toggle="tooltip"
-              title="DeepLearning"
+              title="딥러닝"
               id="li_DeepLearning"
             >
               <div class="c-menu__item__inner">
@@ -160,7 +165,7 @@
   <!-- 메인 컨텐츠 -->
   <main class="l-main">
     <div class="content-wrapper content-wrapper--with-bg">
-      <h1 class="page-title" id="page-title">User: Dashboard (관리자)</h1>
+      <h1 class="page-title" id="page-title">메인 (관리자)</h1>
       <div class="page-content" id="page-content">
         Info.
         <ul class="u-list-info">
@@ -198,12 +203,8 @@
           </li>
         </ul>
       </div>
-      <iframe
-            src=messenger.html
-            height="50%"
-            width="100%"
-    ></iframe>
+      <iframe src="messenger.html" height="50%" width="100%"></iframe>
     </div>
   </main>
-  <script src="./js/dashboardAdmin.js?version=20220516"></script>
+  <script src="./js/dashboardAdmin.js?version=20220523185400"></script>
 </html>

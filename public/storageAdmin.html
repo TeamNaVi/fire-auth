@@ -67,7 +67,12 @@
     <!-- sidebar -->
     <div class="l-sidebar">
       <div class="logo">
-        <div class="logo__txt">마크넣을것</div>
+        <img
+          src="./img/hana_icon.png"
+          id="img_hana_icon"
+          style="width: 60px; height: 60px"
+        />
+        <!-- <div class="logo__txt">마크넣을것</div> -->
       </div>
       <div class="l-sidebar__content">
         <nav class="c-menu js-menu">
@@ -75,7 +80,7 @@
             <li
               class="c-menu__item has-submenu"
               data-toggle="tooltip"
-              title="Dashboard"
+              title="메인"
               id="li_Dashboard"
             >
               <div class="c-menu__item__inner">
@@ -107,7 +112,7 @@
             <li
               class="c-menu__item is-active"
               data-toggle="tooltip"
-              title="Storage"
+              title="저장소"
               id="li_Storage"
             >
               <div class="c-menu__item__inner">
@@ -131,7 +136,7 @@
             <li
               class="c-menu__item has-submenu"
               data-toggle="tooltip"
-              title="DeepLearning"
+              title="딥러닝"
               id="li_DeepLearning"
             >
               <div class="c-menu__item__inner">
@@ -170,7 +175,7 @@
   <!-- 메인 컨텐츠 -->
   <main class="l-main">
     <div class="content-wrapper content-wrapper--with-bg">
-      <h1 class="page-title" id="page-title">User: Storage (관리자)</h1>
+      <h1 class="page-title" id="page-title">저장소 (관리자)</h1>
       <!-- <div class="page-content">Content goes here</div> -->
       <h2>관리자용 가중치파일 업로드 / 이미지 다운로드</h2>
       <button class="addBtn">파일 추가</button>
@@ -200,5 +205,5 @@
       <div class="left"><table id="fileTable2"></table></div>
     </div>
   </main>
-  <script src="js/storageAdmin.js?version=20220516"></script>
+  <script src="js/storageAdmin.js?version=20220523"></script>
 </html>

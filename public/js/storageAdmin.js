@@ -306,7 +306,7 @@ showListImage = function (no, fileName, fileLoc) {
 
 // init system
 auth.onAuthStateChanged((user) => {
-  page_title.innerHTML = user.displayName + "님의 Storage";
+  page_title.innerHTML = user.displayName + "님의 저장소";
 
   if (user.email == "admin@admin.admin") {
     //관리자 계정으로 로그인 했을 때만 정보 표시

@@ -26,6 +26,7 @@
   "dependencies": {
     "node-onvif": "^0.1.7",
     "node-rtsp-stream": "^0.0.9",
+    "normalize.css": "^8.0.1",
     "xterm": "^4.18.0"
   }
 }

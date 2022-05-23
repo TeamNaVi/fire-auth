@@ -199,7 +199,7 @@ showListImage = function (no, fileName, fileLoc) {
 
 // init system
 auth.onAuthStateChanged((user) => {
-  page_title.innerHTML = user.displayName + "님의 Storage";
+  page_title.innerHTML = user.displayName + "님의 저장소";
 
   userUid = user.uid;
   userEmail = user.email;
