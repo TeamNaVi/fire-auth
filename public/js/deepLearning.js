@@ -3,6 +3,7 @@
 const li_Dashboard = document.getElementById("li_Dashboard");
 const li_Storage = document.getElementById("li_Storage");
 // const li_Streaming = document.getElementById("li_Streaming");
+const li_Labeling = document.getElementById("li_Labeling");
 const li_DeepLearning = document.getElementById("li_DeepLearning");
 
 const profile = document.getElementById("profile");
@@ -66,6 +67,17 @@ li_Storage.addEventListener("click", () => {
 //     window.location.assign("../streaming");
 //   }
 // });
+
+//Go to Labeling page
+li_Labeling.addEventListener("click", () => {
+  const user = auth.currentUser;
+  // admin@admin.admin uid
+  if (user.uid == "3RS7jsw7asP6Owe5pZomy5KGwkf1") {
+    window.location.assign("../labeling");
+  } else {
+    window.location.assign("../labeling");
+  }
+});
 
 //Go to Deep Learning page
 li_DeepLearning.addEventListener("click", () => {
