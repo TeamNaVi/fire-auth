@@ -692,3 +692,6 @@ section {
     flex-direction: column;
   }
 }
+.cta-grid {
+  text-decoration: none;
+}

@@ -697,3 +697,8 @@ section {
     flex-direction: column;
   }
 }
+
+/* service gird */
+.cta-grid {
+  text-decoration: none;
+}
