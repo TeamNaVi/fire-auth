@@ -117,8 +117,6 @@ getAllTargets = function () {
         //radio 버튼 클릭 이벤트
         $("input:radio[name=selectedTarget]").click(function () {
           curTarget = $('input[name="selectedTarget"]:checked').val();
-          console.log(1);
-          console.log(curTarget);
           fileTable1.innerHTML = "";
           fileTable2.innerHTML = "";
           getAllFiles();
@@ -357,7 +355,7 @@ tarAddBtn.addEventListener("click", () => {
   firestore.collection("targets" + userUid).add(
       {
       name: newTargetName,
-      date: firebase.firestore.FieldValue.serverTimestamp()
+      date: firebase.firestore.FieldValue.serverTimestamp() //파이어베이스 서버시간
       }
   );
 
@@ -471,7 +469,7 @@ let Dashboard = (() => {
       $('[data-toggle="tooltipB"]').tooltip(global.tooltipOptionsBottom);
     },
   };
-});
+})();
 
 
 Dashboard.init();
