@@ -102,6 +102,7 @@ getAllTargets = function () {
   showHeaderTableT();
   firestore //데이터베이스
       .collection("targets" + userUid) //데이터베이스 저장소
+      .orderBy("date")
       .get()
       .then((data) => {
         let counter = 0;
@@ -340,7 +341,7 @@ checkBtn.addEventListener("click", () => {
 
               getAllFiles();
               inputInit();
-            
+
           });
         });
     });
