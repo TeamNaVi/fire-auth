@@ -593,11 +593,19 @@ main.l-main .page-title {
 button {
   background-color: cornflowerblue;
   border-radius: 10px;
+
   padding: 10px 20px;
   font-size: 23px;
   border-color: #0c2142;
   color: white;
   outline: none;
+}
+.tarAddBtn{
+  margin-top: 30px;
+  margin-left: 30px;
+  alignment: center;
+  float: left;
+  font-size: 15px;
 }
 
 button:hover {
@@ -779,5 +787,53 @@ label {
 }
 
 #fileTable2 tr td a {
+  text-decoration: none;
+}
+
+
+#targetTable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  text-align: left;
+  width: 70%;
+  font-size: 16px;
+  margin: none;
+  margin-top: 20px;
+
+  float: left;
+
+  background-color: #ffffff;
+}
+
+#targetTable td,
+#targetTable th {
+  border: 1px solid #ddd;
+  border-color: #102c58;
+}
+.tableDate {
+  width: 390px;
+  text-align: center;
+}
+.tableVerySmall{
+  width: 12px;
+  text-align: center;
+}
+
+
+#targetTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#targetTable tr:hover {
+  background-color: #f2f2f2;
+}
+
+#targetTable th {
+  text-align: left;
+  background-color: #5e99f9;
+  color: white;
+}
+
+#targetTable tr td a {
   text-decoration: none;
 }

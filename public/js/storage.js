@@ -15,6 +15,7 @@ const fileTable2 = document.querySelector("#fileTable2"); //가중치
 const loader = document.querySelector(".loader");
 const targetTable = document.querySelector("#targetTable"); //대상 물체
 
+const tarAddBtn = document.querySelector(".tarAddBtn"); //학습요청 건 생성 버튼
 
 // html element
 const page_title = document.getElementById("page-title");
@@ -45,7 +46,7 @@ let fileBrowse = null;
 let urlDownload = null;
 let userUid = null;
 let userEmail = null;
-let target = null;
+let curTarget = null; //현재 타겟(학습요청)
 
 //Go to profile page
 profile.addEventListener("click", () => {
@@ -100,11 +101,27 @@ li_Streaming.addEventListener("click", () => {
 getAllTargets = function () {
   showHeaderTableT();
   firestore //데이터베이스
-      .collection("targets") //데이터베이스 저장소
+      .collection("targets" + userUid) //데이터베이스 저장소
       .get()
       .then((data) => {
+        let counter = 0;
         data.forEach((element) => {
-          showListTarget(element.data().name);
+          counter += 1;
+          showListTarget(
+              counter,
+              element.data().name,
+              element.data().date
+          );
+        });
+        //radio 버튼 클릭 이벤트
+        $("input:radio[name=selectedTarget]").click(function () {
+          curTarget = $('input[name="selectedTarget"]:checked').val();
+          console.log(1);
+          console.log(curTarget);
+          fileTable1.innerHTML = "";
+          fileTable2.innerHTML = "";
+          getAllFiles();
+          inputInit();
         });
       });
 };
@@ -116,6 +133,9 @@ getAllFiles = function () {
     .then((data) => {
       let counter = 0;
       data.forEach((element) => {
+        if(element.data().target !== curTarget){
+          return;   //continue랑 같은 역할
+        }
         counter += 1;
         showListData(
           counter,
@@ -134,6 +154,9 @@ getAllFiles = function () {
         //if(element.data().uploader !== userEmail){
         //  return; //continue랑 비슷한 역할을 foreach문에서 수행
         //}  해당 유저의 파일 필터링하는 기능이지만 컬렉션을 나눔으로서 불필요해짐
+        if(element.data().target !== curTarget){
+          return;
+        }
         counter += 1;
         showListImage(
           counter,
@@ -177,7 +200,10 @@ showHeaderTableI = function () {
 showHeaderTableT = function () {
   html = `
     <tr>
-        <th>학습 대상 물체</th>
+        <th>No</th>
+        <th>학습요청 건</th>
+        <th>게시일</th>
+        <th>선택</th>
     </tr>
     `;
   targetTable.insertAdjacentHTML("beforeend", html);
@@ -203,14 +229,22 @@ showListData = function (no, fileName, fileLoc) {
 
   fileTable2.insertAdjacentHTML("beforeend", newHtml);
 };
-showListTarget = function (targetName) {
+showListTarget = function (no,targetName,targetDate) {
   html = `
     <tr id="id-%id%">
-        <td>%fileName%</td>
+        <td class="tableVerySmall">%no%</td>
+        <td>%targetName%</td>
+        <td class="tableDate">%date%</td>
+        <td class="tableSmall">
+            <label class="box-radio-input"><input type='radio' name='selectedTarget' value=%targetName%><span>선택</span></label>
+        </td>
     </tr>
     `;
   newHtml = html.replace("%id%", targetName);
-  newHtml = newHtml.replace("%fileName%", targetName);
+  newHtml = newHtml.replace("%no%", no);
+  newHtml = newHtml.replace("%date%", targetDate.toDate());
+  newHtml = newHtml.replace("%targetName%", targetName);
+  newHtml = newHtml.replace("%targetName%", targetName);
 
   targetTable.insertAdjacentHTML("beforeend", newHtml);
 };
@@ -244,7 +278,7 @@ auth.onAuthStateChanged((user) => {
 
   userUid = user.uid;
   userEmail = user.email;
-  getAllFiles(); //유저 정보가 들어왔을 때 리스팅(안 그러면 아무것도 안 뜸)
+   //유저 정보가 들어왔을 때 리스팅(안 그러면 아무것도 안 뜸)
   getAllTargets();
 });
 
@@ -292,22 +326,21 @@ checkBtn.addEventListener("click", () => {
 
           //쿼리
           query.get().then((data) => {
-            if (data.size == 0) {
               docRef.add({
                 fileName: fileBrowse.name, //파일 이름
                 fileLocation: urlDownload, //파이어베이스 다운로드 URL
                 uploader: userEmail, //파일 올린 사람
+                target: curTarget
               });
               loader.style.display = "none";
               closeAddFormBtn.style.display = "block";
               checkBtn.style.visibility = "visible";
               fileTable1.innerHTML = "";
               fileTable2.innerHTML = "";
+
               getAllFiles();
               inputInit();
-            } else {
-              alert("파일 이름이 중복됩니다.");
-            }
+            
           });
         });
     });
@@ -316,6 +349,21 @@ checkBtn.addEventListener("click", () => {
   }
 });
 
+//학습요청생성버튼
+
+tarAddBtn.addEventListener("click", () => {
+  var newTargetName = prompt("추가할 학습요청의 제목을 입력해주십시오.");
+  firestore.collection("targets" + userUid).add(
+      {
+      name: newTargetName,
+      date: firebase.firestore.FieldValue.serverTimestamp()
+      }
+  );
+
+  targetTable.innerHTML = "";
+  getAllTargets()
+
+});
 // handle delete
 fileTable1.addEventListener("click", (e) => {
   let targetId = e.target.parentNode.parentNode.id;
@@ -422,6 +470,7 @@ let Dashboard = (() => {
       $('[data-toggle="tooltipB"]').tooltip(global.tooltipOptionsBottom);
     },
   };
-})();
+});
+
 
 Dashboard.init();
