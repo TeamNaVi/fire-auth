@@ -30,7 +30,7 @@ body {
 .main-menu,
 header {
   background-color: #c0ccf5;
-  background-image: url(../img/talk_background.jpg);
+  background-image: url(../img/talk_background02.jpg);
   background-repeat: repeat;
   background-position: top left;
   background-attachment: fixed;
@@ -91,6 +91,7 @@ header * {
 .profile-name {
   /* 프로필명 폰트 스타일 지정 */
   font-size: 0.8125rem;
+  color: black;
 }
 .sub-menu > * {
   /* 프로필명 아래 메뉴들 정렬 */
@@ -170,16 +171,19 @@ main {
 .friend-chat-col > .balloon {
   margin-top: 0.3125rem;
   padding: 0.4375rem;
-  border: 1px solid rgb(228, 233, 230);
+  /* border: 1px solid rgb(228, 233, 230); */
+  border: 1px solid #383838;
   border-radius: 0.1875rem;
-  background-color: rgb(228, 233, 230);
+  /* background-color: rgb(228, 233, 230); */
+  background-color: #383838;
   font-size: 0.8125rem;
-  color: black;
+  color: white;
 }
 .friend-chat-col > .balloon::before {
   content: "";
   border-bottom: 0.6875rem solid transparent;
-  border-right: 0.6875rem solid rgb(228, 233, 230);
+  /* border-right: 0.6875rem solid rgb(228, 233, 230); */
+  border-right: 0.6875rem solid #383838;
   position: absolute;
   top: 1.563rem;
   left: -0.5rem;
@@ -198,16 +202,19 @@ main {
 .me-chat-col > .balloon {
   margin-top: 0.3125rem;
   padding: 0.4375rem;
-  border: 1px solid rgb(94, 122, 100);
+  /* border: 1px solid rgb(94, 122, 100); */
+  border: 1px solid #ffeb33;
   border-radius: 0.1875rem;
-  background-color: rgb(94, 122, 100);
+  /* background-color: rgb(94, 122, 100); */
+  background-color: #ffeb33;
   font-size: 0.8125rem;
-  color: white;
+  color: black;
 }
 .me-chat-col > .balloon::before {
   content: "";
   border-bottom: 0.6875rem solid transparent;
-  border-left: 0.6875rem solid rgb(94, 122, 100);
+  /* border-left: 0.6875rem solid rgb(94, 122, 100); */
+  border-left: 0.6875rem solid #ffeb33;
   position: absolute;
   /* top: 0.625rem; */
   top: 1.5rem;
@@ -312,8 +319,7 @@ form[name="chatform"] > textarea {
   border: none;
 }
 
-
-#selectbox{
+#selectbox {
   width: 50%;
   font-size: 20px;
   text-align: center;
