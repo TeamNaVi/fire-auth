@@ -1,0 +1,25 @@
+/* 메신저 페이지 공통 스타일 */
+
+/* 기본 배경화면은 white */
+body {
+  font-family: fontello, "Nanum Gothic", sans-serif, Arial;
+  background-color: white;
+}
+* {
+  box-sizing: border-box;
+}
+a:visited,
+a:link {
+  color: gray;
+  text-decoration: none;
+}
+
+/* 상단 설정바 조절 */
+.setting_bar {
+  text-align: right;
+}
+.setting_bar > * {
+  margin: 0.25rem; /* 브라우저 폰트크기 16px 기준 : 4px */
+  font-size: 0.75rem; /* 브라우저 폰트크기 16px 기준 : 10px */
+  color: gray;
+}
