@@ -191,16 +191,7 @@
     <div class="content-wrapper content-wrapper--with-bg">
       <h1 class="page-title" id="page-title">저장소 (관리자)</h1>
       <!-- <div class="page-content">Content goes here</div> -->
-      <button class="addBtn">파일 추가</button>
-      <br />
-      <div class="loader"></div>
 
-      <div class="addForm">
-        <label for="upload-file">업로드할 파일 선택...</label>
-        <input type="file" id="upload-file" multiple="multiple" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-times"></i>
-      </div>
       <style>
         div.left {
           width: 50%;
@@ -210,12 +201,45 @@
           width: 50%;
           float: right;
         }
+        div.divBtn {
+          width: 15%;
+          float: right;
+          box-sizing: border-box;
+        }
+        div.divBottom {
+          width: 100%;
+          float: bottom;
+        }
       </style>
 
       <table id="fileTable1"></table>
-      <div class="right"><table id="fileTable3"></table></div>
+      <div>
+        <table id="targetTable"></table>
+      </div>
+      <div class="divBtn">
+        <button class="tarAddBtn">학습요청 생성</button>
+        <!--<button class="tarEditBtn">학습요청 편집</button>  할게 너무 많아져서 일단 뺌(DB에서 해당 학습요청에 해당하는 모든 파일정보를 수정해야함 -->
+        <button class="addBtn">파일 추가</button>
 
-      <div class="left"><table id="fileTable2"></table></div>
+        <div class="loader"></div>
+
+        <div class="addForm">
+          <label for="upload-file">업로드할 파일 선택</label>
+          <input type="file" id="upload-file" multiple="multiple" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+
+      <div class="divBottom">
+
+        <div class="right"><table id="fileTable3"></table></div>
+
+        <div class="left"><table id="fileTable2"></table></div>
+      </div>
+
+
+
     </div>
   </main>
   <script src="js/storageAdmin.js?version=20220524020000"></script>

@@ -14,7 +14,8 @@ const fileTable1 = document.querySelector("#fileTable1");
 const fileTable2 = document.querySelector("#fileTable2");
 const fileTable3 = document.querySelector("#fileTable3");
 const loader = document.querySelector(".loader");
-
+const targetTable = document.querySelector("#targetTable"); //대상 물체
+const tarAddBtn = document.querySelector(".tarAddBtn"); //학습요청 건 생성 버튼
 // html element
 const page_title = document.getElementById("page-title");
 const li_Dashboard = document.getElementById("li_Dashboard");
@@ -27,6 +28,7 @@ const profile = document.getElementById("profile");
 const logOut = document.getElementById("logOut");
 
 const auth = firebase.auth();
+const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
 
 logOut.addEventListener("click", () => {
   //signOut() is a built in firebase function responsible for signing a user out
@@ -45,6 +47,7 @@ let fileBrowse = null;
 let urlDownload = null;
 let userUid = null;
 let userEmail = null;
+let curTarget = null; //현재 타겟(학습요청)
 
 //Go to profile page
 profile.addEventListener("click", () => {
@@ -177,10 +180,45 @@ getAllUsers = function () {
         userUid = $('input[name="selectedUser"]:checked').val();
         fileTable3.innerHTML = "";
         fileTable2.innerHTML = "";
-        getAllFiles();
+        targetTable.innerHTML = "";
+        getAllTargets();
         inputInit();
       });
     });
+};
+
+getAllTargets = function () {
+  showHeaderTableT();
+  //tbodyStart(targetTable);
+  targetTable.innerHTML+="<tbody>";
+  firestore //데이터베이스
+      .collection("targets" + userUid) //데이터베이스 저장소
+      .orderBy("date")
+      .get()
+      .then((data) => {
+        let counter = 0;
+        data.forEach((element) => {
+          counter += 1;
+          showListTarget(
+              counter,
+              element.data().name,
+              element.data().date
+          );
+        });
+
+        //radio 버튼 클릭 이벤트
+        $("input:radio[name=selectedTarget]").click(function () {
+          curTarget = $('input[name="selectedTarget"]:checked').val();
+          fileTable2.innerHTML = "";
+          fileTable3.innerHTML = "";
+          getAllFiles();
+          inputInit();
+        });
+
+      });
+
+  targetTable.innerHTML+="</tbody>";
+  //tbodyEnd(targetTable);
 };
 
 getAllFiles = function () {
@@ -191,6 +229,9 @@ getAllFiles = function () {
     .then((data) => {
       let counter = 0;
       data.forEach((element) => {
+        if(element.data().target !== curTarget){
+          return;   //continue랑 같은 역할
+        }
         counter += 1;
         showListData(
           counter,
@@ -206,6 +247,9 @@ getAllFiles = function () {
     .then((data) => {
       let counter = 0;
       data.forEach((element) => {
+        if(element.data().target !== curTarget){
+          return;   //continue랑 같은 역할
+        }
         //if(element.data().uploader !== userEmail){
         //  return; //continue랑 비슷한 역할을 foreach문에서 수행
         //}  해당 유저의 파일 필터링하는 기능이지만 컬렉션을 나눔으로서 불필요해짐
@@ -223,7 +267,7 @@ getAllFiles = function () {
 inputInit = function () {
   fileBrowse = null;
   urlDownload = null;
-  labelBrowse.innerHTML = "업로드할 파일 선택...";
+  labelBrowse.innerHTML = "업로드할 파일 선택";
 };
 
 // function add header table static
@@ -232,10 +276,24 @@ showHeaderTableU = function () {
     <tr>
         <th class="tableVerySmall">No</th>
         <th>업체명</th>
-        <th class="tableSmall">업체 선택</th>
+        <th class="tableBigRadio">업체 선택</th>
     </tr>
     `;
   fileTable1.insertAdjacentHTML("beforeend", html);
+};
+
+showHeaderTableT = function () {
+  html = `
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>학습요청 건</th>
+            <th>게시일</th>
+            <th>선택</th>
+        </tr>
+    </thead>
+    `;
+  targetTable.insertAdjacentHTML("beforeend", html);
 };
 
 showHeaderTableW = function () {
@@ -260,6 +318,21 @@ showHeaderTableI = function () {
   fileTable3.insertAdjacentHTML("beforeend", html);
 };
 
+
+tbodyStart = function (inputTable){
+  html = `
+    <tbody>
+    `;
+  inputTable.insertAdjacentHTML("beforeend", html);
+}
+
+tbodyEnd = function (inputTable){
+  html = `
+    </tbody>
+    `;
+  inputTable.insertAdjacentHTML("beforeend", html);
+}
+
 // function show list of files
 showListUser = function (no, corporation, listUid) {
   html = `
@@ -267,7 +340,7 @@ showListUser = function (no, corporation, listUid) {
     <tr id="id-%id%">
         <td class="tableVerySmall">%no%</td>
         <td>%listCorporation%</td>
-        <td class="tableSmall">
+        <td class="tableBigRadio">
             <label class="box-radio-input"><input type='radio' name='selectedUser' value=%listUid%><span>업체 선택</span></label>
         </td>
     </tr>
@@ -278,6 +351,38 @@ showListUser = function (no, corporation, listUid) {
   newHtml = newHtml.replace("%listCorporation%", corporation);
   fileTable1.insertAdjacentHTML("beforeend", newHtml);
 };
+
+
+showListTarget = function (no,targetName,targetDateA) {
+  targetDate = targetDateA.toDate()
+  let yearCT = targetDate.getFullYear();
+  let monthCT = targetDate.getMonth() + 1;
+  let dayCT = targetDate.getDate();
+  let weekdayCT = targetDate.getDay();
+  let hourCT = targetDate.getHours();
+  let minuteCT = targetDate.getMinutes();
+  let secondCT = targetDate.getSeconds();
+
+  let korDateTarget = yearCT + "년 " + monthCT + "월 " + dayCT + "일 " + weekdays[weekdayCT] + "요일 " + hourCT + ":" + minuteCT + ":" + secondCT;
+  html = `
+    <tr id="id-%id%">
+        <td class="tableVerySmall">%no%</td>
+        <td>%targetName%</td>
+        <td class="tableDate">%date%</td>
+        <td class="tableRadio">
+            <label class="box-radio-input"><input type='radio' name='selectedTarget' value=%targetName%><span>선택</span></label>
+        </td>
+    </tr>
+    `;
+  newHtml = html.replace("%id%", targetName);
+  newHtml = newHtml.replace("%no%", no);
+  newHtml = newHtml.replace("%date%", korDateTarget);
+  newHtml = newHtml.replace("%targetName%", targetName);
+  newHtml = newHtml.replace("%targetName%", targetName);
+
+  targetTable.insertAdjacentHTML("beforeend", newHtml);
+};
+
 
 showListData = function (no, fileName, fileLoc) {
   html = `
@@ -327,7 +432,6 @@ auth.onAuthStateChanged((user) => {
 
   if (user.email == "admin@admin.admin") {
     //관리자 계정으로 로그인 했을 때만 정보 표시
-    getAllFiles();
     getAllUsers();
   }
 });
@@ -383,6 +487,7 @@ checkBtn.addEventListener("click", () => {
                 fileName: fileBrowse.name, //파일 이름
                 fileLocation: urlDownload, //파이어베이스 다운로드 URL
                 uploader: userEmail, //파일 올린 사람
+                target: curTarget
               });
               loader.style.display = "none";
               closeAddFormBtn.style.display = "block";
@@ -401,6 +506,24 @@ checkBtn.addEventListener("click", () => {
     alert("파일을 선택해주세요");
   }
 });
+
+//학습요청생성버튼
+tarAddBtn.addEventListener("click", () => {
+  let newTargetName = prompt("추가할 학습요청의 제목을 입력해주십시오.");
+  if(newTargetName !== null && newTargetName !=="" && userUid !== null){
+    firestore.collection("targets" + userUid).add(
+        {
+          name: newTargetName,
+          date: firebase.firestore.FieldValue.serverTimestamp() //파이어베이스 서버시간
+        }
+    ).then(()=>{  //데이터베이스에 add 후에 처리
+      targetTable.innerHTML = "";
+      getAllTargets()
+      inputInit();
+    })
+  }
+});
+
 
 // handle delete
 fileTable2.addEventListener("click", (e) => {

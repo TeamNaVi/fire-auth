@@ -592,19 +592,20 @@ main.l-main .page-title {
 button {
   background-color: cornflowerblue;
   border-radius: 10px;
-  padding: 10px 20px;
-  font-size: 23px;
+  padding: 10px 10px;
+  margin-top: 20px;
+  font-size: 15px;
   border-color: #0c2142;
   color: white;
   outline: none;
+  width: 150px;
 }
-
 button:hover {
   cursor: pointer;
 }
 
 .addBtn {
-  padding: 10px 40px;
+  padding: 10px 10px;
 }
 
 .addBtn:hover,
@@ -643,14 +644,15 @@ button:hover {
 }
 
 .addForm {
-  background-color: #f2f2f2;
-  width: 70%;
+  background-color: #ffffff;
+  width: 90%;
   margin: auto;
   padding: 20px 0;
   position: relative;
-  margin-top: 20px;
+  margin-top: 16px;
   display: none;
-  font-size: 23px;
+  font-size: 16px;
+  text-align: center;
 }
 
 #upload-file {
@@ -684,13 +686,13 @@ label {
   vertical-align: middle;
   margin-left: 10px;
   position: absolute;
-  right: 15px;
-  top: 23px;
+  right: 1px;
+  top: 1px;
 }
 
 .fa-times:hover {
   cursor: pointer;
-  color: crimson;
+  color: #84b9ff;
 }
 
 
@@ -712,13 +714,12 @@ label {
   border: 1px solid #ddd;
   border-color: #102c58;
 }
-.tableSmall {
-  width: 120px;
-  text-align: center;
-}
-.tableVerySmall{
+.tableVerySmall {
   width: 12px;
   text-align: center;
+}
+.tableBigRadio{
+  width: 75px;
 }
 
 #fileTable1 tr:nth-child(even) {
@@ -831,6 +832,65 @@ label {
   text-decoration: none;
 }
 
+
+
+#targetTable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  text-align: left;
+  width: 85%;
+  font-size: 16px;
+  margin: none;
+  margin-top: 20px;
+
+  height: 220px;
+  float: left;
+  background-color: #f2f2f2;
+}
+
+#targetTable td,
+#targetTable th {
+  border: 1px solid #ddd;
+  border-color: #102c58;
+}
+.tableDate {
+  width: 250px;
+}
+.tableVerySmall{
+  width: 12px;
+  text-align: center;
+}
+.tableRadio{
+  width: 0px;
+  text-align: center;
+}
+
+
+#targetTable tbody {
+  background-color: #ffffff;
+}
+
+#targetTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#targetTable tr:hover {
+  background-color: #f2f2f2;
+}
+
+#targetTable th {
+  text-align: left;
+  background-color: #5e99f9;
+  color: white;
+}
+
+#targetTable tr td a {
+  text-decoration: none;
+}
+
+
+
+
 .box-radio-input input[type="radio"] {
   display: none;
 }
@@ -839,11 +899,7 @@ label {
   display: inline-block;
   background: none;
   border: 1px solid #dfdfdf;
-  padding: 0px 10px;
   text-align: center;
-  height: 35px;
-  line-height: 33px;
-  font-weight: 500;
   cursor: pointer;
 }
 

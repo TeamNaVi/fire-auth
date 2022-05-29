@@ -14,7 +14,6 @@ const fileTable1 = document.querySelector("#fileTable1"); //이미지
 const fileTable2 = document.querySelector("#fileTable2"); //가중치
 const loader = document.querySelector(".loader");
 const targetTable = document.querySelector("#targetTable"); //대상 물체
-
 const tarAddBtn = document.querySelector(".tarAddBtn"); //학습요청 건 생성 버튼
 
 // html element
@@ -28,6 +27,7 @@ const profile = document.getElementById("profile");
 const logOut = document.getElementById("logOut");
 
 const auth = firebase.auth();
+const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
 
 logOut.addEventListener("click", () => {
   //signOut() is a built in firebase function responsible for signing a user out
@@ -100,29 +100,32 @@ li_Streaming.addEventListener("click", () => {
 // upload.js
 getAllTargets = function () {
   showHeaderTableT();
+  targetTable.innerHTML+="<tbody>";
   firestore //데이터베이스
-      .collection("targets" + userUid) //데이터베이스 저장소
-      .orderBy("date")
-      .get()
-      .then((data) => {
-        let counter = 0;
-        data.forEach((element) => {
-          counter += 1;
-          showListTarget(
-              counter,
-              element.data().name,
-              element.data().date
-          );
-        });
-        //radio 버튼 클릭 이벤트
-        $("input:radio[name=selectedTarget]").click(function () {
-          curTarget = $('input[name="selectedTarget"]:checked').val();
-          fileTable1.innerHTML = "";
-          fileTable2.innerHTML = "";
-          getAllFiles();
-          inputInit();
-        });
+    .collection("targets" + userUid) //데이터베이스 저장소
+    .orderBy("date")
+    .get()
+    .then((data) => {
+      let counter = 0;
+      data.forEach((element) => {
+        counter += 1;
+        showListTarget(
+            counter,
+            element.data().name,
+            element.data().date
+        );
       });
+      //radio 버튼 클릭 이벤트
+      $("input:radio[name=selectedTarget]").click(function () {
+        curTarget = $('input[name="selectedTarget"]:checked').val();
+        fileTable1.innerHTML = "";
+        fileTable2.innerHTML = "";
+        getAllFiles();
+        inputInit();
+      });
+    });
+
+  targetTable.innerHTML+="</tbody>";
 };
 getAllFiles = function () {
   showHeaderTableW();
@@ -170,7 +173,7 @@ getAllFiles = function () {
 inputInit = function () {
   fileBrowse = null;
   urlDownload = null;
-  labelBrowse.innerHTML = "업로드할 파일 선택...";
+  labelBrowse.innerHTML = "업로드할 파일 선택";
 };
 
 // function add header table static
@@ -198,12 +201,15 @@ showHeaderTableI = function () {
 
 showHeaderTableT = function () {
   html = `
-    <tr>
-        <th>No</th>
-        <th>학습요청 건</th>
-        <th>게시일</th>
-        <th>선택</th>
-    </tr>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>학습요청 건</th>
+            <th>게시일</th>
+            <th>선택</th>
+        </tr>
+    </thead>
+    
     `;
   targetTable.insertAdjacentHTML("beforeend", html);
 };
@@ -228,20 +234,30 @@ showListData = function (no, fileName, fileLoc) {
 
   fileTable2.insertAdjacentHTML("beforeend", newHtml);
 };
-showListTarget = function (no,targetName,targetDate) {
+showListTarget = function (no,targetName,targetDateA) {
+  targetDate = targetDateA.toDate()
+  let yearCT = targetDate.getFullYear();
+  let monthCT = targetDate.getMonth() + 1;
+  let dayCT = targetDate.getDate();
+  let weekdayCT = targetDate.getDay();
+  let hourCT = targetDate.getHours();
+  let minuteCT = targetDate.getMinutes();
+  let secondCT = targetDate.getSeconds();
+
+  let korDateTarget = yearCT + "년 " + monthCT + "월 " + dayCT + "일 " + weekdays[weekdayCT] + "요일 " + hourCT + ":" + minuteCT + ":" + secondCT;
   html = `
     <tr id="id-%id%">
         <td class="tableVerySmall">%no%</td>
         <td>%targetName%</td>
         <td class="tableDate">%date%</td>
-        <td class="tableSmall">
+        <td class="tableRadio">
             <label class="box-radio-input"><input type='radio' name='selectedTarget' value=%targetName%><span>선택</span></label>
         </td>
     </tr>
     `;
   newHtml = html.replace("%id%", targetName);
   newHtml = newHtml.replace("%no%", no);
-  newHtml = newHtml.replace("%date%", targetDate.toDate());
+  newHtml = newHtml.replace("%date%", korDateTarget);
   newHtml = newHtml.replace("%targetName%", targetName);
   newHtml = newHtml.replace("%targetName%", targetName);
 
@@ -349,20 +365,24 @@ checkBtn.addEventListener("click", () => {
 });
 
 //학습요청생성버튼
-
 tarAddBtn.addEventListener("click", () => {
-  var newTargetName = prompt("추가할 학습요청의 제목을 입력해주십시오.");
-  firestore.collection("targets" + userUid).add(
-      {
-      name: newTargetName,
-      date: firebase.firestore.FieldValue.serverTimestamp() //파이어베이스 서버시간
-      }
-  );
-
-  targetTable.innerHTML = "";
-  getAllTargets()
-
+  let newTargetName = prompt("추가할 학습요청의 제목을 입력해주십시오.");
+  if(newTargetName !== null && newTargetName !==""){
+    firestore.collection("targets" + userUid).add(
+        {
+          name: newTargetName,
+          date: firebase.firestore.FieldValue.serverTimestamp() //파이어베이스 서버시간
+        }
+    ).then(()=>{  //데이터베이스에 add 후에 처리
+      targetTable.innerHTML = "";
+      getAllTargets()
+      inputInit();
+      })
+  }
 });
+
+
+
 // handle delete
 fileTable1.addEventListener("click", (e) => {
   let targetId = e.target.parentNode.parentNode.id;

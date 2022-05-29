@@ -593,21 +593,14 @@ main.l-main .page-title {
 button {
   background-color: cornflowerblue;
   border-radius: 10px;
-
-  padding: 10px 20px;
-  font-size: 23px;
+  padding: 10px 10px;
+  margin-top: 20px;
+  font-size: 15px;
   border-color: #0c2142;
   color: white;
   outline: none;
+  width: 150px;
 }
-.tarAddBtn{
-  margin-top: 30px;
-  margin-left: 30px;
-  alignment: center;
-  float: left;
-  font-size: 15px;
-}
-
 button:hover {
   cursor: pointer;
 }
@@ -652,14 +645,15 @@ button:hover {
 }
 
 .addForm {
-  background-color: #f2f2f2;
-  width: 70%;
+  background-color: #ffffff;
+  width: 90%;
   margin: auto;
   padding: 20px 0;
   position: relative;
-  margin-top: 20px;
+  margin-top: 16px;
   display: none;
-  font-size: 23px;
+  font-size: 16px;
+  text-align: center;
 }
 
 #upload-file {
@@ -693,8 +687,8 @@ label {
   vertical-align: middle;
   margin-left: 10px;
   position: absolute;
-  right: 15px;
-  top: 23px;
+  right: 1px;
+  top: 1px;
 }
 
 .fa-times:hover {
@@ -800,9 +794,9 @@ label {
   margin: none;
   margin-top: 20px;
 
+  height: 220px;
   float: left;
-
-  background-color: #ffffff;
+  background-color: #f2f2f2;
 }
 
 #targetTable td,
@@ -811,14 +805,21 @@ label {
   border-color: #102c58;
 }
 .tableDate {
-  width: 390px;
-  text-align: center;
+  width: 250px;
 }
 .tableVerySmall{
   width: 12px;
   text-align: center;
 }
+.tableRadio{
+  width: 0px;
+  text-align: center;
+}
 
+
+#targetTable tbody {
+  background-color: #ffffff;
+}
 
 #targetTable tr:nth-child(even) {
   background-color: #f2f2f2;
@@ -836,4 +837,23 @@ label {
 
 #targetTable tr td a {
   text-decoration: none;
+}
+
+
+.box-radio-input input[type="radio"] {
+  display: none;
+}
+
+.box-radio-input input[type="radio"] + span {
+  display: inline-block;
+  background: none;
+  border: 1px solid #dfdfdf;
+  text-align: center;
+  cursor: pointer;
+}
+
+.box-radio-input input[type="radio"]:checked + span {
+  border: 1px solid #102c58;
+  background-color: #5e99f9;
+  color: #fff;
 }
