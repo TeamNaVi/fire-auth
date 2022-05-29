@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="description" content="Kakao Talk Clone Chat Page" />
+    <meta name="robotos" content="noindex, nofollow" />
+    <link
+      rel="stylesheet"
+      href="./style/messenger.css?version=20220527040000"
+    />
+    <link rel="stylesheet" href="./style/messengerGeneral.css" />
+
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+    <!-- <link rel="stylesheet" href="fontello/css/fontello.css" /> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+    />
+
+    <title>대화</title>
+  </head>
+  <body>
+    <div id="chat-body">
+      <div>
+        <select id="selectbox"></select>
+      </div>
+
+
+      <main>
+
+        <!-- 채팅 내용 시작 -->
+        <div class="chat-content">
+
+          <!-- 메인 채팅 내용 -->
+          <div class="main-chat" id="main-chat"></div>
+          <!-- 메인 채팅 내용 끝 -->
+        </div>
+        <!-- 채팅 입력창 -->
+        <div class="insert-content">
+          <!-- <form name="chatform" id="message-form" action="#" method="post">
+            <textarea name="chat-insert" id="message-input" required></textarea>
+            <input
+              id="message-btn"
+              type="submit"
+              class="chat-submit"
+              value="전송"
+            />
+          </form> -->
+
+          <form id="message-form">
+            <input
+              id="message-input"
+              type="text"
+              required
+              placeholder="채팅을 입력해 주세요."
+            />
+            <button id="message-btn" type="submit" class="chat-submit">
+              전송
+            </button>
+          </form>
+
+
+        </div>
+      </main>
+    </div>
+
+    <!-- 정성욱 -->
+    <!-- <div id="chat">
+      <ul id="messages"></ul>
+
+      <form id="message-form">
+        <input id="message-input" type="text" />
+        <button id="message-btn" type="submit">Send</button>
+      </form>
+    </div> -->
+
+    <script>
+      console.log(1);
+    </script>
+    <!-- scripts -->
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+
+    <script src="./js/messengerAdmin.js?version=20220527020000"></script>
+  </body>
+</html>
