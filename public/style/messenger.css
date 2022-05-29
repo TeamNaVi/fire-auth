@@ -16,6 +16,7 @@ body {
   display: grid;
   grid-template-columns: minmax(3.125rem, auto) 6.25rem;
   grid-template-rows: 2.5rem 2.5rem auto;
+  height: 500px;
   align-items: stretch;
   grid-template-areas:
     " header   setting  "
@@ -254,7 +255,7 @@ main {
 .insert-content {
   background-color: white;
   padding: 0.4375rem;
-  position: sticky;
+  position: fixed;
   bottom: 0;
 }
 textarea {
@@ -309,4 +310,11 @@ form[name="chatform"] > textarea {
   height: 7vh;
   font-size: 18px;
   border: none;
+}
+
+
+#selectbox{
+  width: 50%;
+  font-size: 20px;
+  text-align: center;
 }
