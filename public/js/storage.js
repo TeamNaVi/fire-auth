@@ -100,27 +100,28 @@ li_Streaming.addEventListener("click", () => {
 // upload.js
 getAllTargets = function () {
   showHeaderTableT();
-  targetTable.innerHTML+="<tbody>";
+  targetTable.innerHTML += "<tbody>";
   firestore //데이터베이스
-    .collection("targets" + userUid) //데이터베이스 저장소
-    .orderBy("date")
-    .get()
-    .then((data) => {
-      let counter = 0;
-      data.forEach((element) => {
-        counter += 1;
-        showListTarget(counter, element.data().name, element.data().date);
+      .collection("targets" + userUid) //데이터베이스 저장소
+      .orderBy("date")
+      .get()
+      .then((data) => {
+        let counter = 0;
+        data.forEach((element) => {
+          counter += 1;
+          showListTarget(counter, element.data().name, element.data().date);
+        });
+        //radio 버튼 클릭 이벤트
+        $("input:radio[name=selectedTarget]").click(function () {
+          curTarget = $('input[name="selectedTarget"]:checked').val();
+          fileTable1.innerHTML = "";
+          fileTable2.innerHTML = "";
+          getAllFiles();
+          inputInit();
+        });
       });
-      //radio 버튼 클릭 이벤트
-      $("input:radio[name=selectedTarget]").click(function () {
-        curTarget = $('input[name="selectedTarget"]:checked').val();
-        fileTable1.innerHTML = "";
-        fileTable2.innerHTML = "";
-        getAllFiles();
-        inputInit();
-      });
-    });
-  targetTable.innerHTML+="</tbody>";
+  targetTable.innerHTML += "</tbody>";
+}
 getAllFiles = function () {
   showHeaderTableW();
   firestore //데이터베이스
