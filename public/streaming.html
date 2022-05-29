@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Streaming IP Cam</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./style/streaming.css?ver=20220516" />
+    <link rel="stylesheet" href="./style/streaming.css?ver=20220530120000" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
     />
@@ -186,7 +186,13 @@
         </script>
       </div>
       <div>
-        <button id="capture">Capture</button>
+        <div class="btn-bundle">
+          <div class="btn btn-left" id="capture">
+            <i class="fas fa-camera"></i>
+            <span>Capture</span>
+            <div class="dot"></div>
+          </div>
+        </div>
         <script>
           // Setup download button event listener
           document.querySelector("#capture").addEventListener("click", () => {
@@ -206,5 +212,5 @@
       </div>
     </div>
   </main>
-  <script src="./js/streaming.js?version=20220524020000"></script>
+  <script src="./js/streaming.js?version=20220530120000"></script>
 </html>

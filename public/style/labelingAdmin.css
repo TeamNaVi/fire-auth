@@ -665,6 +665,8 @@ canvas {
     transform: translateX(0) rotate(360deg);
   }
 }
+
+/* 페이지 구조 그리드 */
 #content {
   display: grid;
   align-items: stretch;
