@@ -101,28 +101,24 @@ li_Streaming.addEventListener("click", () => {
 getAllTargets = function () {
   showHeaderTableT();
   firestore //데이터베이스
-      .collection("targets" + userUid) //데이터베이스 저장소
-      .orderBy("date")
-      .get()
-      .then((data) => {
-        let counter = 0;
-        data.forEach((element) => {
-          counter += 1;
-          showListTarget(
-              counter,
-              element.data().name,
-              element.data().date
-          );
-        });
-        //radio 버튼 클릭 이벤트
-        $("input:radio[name=selectedTarget]").click(function () {
-          curTarget = $('input[name="selectedTarget"]:checked').val();
-          fileTable1.innerHTML = "";
-          fileTable2.innerHTML = "";
-          getAllFiles();
-          inputInit();
-        });
+    .collection("targets" + userUid) //데이터베이스 저장소
+    .orderBy("date")
+    .get()
+    .then((data) => {
+      let counter = 0;
+      data.forEach((element) => {
+        counter += 1;
+        showListTarget(counter, element.data().name, element.data().date);
       });
+      //radio 버튼 클릭 이벤트
+      $("input:radio[name=selectedTarget]").click(function () {
+        curTarget = $('input[name="selectedTarget"]:checked').val();
+        fileTable1.innerHTML = "";
+        fileTable2.innerHTML = "";
+        getAllFiles();
+        inputInit();
+      });
+    });
 };
 getAllFiles = function () {
   showHeaderTableW();
@@ -132,8 +128,8 @@ getAllFiles = function () {
     .then((data) => {
       let counter = 0;
       data.forEach((element) => {
-        if(element.data().target !== curTarget){
-          return;   //continue랑 같은 역할
+        if (element.data().target !== curTarget) {
+          return; //continue랑 같은 역할
         }
         counter += 1;
         showListData(
@@ -153,7 +149,7 @@ getAllFiles = function () {
         //if(element.data().uploader !== userEmail){
         //  return; //continue랑 비슷한 역할을 foreach문에서 수행
         //}  해당 유저의 파일 필터링하는 기능이지만 컬렉션을 나눔으로서 불필요해짐
-        if(element.data().target !== curTarget){
+        if (element.data().target !== curTarget) {
           return;
         }
         counter += 1;
@@ -228,7 +224,7 @@ showListData = function (no, fileName, fileLoc) {
 
   fileTable2.insertAdjacentHTML("beforeend", newHtml);
 };
-showListTarget = function (no,targetName,targetDate) {
+showListTarget = function (no, targetName, targetDate) {
   html = `
     <tr id="id-%id%">
         <td class="tableVerySmall">%no%</td>
@@ -247,8 +243,6 @@ showListTarget = function (no,targetName,targetDate) {
 
   targetTable.insertAdjacentHTML("beforeend", newHtml);
 };
-
-
 
 showListImage = function (no, fileName, fileLoc) {
   html = `
@@ -277,7 +271,7 @@ auth.onAuthStateChanged((user) => {
 
   userUid = user.uid;
   userEmail = user.email;
-   //유저 정보가 들어왔을 때 리스팅(안 그러면 아무것도 안 뜸)
+  //유저 정보가 들어왔을 때 리스팅(안 그러면 아무것도 안 뜸)
   getAllTargets();
 });
 
@@ -325,21 +319,20 @@ checkBtn.addEventListener("click", () => {
 
           //쿼리
           query.get().then((data) => {
-              docRef.add({
-                fileName: fileBrowse.name, //파일 이름
-                fileLocation: urlDownload, //파이어베이스 다운로드 URL
-                uploader: userEmail, //파일 올린 사람
-                target: curTarget
-              });
-              loader.style.display = "none";
-              closeAddFormBtn.style.display = "block";
-              checkBtn.style.visibility = "visible";
-              fileTable1.innerHTML = "";
-              fileTable2.innerHTML = "";
+            docRef.add({
+              fileName: fileBrowse.name, //파일 이름
+              fileLocation: urlDownload, //파이어베이스 다운로드 URL
+              uploader: userEmail, //파일 올린 사람
+              target: curTarget,
+            });
+            loader.style.display = "none";
+            closeAddFormBtn.style.display = "block";
+            checkBtn.style.visibility = "visible";
+            fileTable1.innerHTML = "";
+            fileTable2.innerHTML = "";
 
-              getAllFiles();
-              inputInit();
-
+            getAllFiles();
+            inputInit();
           });
         });
     });
@@ -352,16 +345,13 @@ checkBtn.addEventListener("click", () => {
 
 tarAddBtn.addEventListener("click", () => {
   var newTargetName = prompt("추가할 학습요청의 제목을 입력해주십시오.");
-  firestore.collection("targets" + userUid).add(
-      {
-      name: newTargetName,
-      date: firebase.firestore.FieldValue.serverTimestamp() //파이어베이스 서버시간
-      }
-  );
+  firestore.collection("targets" + userUid).add({
+    name: newTargetName,
+    date: firebase.firestore.FieldValue.serverTimestamp(), //파이어베이스 서버시간
+  });
 
   targetTable.innerHTML = "";
-  getAllTargets()
-
+  getAllTargets();
 });
 // handle delete
 fileTable1.addEventListener("click", (e) => {
@@ -470,6 +460,5 @@ let Dashboard = (() => {
     },
   };
 })();
-
 
 Dashboard.init();
