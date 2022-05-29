@@ -42,7 +42,7 @@ function sendMessage(e) {
 }
 
 fetchChat.on("child_added", function (snapshot) {
-  const timestamp = Date.now();
+  const timestamp = parseInt(snapshot.key);
   const date = new Date(timestamp);
   const dateDisplay =
     date.getFullYear() +
@@ -66,7 +66,7 @@ fetchChat.on("child_added", function (snapshot) {
       <span class="profile-name">${messages.userName}</span>
       <span class="balloon">${messages.message}</span>
     </div>
-    <time datetime="09:00:00+09:00">시간</time>
+    <time datetime="09:00:00+09:00"> 시간${dateDisplay}</time>
   </div>`;
 
   // append the message on the page
