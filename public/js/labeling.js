@@ -9,13 +9,13 @@ document
 
 let annos = [];
 let label_classes = [
-  "Orange",
-  "Green",
-  "Red",
-  "Blue",
-  "White",
-  "Yellow",
-  "Cube",
+  "0",
+  "1",
+  "2",
+  "3",
+  "4e",
+  "5",
+  "6",
 ];
 let current_anno_index = 0;
 let next_label_id = 0;

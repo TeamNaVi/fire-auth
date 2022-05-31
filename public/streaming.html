@@ -191,8 +191,12 @@
         </div>
         <script>
           // Setup download button event listener
+          const myCanvas = document.querySelector("#chanel1");
+          const context = myCanvas.getContext("2d");
           document.querySelector("#capture").addEventListener("click", () => {
+            /*
             var canvas = document.querySelector("#chanel1");
+            var context = canvas.getContext("2d");
             var image = canvas
               .toDataURL("image/jpg")
               .replace("image/jpg", "image/octet-stream");
@@ -203,6 +207,14 @@
             element.setAttribute("download", filename);
 
             element.click();
+            */
+            const a = document.createElement("a");
+
+            document.body.appendChild(a);
+            a.href = myCanvas.toDataURL("image/jpeg", 1);
+            a.download = "test.jpg";
+            a.click();
+            document.body.removeChild(a);
           });
         </script>
       </div>
