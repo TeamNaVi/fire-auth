@@ -12,7 +12,14 @@ body {
   font-size: 14px;
   font-weight: 400;
   overflow: hidden;
-  background-color: #f3f3f3;
+  /* background-color: #f3f3f3; */
+  /* 배경 그라데이션 추가 */
+  background: #c850c0;
+  background: -webkit-linear-gradient(45deg, #4158d0, #c850c0);
+  background: -o-linear-gradient(45deg, #4158d0, #c850c0);
+  background: -moz-linear-gradient(45deg, #4158d0, #c850c0);
+  background: linear-gradient(45deg, #4158d0, #c850c0);
+
   color: #102c58;
 }
 
@@ -543,6 +550,7 @@ main.l-main .page-title {
   font-weight: 400;
   margin-top: 0;
   margin-bottom: 25px;
+  color: #fff;
 
   text-align: left;
 }
@@ -560,7 +568,8 @@ main.l-main .page-title {
   display: none;
   border: 10px solid white;
   border-radius: 50%;
-  border-top: 10px solid cornflowerblue;
+  /* border-top: 10px solid cornflowerblue; */
+  border-top: 10px solid #36304a;
   width: 15px;
   height: 15px;
   -webkit-animation: spin 2s linear infinite;
@@ -591,7 +600,8 @@ main.l-main .page-title {
 /* -------loader------- */
 
 button {
-  background-color: cornflowerblue;
+  /* background-color: cornflowerblue; */
+  background-color: #36304a;
   border-radius: 10px;
   padding: 10px 10px;
   margin-top: 20px;
@@ -609,10 +619,13 @@ button:hover {
 .addBtn {
   padding: 10px 40px;
 }
-
+.tarAddBtn:hover,
 .addBtn:hover,
 .downloadBtn:hover {
-  background-color: cornflowerblue;
+  cursor: pointer;
+  /* color: cornflowerblue; */
+  color: #36304a;
+  background-color: #fff;
 }
 
 .fa-file-download {
@@ -646,7 +659,7 @@ button:hover {
 }
 
 .addForm {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   width: 90%;
   margin: auto;
   padding: 20px 0;
@@ -655,6 +668,9 @@ button:hover {
   display: none;
   font-size: 16px;
   text-align: center;
+}
+.addForm label:hover {
+  color: palegreen;
 }
 
 #upload-file {
@@ -668,28 +684,29 @@ button:hover {
 label {
   cursor: pointer;
   margin-right: 20px;
-  color: cornflowerblue;
+  /* color: cornflowerblue; */
+  color: #fff;
 }
 
 .fa-check-circle {
-  color: cornflowerblue;
-  font-size: 25px;
+  /* color: cornflowerblue; */
+  color: #fff;
+  font-size: 35px;
   vertical-align: middle;
 }
 
 .fa-check-circle:hover {
   cursor: pointer;
-  color: cornflowerblue;
+  /* color: cornflowerblue; */
+  color: #36304a;
 }
 
 .fa-times {
   color: lightcoral;
-  font-size: 18px;
+  font-size: 40px;
   vertical-align: middle;
-  margin-left: 10px;
-  position: absolute;
-  right: 1px;
-  top: 1px;
+  margin-left: 2vw;
+  position: relative;
 }
 
 .fa-times:hover {
@@ -699,151 +716,43 @@ label {
 
 /* 표 디자인 */
 
-#fileTable1 {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  text-align: left;
-  width: 99%;
-  font-size: 16px;
-  margin: none;
-  margin-top: 20px;
-
-  background-color: #ffffff;
-}
-
-#fileTable1 td,
-#fileTable1 th {
-  border: 1px solid #ddd;
-  border-color: #102c58;
-}
-.tableSmall {
-  width: 120px;
-  text-align: center;
-}
-.tableVerySmall {
-  width: 12px;
-  text-align: center;
-}
-
-#fileTable1 tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#fileTable1 tr:hover {
-  background-color: #f2f2f2;
-}
-
-#fileTable1 th {
-  /* text-align: left; */
-  text-align: center;
-  background-color: #5e99f9;
-  color: white;
-}
-
-#fileTable1 tr td a {
-  text-decoration: none;
-}
-
-#fileTable2 {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  text-align: left;
-  width: 99%;
-  font-size: 16px;
-  margin: none;
-  margin-top: 20px;
-
-  background-color: #ffffff;
-}
-
-#fileTable2 td,
-#fileTable2 th {
-  border: 1px solid #ddd;
-  border-color: #102c58;
-}
-.tableSmall {
-  width: 120px;
-  text-align: center;
-}
-.tableVerySmall {
-  width: 12px;
-  text-align: center;
-}
-
-#fileTable2 tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#fileTable2 tr:hover {
-  background-color: #f2f2f2;
-}
-
-#fileTable2 th {
-  text-align: left;
-  text-align: center;
-  background-color: #5e99f9;
-  color: white;
-}
-
-#fileTable2 tr td a {
-  text-decoration: none;
-}
-
+/* targetTable */
 #targetTable {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  text-align: left;
-  width: 85%;
-  font-size: 16px;
-  margin: none;
-  margin-top: 20px;
-
-  height: 220px;
-  float: left;
-  background-color: #f2f2f2;
+  width: 100%;
+  /* float: left; */
 }
 
-#targetTable td,
-#targetTable th {
-  border: 1px solid #ddd;
-  border-color: #102c58;
-}
 .tableDate {
   width: 250px;
 }
 .tableVerySmall {
-  width: 12px;
+  width: 20px;
   text-align: center;
 }
-.tableRadio{
+.tableRadio {
   width: 0px;
   text-align: center;
 }
 
-#targetTable tbody {
-  background-color: #ffffff;
-}
-
-#targetTable tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#targetTable tr:hover {
-  background-color: #f2f2f2;
-}
-
-#targetTable th {
-  /* text-align: left; */
-  text-align: center;
-  background-color: #5e99f9;
-  color: white;
-}
-
-#targetTable tr td a {
+table tr td a {
   text-decoration: none;
 }
 
+/* fileTable1 */
+#fileTable1 {
+  width: 99%;
+}
 
+.tableSmall {
+  width: 120px;
+  text-align: center;
+}
+/* fileTable2 */
+#fileTable2 {
+  width: 99%;
+}
+
+/* 선택 - 박스 라디오버튼 */
 .box-radio-input input[type="radio"] {
   display: none;
 }
@@ -851,18 +760,25 @@ label {
 .box-radio-input input[type="radio"] + span {
   display: inline-block;
   background: none;
-  border: 1px solid #dfdfdf;
+  border: 2px solid #dfdfdf;
   text-align: center;
   cursor: pointer;
+  color: #36304a;
 }
 
 .box-radio-input input[type="radio"]:checked + span {
-  border: 1px solid #102c58;
-  background-color: #5e99f9;
+  border: 2px solid #36304a;
+  /* background-color: #5e99f9; */
+  background-color: #36304a;
   color: #fff;
 }
 /* 220528 디자인 */
-/* table {
+/*
+.wrap-table100 {
+  width: 1170px;
+}
+*/
+table {
   border-spacing: 1;
   border-collapse: collapse;
   background: #fff;
@@ -872,27 +788,30 @@ label {
   margin: 0 auto;
   position: relative;
 }
-table * {
+/* table * {
   position: relative;
+} */
+table th {
+  color: #fff;
+  background: #36304a;
+  text-align: center;
 }
 table td,
 table th {
   padding-left: 8px;
+  padding-right: 8px;
 }
 table thead tr {
   height: 60px;
   background: #36304a;
 }
-table tbody tr {
+table tr {
   height: 50px;
 }
-table tbody tr:last-child {
+table tr:last-child {
   border: 0;
 }
-table td,
-table th {
-  text-align: left;
-}
+
 table td.l,
 table th.l {
   text-align: right;
@@ -905,26 +824,26 @@ table td.r,
 table th.r {
   text-align: center;
 }
-.table100-head th {
+th {
   font-family: OpenSans-Regular;
-  font-size: 18px;
+  font-size: 17px;
   color: #fff;
   line-height: 1.2;
   font-weight: unset;
 }
-tbody tr:nth-child(even) {
-  background-color: #f5f5f5;
+tbody:nth-child(even) {
+  background-color: #f1f1f1;
 }
-tbody tr {
+tr {
   font-family: OpenSans-Regular;
   font-size: 15px;
   color: gray;
   line-height: 1.2;
   font-weight: unset;
 }
-tbody tr:hover {
+tr:hover {
   color: #555;
-  background-color: #f5f5f5;
+  background-color: #f1f1f1;
   cursor: pointer;
 }
 .column1 {
@@ -950,79 +869,14 @@ tbody tr:hover {
   text-align: right;
   padding-right: 62px;
 }
-@media screen and (max-width: 992px) {
-  table {
-    display: block;
-  }
-  table > *,
-  table tr,
-  table td,
-  table th {
-    display: block;
-  }
-  table thead {
-    display: none;
-  }
-  table tbody tr {
-    height: auto;
-    padding: 37px 0;
-  }
-  table tbody tr td {
-    padding-left: 40% !important;
-    margin-bottom: 24px;
-  }
-  table tbody tr td:last-child {
-    margin-bottom: 0;
-  }
-  table tbody tr td:before {
-    font-family: OpenSans-Regular;
-    font-size: 14px;
-    color: #999;
-    line-height: 1.2;
-    font-weight: unset;
-    position: absolute;
-    width: 40%;
-    left: 30px;
-    top: 0;
-  }
-  table tbody tr td:nth-child(1):before {
-    content: "Date";
-  }
-  table tbody tr td:nth-child(2):before {
-    content: "Order ID";
-  }
-  table tbody tr td:nth-child(3):before {
-    content: "Name";
-  }
-  table tbody tr td:nth-child(4):before {
-    content: "Price";
-  }
-  table tbody tr td:nth-child(5):before {
-    content: "Quantity";
-  }
-  table tbody tr td:nth-child(6):before {
-    content: "Total";
-  }
-  .column4,
-  .column5,
-  .column6 {
-    text-align: left;
-  }
-  .column4,
-  .column5,
-  .column6,
-  .column1,
-  .column2,
-  .column3 {
-    width: 100%;
-  }
-  tbody tr {
-    font-size: 14px;
-  }
+
+hr {
+  height: 1px;
+  margin: 1vh 0 1vh 0;
+  background: #000;
+
+  background-image: -webkit-linear-gradient(left, #4158d0, #fff, #c850c0);
+  background-image: -moz-linear-gradient(left, #4158d0, #fff, #c850c0);
+  background-image: -ms-linear-gradient(left, #4158d0, #fff, #c850c0);
+  background-image: -o-linear-gradient(left, #4158d0, #fff, #c850c0);
 }
-@media (max-width: 576px) {
-  .container-table100 {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-} */

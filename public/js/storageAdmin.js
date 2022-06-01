@@ -190,34 +190,29 @@ getAllUsers = function () {
 getAllTargets = function () {
   showHeaderTableT();
   //tbodyStart(targetTable);
-  targetTable.innerHTML+="<tbody>";
+  targetTable.innerHTML += "<tbody>";
   firestore //데이터베이스
-      .collection("targets" + userUid) //데이터베이스 저장소
-      .orderBy("date")
-      .get()
-      .then((data) => {
-        let counter = 0;
-        data.forEach((element) => {
-          counter += 1;
-          showListTarget(
-              counter,
-              element.data().name,
-              element.data().date
-          );
-        });
-
-        //radio 버튼 클릭 이벤트
-        $("input:radio[name=selectedTarget]").click(function () {
-          curTarget = $('input[name="selectedTarget"]:checked').val();
-          fileTable2.innerHTML = "";
-          fileTable3.innerHTML = "";
-          getAllFiles();
-          inputInit();
-        });
-
+    .collection("targets" + userUid) //데이터베이스 저장소
+    .orderBy("date")
+    .get()
+    .then((data) => {
+      let counter = 0;
+      data.forEach((element) => {
+        counter += 1;
+        showListTarget(counter, element.data().name, element.data().date);
       });
 
-  targetTable.innerHTML+="</tbody>";
+      //radio 버튼 클릭 이벤트
+      $("input:radio[name=selectedTarget]").click(function () {
+        curTarget = $('input[name="selectedTarget"]:checked').val();
+        fileTable2.innerHTML = "";
+        fileTable3.innerHTML = "";
+        getAllFiles();
+        inputInit();
+      });
+    });
+
+  targetTable.innerHTML += "</tbody>";
   //tbodyEnd(targetTable);
 };
 
@@ -229,8 +224,8 @@ getAllFiles = function () {
     .then((data) => {
       let counter = 0;
       data.forEach((element) => {
-        if(element.data().target !== curTarget){
-          return;   //continue랑 같은 역할
+        if (element.data().target !== curTarget) {
+          return; //continue랑 같은 역할
         }
         counter += 1;
         showListData(
@@ -247,8 +242,8 @@ getAllFiles = function () {
     .then((data) => {
       let counter = 0;
       data.forEach((element) => {
-        if(element.data().target !== curTarget){
-          return;   //continue랑 같은 역할
+        if (element.data().target !== curTarget) {
+          return; //continue랑 같은 역할
         }
         //if(element.data().uploader !== userEmail){
         //  return; //continue랑 비슷한 역할을 foreach문에서 수행
@@ -301,7 +296,7 @@ showHeaderTableW = function () {
     <tr>
         <th class="tableVerySmall">No</th>
         <th>가중치파일 이름</th>
-        <th class="tableSmall">다운로드 / 삭제</th>
+        <th class="tableSmall">다운 / 삭제</th>
     </tr>
     `;
   fileTable2.insertAdjacentHTML("beforeend", html);
@@ -312,26 +307,25 @@ showHeaderTableI = function () {
     <tr>
         <th class="tableVerySmall">No</th>
         <th>이미지파일 이름</th>
-        <th class="tableSmall">다운로드 / 삭제</th>
+        <th class="tableSmall">다운 / 삭제</th>
     </tr>
     `;
   fileTable3.insertAdjacentHTML("beforeend", html);
 };
 
-
-tbodyStart = function (inputTable){
+tbodyStart = function (inputTable) {
   html = `
     <tbody>
     `;
   inputTable.insertAdjacentHTML("beforeend", html);
-}
+};
 
-tbodyEnd = function (inputTable){
+tbodyEnd = function (inputTable) {
   html = `
     </tbody>
     `;
   inputTable.insertAdjacentHTML("beforeend", html);
-}
+};
 
 // function show list of files
 showListUser = function (no, corporation, listUid) {
@@ -352,9 +346,8 @@ showListUser = function (no, corporation, listUid) {
   fileTable1.insertAdjacentHTML("beforeend", newHtml);
 };
 
-
-showListTarget = function (no,targetName,targetDateA) {
-  targetDate = targetDateA.toDate()
+showListTarget = function (no, targetName, targetDateA) {
+  targetDate = targetDateA.toDate();
   let yearCT = targetDate.getFullYear();
   let monthCT = targetDate.getMonth() + 1;
   let dayCT = targetDate.getDate();
@@ -363,7 +356,20 @@ showListTarget = function (no,targetName,targetDateA) {
   let minuteCT = targetDate.getMinutes();
   let secondCT = targetDate.getSeconds();
 
-  let korDateTarget = yearCT + "년 " + monthCT + "월 " + dayCT + "일 " + weekdays[weekdayCT] + "요일 " + hourCT + ":" + minuteCT + ":" + secondCT;
+  let korDateTarget =
+    yearCT +
+    "년 " +
+    monthCT +
+    "월 " +
+    dayCT +
+    "일 " +
+    weekdays[weekdayCT] +
+    "요일 " +
+    hourCT +
+    ":" +
+    minuteCT +
+    ":" +
+    secondCT;
   html = `
     <tr id="id-%id%">
         <td class="tableVerySmall">%no%</td>
@@ -382,7 +388,6 @@ showListTarget = function (no,targetName,targetDateA) {
 
   targetTable.insertAdjacentHTML("beforeend", newHtml);
 };
-
 
 showListData = function (no, fileName, fileLoc) {
   html = `
@@ -487,7 +492,7 @@ checkBtn.addEventListener("click", () => {
                 fileName: fileBrowse.name, //파일 이름
                 fileLocation: urlDownload, //파이어베이스 다운로드 URL
                 uploader: userEmail, //파일 올린 사람
-                target: curTarget
+                target: curTarget,
               });
               loader.style.display = "none";
               closeAddFormBtn.style.display = "block";
@@ -510,20 +515,21 @@ checkBtn.addEventListener("click", () => {
 //학습요청생성버튼
 tarAddBtn.addEventListener("click", () => {
   let newTargetName = prompt("추가할 학습요청의 제목을 입력해주십시오.");
-  if(newTargetName !== null && newTargetName !=="" && userUid !== null){
-    firestore.collection("targets" + userUid).add(
-        {
-          name: newTargetName,
-          date: firebase.firestore.FieldValue.serverTimestamp() //파이어베이스 서버시간
-        }
-    ).then(()=>{  //데이터베이스에 add 후에 처리
-      targetTable.innerHTML = "";
-      getAllTargets()
-      inputInit();
-    })
+  if (newTargetName !== null && newTargetName !== "" && userUid !== null) {
+    firestore
+      .collection("targets" + userUid)
+      .add({
+        name: newTargetName,
+        date: firebase.firestore.FieldValue.serverTimestamp(), //파이어베이스 서버시간
+      })
+      .then(() => {
+        //데이터베이스에 add 후에 처리
+        targetTable.innerHTML = "";
+        getAllTargets();
+        inputInit();
+      });
   }
 });
-
 
 // handle delete
 fileTable2.addEventListener("click", (e) => {

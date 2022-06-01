@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Storage</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./style/storage.css?ver=20220527210000" />
+    <link rel="stylesheet" href="./style/storage.css?ver=20220602030000" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
     />
@@ -210,9 +210,10 @@
           box-sizing: border-box;
         }
         div.divBtn {
-          width: 15%;
-          float: right;
+          width: 100%;
+          /* float: right; */
           box-sizing: border-box;
+          margin: auto;
         }
         div.divBottom {
           width: 100%;
@@ -220,9 +221,6 @@
         }
       </style>
 
-      <div>
-        <table id="targetTable"></table>
-      </div>
       <div class="divBtn">
         <button class="tarAddBtn">학습요청 생성</button>
         <!--<button class="tarEditBtn">학습요청 편집</button>  할게 너무 많아져서 일단 뺌(DB에서 해당 학습요청에 해당하는 모든 파일정보를 수정해야함 -->
@@ -238,6 +236,14 @@
         </div>
       </div>
 
+      <hr />
+
+      <div>
+        <table id="targetTable"></table>
+      </div>
+
+      <hr />
+
       <div class="divBottom">
         <div class="right"><table id="fileTable1"></table></div>
 
@@ -245,5 +251,5 @@
       </div>
     </div>
   </main>
-  <script src="./js/storage.js?version=20220527210000"></script>
+  <script src="./js/storage.js?version=20220602033000"></script>
 </html>
