@@ -15,41 +15,39 @@ auth.onAuthStateChanged((user) => {
   // 메신저 프로필사진isplay the displayName and photoURL of the user on the page
   // if (user.photoURL) profileImg.setAttribute("src", user.photoURL);
 
-
   fetchChat = db.ref("messages/" + userUid + "/");
 
   fetchChat.on("child_added", function (snapshot) {
     const timestamp = parseInt(snapshot.key);
     const date = new Date(timestamp);
     const dateDisplay =
-        date.getFullYear() +
-        "/" +
-        (date.getMonth() + 1) +
-        "/" +
-        date.getDate() +
-        " " +
-        date.getHours() +
-        ":" +
-        date.getMinutes();
+      date.getFullYear() +
+      "/" +
+      (date.getMonth() + 1) +
+      "/" +
+      date.getDate() +
+      " " +
+      date.getHours() +
+      ":" +
+      date.getMinutes();
 
     const messages = snapshot.val();
 
     const message = `<div class=${
-        userName === messages.userName ? "me-chat" : "friend-chat"
+      userName === messages.userName ? "me-chat" : "friend-chat"
     }>
     <div class=${
-        userName === messages.userName ? "me-chat-col" : "friend-chat-col"
+      userName === messages.userName ? "me-chat-col" : "friend-chat-col"
     }>
       <span class="profile-name">${messages.userName}</span>
       <span class="balloon">${messages.message}</span>
     </div>
-    <time datetime="09:00:00+09:00"> 시간${dateDisplay}</time>
+    <time datetime="09:00:00+09:00">${dateDisplay}</time>
   </div>`;
 
     // append the message on the page
     document.getElementById("main-chat").innerHTML += message;
   });
-
 });
 
 // 메시지 send : db저장

@@ -18,9 +18,6 @@ auth.onAuthStateChanged((user) => {
   userName = user.displayName;
   // 메신저 프로필사진isplay the displayName and photoURL of the user on the page
   // if (user.photoURL) profileImg.setAttribute("src", user.photoURL);
-
-
-
 });
 
 // 메시지 send : db저장
@@ -56,54 +53,53 @@ getAllUsers = function () {
   selectbox.insertAdjacentHTML("beforeend", html);
 
   firestore //데이터베이스
-      .collection("users") //데이터베이스 저장소
-      .get()
-      .then((data) => {
-        data.forEach((element) => {
-          showListUser(element.data().co, element.data().uid);
-        });
-        $("#selectbox").change(function(){
-          selectedUU = $(this).val();
-          console.log(selectedUU)
-          document.getElementById("main-chat").innerHTML = "" ; //초기화
+    .collection("users") //데이터베이스 저장소
+    .get()
+    .then((data) => {
+      data.forEach((element) => {
+        showListUser(element.data().co, element.data().uid);
+      });
+      $("#selectbox").change(function () {
+        selectedUU = $(this).val();
+        console.log(selectedUU);
+        document.getElementById("main-chat").innerHTML = ""; //초기화
 
-          fetchChat = db.ref("messages/" + selectedUU + "/");
-          fetchChat.on("child_added", function (snapshot) {
-            const timestamp = parseInt(snapshot.key);
-            const date = new Date(timestamp);
-            const dateDisplay =
-                date.getFullYear() +
-                "/" +
-                (date.getMonth() + 1) +
-                "/" +
-                date.getDate() +
-                " " +
-                date.getHours() +
-                ":" +
-                date.getMinutes();
+        fetchChat = db.ref("messages/" + selectedUU + "/");
+        fetchChat.on("child_added", function (snapshot) {
+          const timestamp = parseInt(snapshot.key);
+          const date = new Date(timestamp);
+          const dateDisplay =
+            date.getFullYear() +
+            "/" +
+            (date.getMonth() + 1) +
+            "/" +
+            date.getDate() +
+            " " +
+            date.getHours() +
+            ":" +
+            date.getMinutes();
 
-            const messages = snapshot.val();
+          const messages = snapshot.val();
 
-            const message = `<div class=${
-                userName === messages.userName ? "me-chat" : "friend-chat"
-            }>
+          const message = `<div class=${
+            userName === messages.userName ? "me-chat" : "friend-chat"
+          }>
     <div class=${
-                userName === messages.userName ? "me-chat-col" : "friend-chat-col"
-            }>
+      userName === messages.userName ? "me-chat-col" : "friend-chat-col"
+    }>
       <span class="profile-name">${messages.userName}</span>
       <span class="balloon">${messages.message}</span>
     </div>
-    <time datetime="09:00:00+09:00"> 시간${dateDisplay}</time>
+    <time datetime="09:00:00+09:00">${dateDisplay}</time>
   </div>`;
 
-            // append the message on the page
-            document.getElementById("main-chat").innerHTML += message;
-          });
-        })
-
+          // append the message on the page
+          document.getElementById("main-chat").innerHTML += message;
+        });
       });
+    });
 
-  selectbox.innerHTML+="</select>";
+  selectbox.innerHTML += "</select>";
 };
 // function show list of files
 showListUser = function (corporation, listUid) {
@@ -114,6 +110,5 @@ showListUser = function (corporation, listUid) {
   newHtml = newHtml.replace("%listCorporation%", corporation);
   selectbox.insertAdjacentHTML("beforeend", newHtml);
 };
-
 
 getAllUsers();

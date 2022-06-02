@@ -12,13 +12,38 @@ body {
   font-size: 14px;
   font-weight: 400;
   overflow: hidden;
-  /* background-color: #f3f3f3; */
+  /* 기본 배경색 */
+  background-color: #f3f3f3;
+
   /* 배경 그라데이션 추가 */
-  background: #c850c0;
+  /* background: #c850c0;
   background: -webkit-linear-gradient(45deg, #4158d0, #c850c0);
   background: -o-linear-gradient(45deg, #4158d0, #c850c0);
   background: -moz-linear-gradient(45deg, #4158d0, #c850c0);
-  background: linear-gradient(45deg, #4158d0, #c850c0);
+  background: linear-gradient(45deg, #4158d0, #c850c0); */
+
+  /* 같은 배경 그라데이션 투명도 위한 rgba로 변환 */
+  /* background: rgba(200, 80, 192, 1);
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(65, 88, 208, 1),
+    rgba(200, 80, 192, 1)
+  );
+  background: -o-linear-gradient(
+    45deg,
+    rgba(65, 88, 208, 1),
+    rgba(200, 80, 192, 1)
+  );
+  background: -moz-linear-gradient(
+    45deg,
+    rgba(65, 88, 208, 1),
+    rgba(200, 80, 192, 1)
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(65, 88, 208, 1),
+    rgba(200, 80, 192, 1)
+  ); */
 
   color: #102c58;
 }
@@ -550,7 +575,7 @@ main.l-main .page-title {
   font-weight: 400;
   margin-top: 0;
   margin-bottom: 25px;
-  color: #fff;
+  /* color: #fff; */
 
   text-align: left;
 }
@@ -635,7 +660,9 @@ button:hover {
 }
 
 .fa-file-download:hover {
-  color: cornflowerblue;
+  /* color: cornflowerblue; */
+  /* color: #0c2142; */
+  color: #36304a;
   cursor: pointer;
 }
 
@@ -670,7 +697,8 @@ button:hover {
   text-align: center;
 }
 .addForm label:hover {
-  color: palegreen;
+  text-decoration: underline;
+  color: #36304a;
 }
 
 #upload-file {
@@ -684,13 +712,13 @@ button:hover {
 label {
   cursor: pointer;
   margin-right: 20px;
-  /* color: cornflowerblue; */
-  color: #fff;
+  color: cornflowerblue;
+  /* color: #fff; */
 }
 
 .fa-check-circle {
-  /* color: cornflowerblue; */
-  color: #fff;
+  color: cornflowerblue;
+  /* color: #fff; */
   font-size: 35px;
   vertical-align: middle;
 }
@@ -760,10 +788,13 @@ table tr td a {
 .box-radio-input input[type="radio"] + span {
   display: inline-block;
   background: none;
-  border: 2px solid #dfdfdf;
+  border: 2px solid cornflowerblue;
+  border-radius: 5px;
+  padding: auto;
   text-align: center;
   cursor: pointer;
-  color: #36304a;
+  /* color: #36304a; */
+  color: cornflowerblue;
 }
 
 .box-radio-input input[type="radio"]:checked + span {
@@ -832,7 +863,7 @@ th {
   font-weight: unset;
 }
 tbody:nth-child(even) {
-  background-color: #f1f1f1;
+  background-color: #e2e2e2;
 }
 tr {
   font-family: OpenSans-Regular;
@@ -843,7 +874,7 @@ tr {
 }
 tr:hover {
   color: #555;
-  background-color: #f1f1f1;
+  background-color: #e4e1ff;
   cursor: pointer;
 }
 .column1 {
@@ -870,13 +901,7 @@ tr:hover {
   padding-right: 62px;
 }
 
-hr {
-  height: 1px;
-  margin: 1vh 0 1vh 0;
-  background: #000;
-
-  background-image: -webkit-linear-gradient(left, #4158d0, #fff, #c850c0);
-  background-image: -moz-linear-gradient(left, #4158d0, #fff, #c850c0);
-  background-image: -ms-linear-gradient(left, #4158d0, #fff, #c850c0);
-  background-image: -o-linear-gradient(left, #4158d0, #fff, #c850c0);
+/* 표 간격주기 */
+.tableBoundary {
+  margin: 5vh 0 5vh 0;
 }
