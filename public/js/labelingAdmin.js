@@ -94,9 +94,6 @@ let Dashboard = (() => {
     tooltipOptions: {
       placement: "right",
     },
-    tooltipOptionsBottom: {
-      placement: "bottom",
-    },
     menuClass: ".c-menu",
   };
 
@@ -135,7 +132,6 @@ let Dashboard = (() => {
       // });
 
       $('[data-toggle="tooltip"]').tooltip(global.tooltipOptions);
-      $('[data-toggle="tooltipB"]').tooltip(global.tooltipOptionsBottom);
     },
   };
 })();
@@ -152,15 +148,7 @@ document
   .addEventListener("change", folderChanged);
 
 let annos = [];
-let label_classes = [
-  "0",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-];
+let label_classes = ["0", "1", "2", "3", "4", "5", "6"];
 let current_anno_index = 0;
 let next_label_id = 0;
 let isLabelNamesVisible = true;

@@ -617,3 +617,37 @@ main.l-main .page-title {
     transform: translateX(0) rotate(360deg);
   }
 }
+
+/* 툴팁-Bottom 수정 */
+/* 먼저 툴팁 구현을 위한 HTML 코드를 작성해보도록 하겠습니다.
+tooltip 클래스로 툴팁 표시가 필요한 약어를 마크업하고,
+tooltip-text 클래스로 툴팁에 표시될 내용을 마크업합니다. */
+/* .profile,
+.logout {
+  display: inline-block;
+  color: deeppink;
+  font-weight: bold;
+} */
+
+/* 다음으로 tooltip-text 클래스에 대한 스타일을 추가해주겠습니다.
+툴팁은 평소에는 보이지 않아야 하기 때문에 display 속성을 none으로 설정해야합니다.
+또한 툴팁은 공간을 차지하지 안 되기 때문에 position 속성을 absolute로 설정해줍니다. */
+.tooltip-text {
+  display: none;
+  position: absolute;
+  max-width: 200px;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.8em;
+  color: white;
+  background: #102c58;
+  bottom: -25px;
+}
+
+/* 마지막으로, 약어에 마우스 포인터를 올렸을 때,
+툴팁이 화면에 나타날 수 있도록 스타일을 해줍니다. */
+.profile:hover .tooltip-text,
+.logout:hover .tooltip-text {
+  display: block;
+}

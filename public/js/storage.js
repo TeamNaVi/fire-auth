@@ -451,9 +451,6 @@ let Dashboard = (() => {
     tooltipOptions: {
       placement: "right",
     },
-    tooltipOptionsBottom: {
-      placement: "bottom",
-    },
     menuClass: ".c-menu",
   };
 
@@ -492,7 +489,6 @@ let Dashboard = (() => {
       // });
 
       $('[data-toggle="tooltip"]').tooltip(global.tooltipOptions);
-      $('[data-toggle="tooltipB"]').tooltip(global.tooltipOptionsBottom);
     },
   };
 })();
