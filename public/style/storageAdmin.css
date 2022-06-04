@@ -12,7 +12,39 @@ body {
   font-size: 14px;
   font-weight: 400;
   overflow: hidden;
+  /* 기본 배경색 */
   background-color: #f3f3f3;
+
+  /* 배경 그라데이션 추가 */
+  /* background: #c850c0;
+  background: -webkit-linear-gradient(45deg, #4158d0, #c850c0);
+  background: -o-linear-gradient(45deg, #4158d0, #c850c0);
+  background: -moz-linear-gradient(45deg, #4158d0, #c850c0);
+  background: linear-gradient(45deg, #4158d0, #c850c0); */
+
+  /* 같은 배경 그라데이션 투명도 위한 rgba로 변환 */
+  /* background: rgba(200, 80, 192, 1);
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(65, 88, 208, 1),
+    rgba(200, 80, 192, 1)
+  );
+  background: -o-linear-gradient(
+    45deg,
+    rgba(65, 88, 208, 1),
+    rgba(200, 80, 192, 1)
+  );
+  background: -moz-linear-gradient(
+    45deg,
+    rgba(65, 88, 208, 1),
+    rgba(200, 80, 192, 1)
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(65, 88, 208, 1),
+    rgba(200, 80, 192, 1)
+  ); */
+
   color: #102c58;
 }
 
@@ -543,6 +575,7 @@ main.l-main .page-title {
   font-weight: 400;
   margin-top: 0;
   margin-bottom: 25px;
+  /* color: #fff; */
 
   text-align: left;
 }
@@ -559,7 +592,8 @@ main.l-main .page-title {
   display: none;
   border: 10px solid white;
   border-radius: 50%;
-  border-top: 10px solid red;
+  /* border-top: 10px solid red; */
+  border-top: 10px solid #36304a;
   width: 15px;
   height: 15px;
   -webkit-animation: spin 2s linear infinite;
@@ -590,27 +624,31 @@ main.l-main .page-title {
 /* -------loader------- */
 
 button {
-  background-color: cornflowerblue;
+  /* background-color: cornflowerblue; */
+  background-color: #36304a;
   border-radius: 10px;
   padding: 10px 10px;
-  margin-top: 20px;
   font-size: 15px;
   border-color: #0c2142;
   color: white;
   outline: none;
   width: 150px;
 }
+
 button:hover {
   cursor: pointer;
 }
 
 .addBtn {
-  padding: 10px 10px;
+  padding: 10px 40px;
 }
-
+.tarAddBtn:hover,
 .addBtn:hover,
 .downloadBtn:hover {
-  background-color: cornflowerblue;
+  cursor: pointer;
+  /* color: cornflowerblue; */
+  color: #36304a;
+  background-color: #fff;
 }
 
 .fa-file-download {
@@ -620,7 +658,8 @@ button:hover {
 }
 
 .fa-file-download:hover {
-  color: cornflowerblue;
+  /* color: cornflowerblue; */
+  color: #36304a;
   cursor: pointer;
 }
 
@@ -635,16 +674,8 @@ button:hover {
   cursor: pointer;
 }
 
-.deleteBtn {
-  background-color: lightcoral;
-}
-
-.deleteBtn:hover {
-  background-color: crimson;
-}
-
 .addForm {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   width: 90%;
   margin: auto;
   padding: 20px 0;
@@ -653,6 +684,10 @@ button:hover {
   display: none;
   font-size: 16px;
   text-align: center;
+}
+.addForm label:hover {
+  text-decoration: underline;
+  color: #36304a;
 }
 
 #upload-file {
@@ -671,226 +706,75 @@ label {
 
 .fa-check-circle {
   color: cornflowerblue;
-  font-size: 25px;
+  font-size: 35px;
   vertical-align: middle;
 }
 
 .fa-check-circle:hover {
   cursor: pointer;
-  color: cornflowerblue;
+  /* color: cornflowerblue; */
+  color: #36304a;
 }
 
 .fa-times {
   color: lightcoral;
-  font-size: 18px;
+  font-size: 40px;
   vertical-align: middle;
-  margin-left: 10px;
-  position: absolute;
-  right: 1px;
-  top: 1px;
+  margin-left: 2vw;
+  position: relative;
 }
 
 .fa-times:hover {
   cursor: pointer;
-  color: #84b9ff;
+  color: crimson;
 }
 
+/* 표 디자인 */
 
-#fileTable1 {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  text-align: left;
-  width: 99%;
-  font-size: 16px;
-  margin: none;
-  margin-top: 20px;
-
-
-  background-color: #ffffff;
+/* targetTable */
+#targetTable {
+  width: 100%;
+  /* float: left; */
 }
-
-#fileTable1 td,
-#fileTable1 th {
-  border: 1px solid #ddd;
-  border-color: #102c58;
+.tableDate {
+  width: 250px;
+}
+.tableSmall {
+  width: 120px;
+  text-align: center;
 }
 .tableVerySmall {
   width: 12px;
   text-align: center;
 }
-.tableBigRadio{
-  width: 75px;
-}
-
-#fileTable1 tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#fileTable1 tr:hover {
-  background-color: #f2f2f2;
-}
-
-#fileTable1 th {
-  text-align: left;
-  background-color: #5e99f9;
-  color: white;
-}
-
-#fileTable1 tr td a {
-  text-decoration: none;
-}
-
-
-#fileTable2 {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  text-align: left;
-  width: 99%;
-  font-size: 16px;
-  margin: none;
-  margin-top: 20px;
-
-
-  background-color: #ffffff;
-}
-
-#fileTable2 td,
-#fileTable2 th {
-  border: 1px solid #ddd;
-  border-color: #102c58;
-}
-.tableSmall {
-  width: 120px;
-  text-align: center;
-}
-.tableVerySmall{
-  width: 12px;
-  text-align: center;
-}
-
-#fileTable2 tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#fileTable2 tr:hover {
-  background-color: #f2f2f2;
-}
-
-#fileTable2 th {
-  text-align: left;
-  background-color: #5e99f9;
-  color: white;
-}
-
-#fileTable2 tr td a {
-  text-decoration: none;
-}
-
-
-#fileTable3 {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  text-align: left;
-  width: 99%;
-  font-size: 16px;
-  margin: none;
-  margin-top: 20px;
-
-
-  background-color: #ffffff;
-}
-
-#fileTable3 td,
-#fileTable3 th {
-  border: 1px solid #ddd;
-  border-color: #102c58;
-}
-.tableSmall {
-  width: 120px;
-  text-align: center;
-}
-.tableVerySmall{
-  width: 12px;
-  text-align: center;
-}
-
-#fileTable3 tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#fileTable3 tr:hover {
-  background-color: #f2f2f2;
-}
-
-#fileTable3 th {
-  text-align: left;
-  background-color: #5e99f9;
-  color: white;
-}
-
-#fileTable3 tr td a {
-  text-decoration: none;
-}
-
-
-
-#targetTable {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  text-align: left;
-  width: 85%;
-  font-size: 16px;
-  margin: none;
-  margin-top: 20px;
-
-  height: 220px;
-  float: left;
-  background-color: #f2f2f2;
-}
-
-#targetTable td,
-#targetTable th {
-  border: 1px solid #ddd;
-  border-color: #102c58;
-}
-.tableDate {
-  width: 250px;
-}
-.tableVerySmall{
-  width: 12px;
-  text-align: center;
-}
-.tableRadio{
+.tableRadio {
   width: 0px;
   text-align: center;
 }
-
-
-#targetTable tbody {
-  background-color: #ffffff;
+.tableBigRadio {
+  width: 100px;
 }
 
-#targetTable tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#targetTable tr:hover {
-  background-color: #f2f2f2;
-}
-
-#targetTable th {
-  text-align: left;
-  background-color: #5e99f9;
-  color: white;
-}
-
-#targetTable tr td a {
+table tr td a {
   text-decoration: none;
 }
 
+/* admin fileTable1 : 업체명 */
+#fileTable1 {
+  width: 99%;
+}
 
+/* admin fileTable2 == user fileTable2 : 좌측 가중치파일 표 */
+#fileTable2 {
+  width: 99%;
+}
 
+/* admin fileTable1 == user fileTable3 : 우측 이미지파일 표 */
+#fileTable3 {
+  width: 99%;
+}
 
+/* 선택 - 박스 라디오버튼 */
 .box-radio-input input[type="radio"] {
   display: none;
 }
@@ -898,13 +782,121 @@ label {
 .box-radio-input input[type="radio"] + span {
   display: inline-block;
   background: none;
-  border: 1px solid #dfdfdf;
+  border: 2px solid lightcoral;
+  border-radius: 5px;
+  padding: auto;
   text-align: center;
   cursor: pointer;
+  /* color: #36304a; */
+  color: lightcoral;
 }
 
 .box-radio-input input[type="radio"]:checked + span {
-  border: 1px solid #102c58;
-  background-color: #5e99f9;
+  border: 2px solid crimson;
+  /* background-color: #5e99f9; */
+  background-color: crimson;
   color: #fff;
+}
+/* 220528 디자인 */
+/*
+.wrap-table100 {
+  width: 1170px;
+}
+*/
+table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: #fff;
+  /* background-color: #e2e2e2; */
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+/* table * {
+  position: relative;
+} */
+table th {
+  color: #fff;
+  background: #36304a;
+  text-align: center;
+}
+table td,
+table th {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+table thead tr {
+  height: 60px;
+  background: #36304a;
+}
+table tr {
+  height: 50px;
+}
+table tr:last-child {
+  border: 0;
+}
+
+table td.l,
+table th.l {
+  text-align: right;
+}
+table td.c,
+table th.c {
+  text-align: center;
+}
+table td.r,
+table th.r {
+  text-align: center;
+}
+th {
+  font-family: OpenSans-Regular;
+  font-size: 17px;
+  color: #fff;
+  line-height: 1.2;
+  font-weight: unset;
+}
+tbody:nth-child(even) {
+  background-color: #e2e2e2;
+}
+tr {
+  font-family: OpenSans-Regular;
+  font-size: 15px;
+  color: gray;
+  line-height: 1.2;
+  font-weight: unset;
+}
+tr:hover {
+  color: #555;
+  background-color: #ffe1e1;
+  cursor: pointer;
+}
+.column1 {
+  width: 260px;
+  padding-left: 40px;
+}
+.column2 {
+  width: 160px;
+}
+.column3 {
+  width: 245px;
+}
+.column4 {
+  width: 110px;
+  text-align: right;
+}
+.column5 {
+  width: 170px;
+  text-align: right;
+}
+.column6 {
+  width: 222px;
+  text-align: right;
+  padding-right: 62px;
+}
+
+/* 표 간격주기 */
+.tableBoundary {
+  margin: 5vh 0 5vh 0;
 }

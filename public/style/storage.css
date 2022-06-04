@@ -629,7 +629,6 @@ button {
   background-color: #36304a;
   border-radius: 10px;
   padding: 10px 10px;
-  margin-top: 20px;
   font-size: 15px;
   border-color: #0c2142;
   color: white;
@@ -661,7 +660,6 @@ button:hover {
 
 .fa-file-download:hover {
   /* color: cornflowerblue; */
-  /* color: #0c2142; */
   color: #36304a;
   cursor: pointer;
 }
@@ -675,14 +673,6 @@ button:hover {
 .fa-trash-alt:hover {
   color: crimson;
   cursor: pointer;
-}
-
-.deleteBtn {
-  background-color: lightcoral;
-}
-
-.deleteBtn:hover {
-  background-color: crimson;
 }
 
 .addForm {
@@ -749,12 +739,15 @@ label {
   width: 100%;
   /* float: left; */
 }
-
 .tableDate {
   width: 250px;
 }
+.tableSmall {
+  width: 120px;
+  text-align: center;
+}
 .tableVerySmall {
-  width: 20px;
+  width: 12px;
   text-align: center;
 }
 .tableRadio {
@@ -766,16 +759,12 @@ table tr td a {
   text-decoration: none;
 }
 
-/* fileTable1 */
+/* user fileTable1 == admin fileTable3 : 우측 이미지파일 표 */
 #fileTable1 {
   width: 99%;
 }
 
-.tableSmall {
-  width: 120px;
-  text-align: center;
-}
-/* fileTable2 */
+/* user fileTable2 == admin fileTable2 : 좌측 가중치파일 표 */
 #fileTable2 {
   width: 99%;
 }
