@@ -326,7 +326,6 @@ tbodyEnd = function (inputTable) {
 // function show list of files
 showListUser = function (no, corporation, listUid) {
   html = `
-    <link rel="stylesheet" href="../style/storageAdmin.css?after" />
     <tr id="id-%id%">
         <td class="tableVerySmall">%no%</td>
         <td>%listCorporation%</td>
