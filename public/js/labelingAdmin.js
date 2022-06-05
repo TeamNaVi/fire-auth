@@ -328,14 +328,18 @@ class AnnoObj {
   }
 
   displayImage() {
-    canvas.width = this.imageObj.naturalWidth / 4.25;
-    canvas.height = this.imageObj.naturalHeight / 4.25;
+    //canvas.width = this.imageObj.naturalWidth / 4.25;
+    //canvas.height = this.imageObj.naturalHeight / 4.25;
+    canvas.width = this.imageObj.naturalWidth/1.5;
+    canvas.height = this.imageObj.naturalHeight/1.5;
     ctx.drawImage(
       this.imageObj,
       0,
       0,
-      this.imageObj.naturalWidth / 4.25,
-      this.imageObj.naturalHeight / 4.25
+      //this.imageObj.naturalWidth / 4.25,
+      //this.imageObj.naturalHeight / 4.25
+      this.imageObj.naturalWidth/1.5,
+      this.imageObj.naturalHeight/1.5
     );
   }
 
@@ -645,10 +649,14 @@ class Label {
 
   getYOLOannotation() {
     let parentImage = this.annoParent.imageObj;
-    let center_xn = ((this.x + this.w / 2) / parentImage.width) * 4.25;
-    let center_yn = ((this.y + this.h / 2) / parentImage.height) * 4.25;
-    let wn = (this.w / parentImage.width) * 4.25;
-    let hn = (this.h / parentImage.height) * 4.25;
+    //let center_xn = ((this.x + this.w / 2) / parentImage.width) * 4.25;
+    //let center_yn = ((this.y + this.h / 2) / parentImage.height) * 4.25;
+    //let wn = (this.w / parentImage.width) * 4.25;
+    //let hn = (this.h / parentImage.height) * 4.25;
+    let center_xn = ((this.x + this.w / 2) / parentImage.width) * 1.5;
+    let center_yn = ((this.y + this.h / 2) / parentImage.height) * 1.5;
+    let wn = (this.w / parentImage.width) * 1.5;
+    let hn = (this.h / parentImage.height) * 1.5;
     return `${this.name} ${center_xn.toFixed(6)} ${center_yn.toFixed(
       6
     )} ${wn.toFixed(6)} ${hn.toFixed(6)}`;
